@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 65% 45%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 10% 15%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 10% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 10% 15%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 10% 18%;
+    --input: 0 10% 18%;
+    --ring: 0 65% 45%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-lexend);
+    padding-top: 4rem;
+    background: linear-gradient(135deg, hsl(0 0% 8%) 0%, hsl(0 5% 12%) 100%);
+    min-height: 100vh;
+  }
+}
+
+.cursive-text {
+  font-style: italic;
+  font-weight: 500;
+  color: hsl(0 65% 55%);
+  text-decoration: underline;
+  text-decoration-color: hsl(0 65% 45% / 0.4);
+  text-underline-offset: 4px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, hsl(0 65% 45%) 0%, hsl(10 60% 40%) 50%, hsl(350 55% 50%) 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, hsl(0 80% 60%) 0%, hsl(0 75% 55%) 100%);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 44px;
+  box-shadow: 
+    0 4px 16px hsl(0 80% 60% / 0.25),
+    0 2px 8px hsl(0 80% 60% / 0.15);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, hsl(0 85% 65%) 0%, hsl(0 80% 60%) 100%);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 20px hsl(0 80% 60% / 0.3),
+    0 3px 12px hsl(0 80% 60% / 0.2);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, hsl(0 0% 18%) 0%, hsl(0 0% 15%) 100%);
+  border: 2px solid hsl(0 0% 25%);
+  transition: all 0.3s ease;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 44px;
+  box-shadow: 
+    0 2px 8px hsl(0 0% 0% / 0.15),
+    0 1px 4px hsl(0 0% 0% / 0.1);
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, hsl(0 0% 22%) 0%, hsl(0 0% 19%) 100%);
+  border-color: hsl(0 0% 35%);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 4px 12px hsl(0 0% 0% / 0.2),
+    0 2px 6px hsl(0 0% 0% / 0.15);
+}
+
+/* Force CSS refresh */
+
+.card-enhanced {
+  background: linear-gradient(135deg, hsl(0 0% 12% / 0.8) 0%, hsl(0 10% 15% / 0.4) 100%);
+  border: 1px solid hsl(0 65% 45% / 0.2);
+  backdrop-filter: blur(15px);
+  transition: all 0.4s ease;
+}
+
+.card-enhanced:hover {
+  border-color: hsl(0 65% 45% / 0.4);
+  box-shadow: 0 20px 40px hsl(0 65% 45% / 0.1);
+  transform: translateY(-5px);
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.animated-background .blob {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 20s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -20px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(-15px, -15px) scale(1.05);
+  }
+}
+
+.animated-background .blob-1 {
+  background: radial-gradient(circle, hsl(0 65% 45% / 0.2) 0%, hsl(0 65% 45% / 0.05) 70%);
+  width: 500px;
+  height: 500px;
+  top: 60%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.animated-background .blob-2 {
+  background: radial-gradient(circle, hsl(10 60% 40% / 0.15) 0%, hsl(10 60% 40% / 0.03) 70%);
+  width: 400px;
+  height: 400px;
+  top: 80%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.animated-background .blob-3 {
+  background: radial-gradient(circle, hsl(350 55% 50% / 0.1) 0%, hsl(350 55% 50% / 0.02) 70%);
+  width: 300px;
+  height: 300px;
+  bottom: 10%;
+  left: 70%;
+  animation-delay: 4s;
+}
