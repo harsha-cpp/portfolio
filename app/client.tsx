@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { Lexend } from "next/font/google"
+import { Lexend, Funnel_Display } from "next/font/google"
 import "./globals.css"
 import { cn } from "@/lib/utils"
 import Header from "@/components/header"
@@ -15,6 +15,11 @@ const lexend = Lexend({
   variable: "--font-lexend",
 })
 
+const funnelDisplay = Funnel_Display({
+  subsets: ["latin"],
+  variable: "--font-funnel-display",
+})
+
 export default function ClientLayout({
   children,
 }: {
@@ -26,7 +31,7 @@ export default function ClientLayout({
         <NoScriptStyles />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={cn("min-h-screen bg-background antialiased dark", lexend.variable)}>
+      <body className={cn("min-h-screen bg-background antialiased dark", lexend.variable, funnelDisplay.variable)}>
         <MobileBlock>
           <div className="relative flex min-h-screen flex-col overflow-hidden">
             <noscript>
