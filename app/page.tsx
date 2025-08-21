@@ -7,9 +7,9 @@ import Contact from "@/components/contact"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Harsha Tummalapalli | UX Designer & Researcher",
+  title: "Harsha Tummalapalli | Software Development Engineer",
   description:
-    "Portfolio of Harsha Tummalapalli, a User Experience Designer and UX Researcher specializing in user-centered design, prototyping, and frontend development.",
+    "Portfolio of Harsha Tummalapalli, a Software Development Engineer specializing in full-stack development, scalable systems architecture, and modern web technologies.",
 }
 
 export default function Home() {

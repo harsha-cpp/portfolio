@@ -5,16 +5,16 @@ import { ExternalLink } from "lucide-react"
 export default function Experience() {
   const experiences = [
     {
-      title: "UI/UX Designer Intern",
+      title: "UI/UX Designer & Frontend Developer Intern",
       company: "Netts Mobility",
       period: "Feb 2025 - May 2025",
       location: "Remote",
       achievements: [
-        "Designed the base UI/UX for the company website, ensuring a responsive, accessible, and visually engaging user experience",
-        "Created the base UI framework of 15+ pages for the mobile app, focusing on intuitive navigation and user flows for swapping station operations",
-        "Conducted user research to understand the needs of EV users and swapping station operations",
-        "Collaborated closely with the engineering team to implement UI components efficiently, maintaining design consistency across platforms",
-        "Supported brand identity development by aligning web and app visuals with startup goals",
+        "Designed and developed the base UI/UX for the company website using React and Next.js, ensuring a responsive, accessible, and visually engaging user experience",
+        "Created and implemented the frontend for 15+ pages of the mobile app, focusing on intuitive navigation and user flows for swapping station operations",
+        "Conducted user research to understand the needs of EV users and translated insights into functional frontend components and user interfaces",
+        "Collaborated closely with the engineering team to implement UI components efficiently, maintaining design consistency and code quality across platforms",
+        "Deployed the application using modern deployment practices and supported brand identity development by aligning web and app visuals with startup goals",
       ],
     },
   ]

@@ -5,23 +5,23 @@ export default function About() {
   const features = [
     {
       icon: <Code2 className="h-8 w-8 text-primary" />,
-      title: "UX Design",
-      description: "User-centered design approach with focus on usability and accessibility",
+      title: "Frontend Development",
+      description: "Modern web applications with React, Next.js, and responsive design",
     },
     {
       icon: <Server className="h-8 w-8 text-primary" />,
-      title: "Frontend Dev",
-      description: "Modern web technologies including React, TypeScript, and responsive design",
+      title: "UI/UX Design",
+      description: "User-centered design approach with focus on usability and accessibility",
     },
     {
       icon: <Users className="h-8 w-8 text-primary" />,
-      title: "Research",
-      description: "User research, testing, and data-driven design decisions",
+      title: "User Research",
+      description: "User interviews, testing, and data-driven design decisions",
     },
     {
       icon: <Globe className="h-8 w-8 text-primary" />,
-      title: "Prototyping",
-      description: "From wireframes to high-fidelity interactive prototypes",
+      title: "Web Development",
+      description: "Full-stack web applications with modern deployment practices",
     },
   ]
 
@@ -43,25 +43,25 @@ export default function About() {
               <div className="space-y-6">
                 <div className="space-y-4 text-left">
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Harsha is a dedicated <span className="cursive-text">User Experience Designer</span> and{" "}
-                    <span className="cursive-text">UX Researcher</span> with a comprehensive background in{" "}
-                    <span className="cursive-text">human-centered design</span> and{" "}
-                    <span className="cursive-text">design thinking methodologies</span>.
+                    Harsha is a dedicated <span className="cursive-text">Software Development Engineer</span> and{" "}
+                    <span className="cursive-text">Frontend Developer</span> with a comprehensive background in{" "}
+                    <span className="cursive-text">UI/UX design</span> and{" "}
+                    <span className="cursive-text">modern web development</span>.
                   </p>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    His design philosophy centers on <span className="cursive-text">empathetic user research</span>,{" "}
-                    <span className="cursive-text">strategic problem-solving</span>, and creating{" "}
-                    <span className="cursive-text">inclusive digital experiences</span> that bridge the gap 
-                    between user expectations and business objectives. With a solid foundation in{" "}
-                    <span className="cursive-text">frontend technologies</span> and{" "}
-                    <span className="cursive-text">responsive web design</span>, he brings designs to life 
-                    through clean, efficient code. He excels at transforming complex user 
-                    requirements into intuitive, accessible design solutions.
+                    His development philosophy centers on <span className="cursive-text">user-centered design</span>,{" "}
+                    <span className="cursive-text">clean code principles</span>, and building{" "}
+                    <span className="cursive-text">intuitive web applications</span> that bridge the gap 
+                    between user needs and technical implementation. With expertise in{" "}
+                    <span className="cursive-text">React ecosystem</span> and{" "}
+                    <span className="cursive-text">frontend technologies</span>, he designs and develops 
+                    responsive applications through accessible, maintainable code. He excels at transforming user 
+                    requirements into engaging, functional digital experiences.
                   </p>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Harsha stays current with emerging <span className="cursive-text">design trends</span> and{" "}
-                    <span className="cursive-text">usability best practices</span>, continuously refining his 
-                    approach to deliver impactful user experiences that drive engagement and satisfaction.
+                    Harsha stays current with emerging <span className="cursive-text">frontend technologies</span> and{" "}
+                    <span className="cursive-text">design trends</span>, continuously refining his 
+                    approach to deliver impactful web solutions that enhance user experiences and drive engagement.
                   </p>
                 </div>
               </div>

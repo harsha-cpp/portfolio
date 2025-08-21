@@ -4,24 +4,24 @@ import { Badge } from "@/components/ui/badge"
 export default function Skills() {
   const skillCategories = [
     {
-      category: "UX Design",
-      skills: ["Figma", "Adobe XD", "Sketch", "InVision", "Miro", "FigJam"],
-    },
-    {
       category: "Frontend Development",
-      skills: ["React", "TypeScript", "JavaScript", "HTML/CSS", "Tailwind CSS", "Next.js"],
+      skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML/CSS", "Tailwind CSS"],
     },
     {
-      category: "User Research",
-      skills: ["User Interviews", "Usability Testing", "A/B Testing", "Surveys", "Analytics", "Personas"],
+      category: "UI/UX Design",
+      skills: ["Figma", "Adobe XD", "User Research", "Prototyping", "Design Systems", "Accessibility"],
     },
     {
-      category: "Prototyping",
-      skills: ["Figma", "Framer", "Principle", "After Effects", "Lottie", "Interactive Prototypes"],
+      category: "Backend Development",
+      skills: ["Node.js", "Express", "Python", "RESTful APIs", "PostgreSQL", "MongoDB"],
     },
     {
-      category: "Design Systems",
-      skills: ["Component Libraries", "Design Tokens", "Style Guides", "Documentation", "Accessibility"],
+      category: "Tools & Technologies",
+      skills: ["Git", "VS Code", "Webpack", "Deployment", "Testing", "Responsive Design"],
+    },
+    {
+      category: "Programming Languages",
+      skills: ["JavaScript", "TypeScript", "Python", "Java", "HTML", "CSS"],
     },
   ]
 
@@ -36,7 +36,7 @@ export default function Skills() {
                 Skills <span className="cursive-text">& Expertise</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                A comprehensive toolkit for creating exceptional user experiences and bringing designs to life
+                A comprehensive toolkit combining frontend development, UI/UX design, and modern web technologies for creating exceptional user experiences
               </p>
             </div>
 

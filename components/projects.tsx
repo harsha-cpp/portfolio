@@ -9,34 +9,34 @@ export default function Projects() {
     {
       title: "DOTpomodoro Focus Timer",
       description:
-        "A productivity-focused Pomodoro timer application designed to help users maintain focus and manage their work sessions effectively. Features clean, minimal interface design with customizable timer settings and progress tracking.",
-      tags: ["Productivity App", "Timer Design", "UI/UX", "Focus Tool"],
+        "A productivity-focused web application built with React and modern frontend technologies, featuring session tracking, customizable timer settings, and progress analytics. Designed with clean UI/UX principles and implemented with responsive design patterns for seamless user experience across devices.",
+      tags: ["React", "Frontend", "UI/UX", "Web App"],
       codeLink: null,
       liveLink: "https://dotpomodoro.space",
       prototypeLink: "https://www.figma.com/design/NzTZfZXz3jvBq9wwfupxSZ/DOTpomodoro?node-id=0-1&t=JWbMJDNodExZvuGK-1",
     },
     {
-      title: "Piggywise Research and Development",
+      title: "Piggywise Personal Finance App",
       description:
-        "Comprehensive user research project involving user interviews, persona development, journey mapping, and usability testing to understand financial behavior patterns and design solutions for a personal finance application.",
-      tags: ["User Research", "UX Research", "Personas", "Journey Mapping"],
+        "Comprehensive user research and frontend development project for a personal finance application. Conducted user interviews, created personas, and designed intuitive interfaces for expense tracking and budget management. Developed responsive frontend components with focus on user experience and accessibility.",
+      tags: ["User Research", "UI/UX", "Frontend", "Finance App"],
       codeLink: null,
       liveLink: "https://www.figma.com/board/pHb8cQOpWyWe6ar6Ac0KBR/Piggywise-User-Research?node-id=0-1&t=9XCOiMJ8dLNlJCxi-1",
     },
     {
-      title: "Netts Mobility App & Webpage",
+      title: "Netts Mobility App & Website",
       description:
-        "Comprehensive mobile application and website design for a mobility services platform, featuring user-friendly interfaces for ride booking, fleet management, and seamless user experiences across all touchpoints.",
-      tags: ["Mobile App", "Web Design", "Transport", "UI/UX"],
+        "Designed and developed a comprehensive mobility services platform featuring React Native mobile app and Next.js website. Created user-friendly interfaces for ride booking and fleet management, implemented responsive design patterns, and deployed the application with modern web technologies.",
+      tags: ["React Native", "Next.js", "UI/UX", "Mobile App"],
       codeLink: null,
       liveLink: "https://netts.in",
       prototypeLink: "https://www.figma.com/design/dTVdo4MP7PH1CbsxzzRl1i/Netts-Mobility-Application?node-id=0-1&t=eJmSpHrKWIYMQ511-1",
     },
     {
-      title: "Investments App",
+      title: "Investment Portfolio App",
       description:
-        "Designed a comprehensive mobile investment platform featuring portfolio tracking, real-time market data, and intuitive wealth management tools with a focus on user-friendly financial experiences.",
-      tags: ["Mobile App", "FinTech", "UI Design", "Investment Platform"],
+        "Designed and prototyped a comprehensive mobile investment platform featuring portfolio tracking, market data visualization, and intuitive wealth management interfaces. Created user-centered design solutions with focus on clear data presentation and seamless user experience for financial applications.",
+      tags: ["Mobile App", "FinTech", "UI/UX", "Data Visualization"],
       codeLink: null,
       liveLink: "https://www.figma.com/design/h4L7lT3yfsr2l6Ny8m85Ow/Investments-App?node-id=0-1&t=XPfSeMBMcEeiG41o-1",
     },
@@ -54,7 +54,7 @@ export default function Projects() {
                 Projects <span className="cursive-text">& Work</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-                A showcase of design solutions that create meaningful user experiences and drive business impact
+                A showcase of scalable software solutions that solve complex problems and drive technical innovation
               </p>
             </div>
 

@@ -7,8 +7,8 @@ export default function Contact() {
     {
       icon: <Mail className="h-6 w-6 text-primary" />,
       title: "Email",
-      value: "contact@harshatummalapalli.tech",
-      link: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=contact@harshatummalapalli.tech",
+      value: "sriharshatummalapalli@gmail.com",
+      link: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=sriharshatummalapalli@gmail.com",
     },
     {
       icon: <MapPin className="h-6 w-6 text-primary" />,

@@ -30,22 +30,22 @@ export default function Hero() {
                   Harsha Tummalapalli
                 </motion.span>
                 <br />
-                User Experience Designer
+                Software Development Engineer
                 <br />
-                UX Researcher
+                Frontend Developer
                 <br />
-                Jr Frontend Developer
+                UI/UX Developer
               </h1>
             </div>
 
             <div className="max-w-3xl">
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Passionate about crafting <span className="cursive-text">clean</span>, <span className="cursive-text">responsive</span>, and{" "}
-                <span className="cursive-text">user-friendly interfaces</span>. His strengths lie in <span className="cursive-text">UX research</span>,{" "}
-                <span className="cursive-text">wireframing</span>, <span className="cursive-text">prototyping</span>, and{" "}
-                <span className="cursive-text">visual storytelling</span>. He brings a{" "}
-                <span className="cursive-text">design-thinking approach</span> to every project, ensuring that{" "}
-                <span className="cursive-text">user needs</span> guide aesthetic and functional decisions.
+                Passionate about building <span className="cursive-text">scalable</span>, <span className="cursive-text">efficient</span>, and{" "}
+                <span className="cursive-text">robust software solutions</span>. His strengths lie in <span className="cursive-text">system design</span>,{" "}
+                <span className="cursive-text">full-stack development</span>, <span className="cursive-text">performance optimization</span>, and{" "}
+                <span className="cursive-text">clean architecture</span>. He brings a{" "}
+                <span className="cursive-text">problem-solving mindset</span> to every project, ensuring that{" "}
+                <span className="cursive-text">technical excellence</span> drives innovative and maintainable solutions.
               </p>
             </div>
 
@@ -69,7 +69,7 @@ export default function Hero() {
                 </Link>
               </Button>
               <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 hover:text-primary">
-                <Link href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=contact@harshatummalapalli.tech" target="_blank" rel="noopener noreferrer">
+                <Link href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=sriharshatummalapalli@gmail.com" target="_blank" rel="noopener noreferrer">
                   <Mail className="h-5 w-5" />
                   <span className="sr-only">Email</span>
                 </Link>
