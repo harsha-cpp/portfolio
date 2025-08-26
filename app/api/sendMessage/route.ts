@@ -67,9 +67,7 @@ function getClientInfo(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    // COMMENTED OUT FOR TESTING - AWS SES BACKEND LOGIC
-    // Uncomment when AWS SES is fully setup
-    /*
+    // AWS SES BACKEND LOGIC - ENABLED FOR SANDBOX MODE
     // Check if AWS credentials are configured
     if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
       return NextResponse.json(
@@ -157,27 +155,6 @@ ${sanitized.email ? `Reply directly to: ${sanitized.email}` : ''}
         success: true, 
         messageId: result.MessageId,
         message: 'Message sent successfully!' 
-      },
-      { status: 200 }
-    )
-    */
-
-    // TEMPORARY MOCK RESPONSE FOR TESTING
-    // Parse request body for logging
-    const body = await request.json()
-    const { message, email, name } = body
-    
-    console.log('TEST MODE - Message received:', { message, email, name })
-    
-    // Simulate processing delay
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    // Return mock success response
-    return NextResponse.json(
-      { 
-        success: true, 
-        messageId: 'test-message-' + Date.now(),
-        message: 'Message sent successfully! (Test Mode)' 
       },
       { status: 200 }
     )
