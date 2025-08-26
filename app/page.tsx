@@ -4,6 +4,7 @@ import Experience from "@/components/experience"
 import Skills from "@/components/skills"
 import Projects from "@/components/projects"
 import Contact from "@/components/contact"
+import Changelog from "@/components/changelog"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Contact />
+      <Changelog />
     </div>
   )
 }

@@ -202,3 +202,35 @@
   left: 70%;
   animation-delay: 4s;
 }
+
+/* Custom scrollbar styles for changelog */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--border) / 0.4);
+  border-radius: 2px;
+}
+
+.scrollbar-thin:hover::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--border) / 0.6);
+}
+
+/* Hide scrollbar completely */
+.scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* WebKit */
+}

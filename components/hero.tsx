@@ -53,6 +53,10 @@ export default function Hero() {
               <Button asChild size="lg" className="btn-primary rounded-full px-8 text-base">
                 <Link href="#contact">Get In Touch</Link>
               </Button>
+              <Button variant="outline" size="lg" className="rounded-full px-8 text-base border-primary/20 hover:bg-primary/10">
+                <Download className="mr-2 h-4 w-4" />
+                Download Resume
+              </Button>
             </div>
 
             <div className="flex gap-4">

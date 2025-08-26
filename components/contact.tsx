@@ -1,6 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Mail, MapPin, Phone } from "lucide-react"
+import BookCall from "@/components/BookCall"
+import MessageMe from "@/components/MessageMe"
 
 export default function Contact() {
   const contactInfo = [
@@ -38,6 +40,7 @@ export default function Contact() {
               </p>
             </div>
 
+            {/* Contact Info Cards */}
             <div className="mt-12">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {contactInfo.map((info, index) => (
@@ -49,7 +52,7 @@ export default function Contact() {
                         {info.link ? (
                           <a
                             href={info.link}
-                            className="text-muted-foreground hover:text-primary transition-colors"
+                            className="text-muted-foreground"
                             target={info.title === "Location" ? "_blank" : undefined}
                             rel={info.title === "Location" ? "noopener noreferrer" : undefined}
                           >
@@ -62,6 +65,21 @@ export default function Contact() {
                     </CardContent>
                   </Card>
                 ))}
+              </div>
+            </div>
+
+            {/* Action Cards Section */}
+            <div className="mt-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Book Call Card */}
+                <div>
+                  <BookCall />
+                </div>
+                
+                {/* Message Me Card */}
+                <div>
+                  <MessageMe />
+                </div>
               </div>
             </div>
           </div>
