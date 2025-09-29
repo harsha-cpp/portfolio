@@ -32,9 +32,7 @@ export default function Hero() {
                 <br />
                 Software Development Engineer
                 <br />
-                Frontend Developer
-                <br />
-                UI/UX Developer
+                Specialized in Frontend
               </h1>
             </div>
 

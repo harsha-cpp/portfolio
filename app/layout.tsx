@@ -5,6 +5,7 @@ import ClientLayout from "./client"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://harshatummalapalli.com'),
   title: "Harsha Tummalapalli | UX Designer & Researcher",
   description:
     "Portfolio of Harsha Tummalapalli, a User Experience Designer and UX Researcher specializing in user-centered design, prototyping, and frontend development.",

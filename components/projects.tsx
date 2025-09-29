@@ -7,6 +7,22 @@ import Image from "next/image"
 export default function Projects() {
   const projects = [
     {
+      title: "Purple Technologies Landing Page",
+      description:
+        "Designed and developed a modern, responsive landing page for Purple Technologies, an IoT solutions company. Features include hero sections, company statistics, service offerings, and contact forms. Built using Qwik for super fast interactions and optimized for performance and user experience across all devices.",
+      tags: ["Web Development", "Landing Page", "IoT", "Qwik", "Responsive Design"],
+      codeLink: null,
+      liveLink: "https://purple-technologies-mu.vercel.app/",
+    },
+    {
+      title: "University Mess Review Portal",
+      description:
+        "Developed a full-stack Mess Review Portal using Next.js, Go, PocketBase, and TypeScript with multi-role authentication, smart menu management, and real-time reviews. Built analytics dashboards for trends and performance, optimized backend/database design, and deployed via Docker pipelines, showcasing scalable full-stack and enterprise-grade architecture expertise.",
+      tags: ["Next.js", "Go", "PocketBase", "TypeScript", "Full-Stack", "Enterprise"],
+      codeLink: null,
+      liveLink: "NDA",
+    },
+    {
       title: "DOTpomodoro Focus Timer",
       description:
         "A productivity-focused web application built with React and modern frontend technologies, featuring session tracking, customizable timer settings, and progress analytics. Designed with clean UI/UX principles and implemented with responsive design patterns for seamless user experience across devices.",
@@ -94,23 +110,30 @@ export default function Projects() {
                           </Link>
                         )}
                         {project.liveLink && (
-                          <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                            <button className={project.liveLink.includes('figma.com') ? "btn-secondary group/btn" : "btn-primary group/btn"}>
-                              {project.liveLink.includes('figma.com') ? (
-                                <Image 
-                                  src="/Figma-logo.svg.png" 
-                                  alt="Figma" 
-                                  width={16} 
-                                  height={16} 
-                                  className="mr-2 group-hover/btn:scale-110 transition-transform duration-300"
-                                />
-                              ) : (
-                                <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
-                              )}
-                              {project.liveLink.includes('figma.com/board') ? 'FigJam' : 
-                               project.liveLink.includes('figma.com') ? 'Prototype' : 'Live Demo'}
+                          project.liveLink === "NDA" ? (
+                            <button className="btn-secondary group/btn cursor-not-allowed opacity-60" disabled>
+                              <ExternalLink className="mr-2 h-4 w-4" />
+                              NDA
                             </button>
-                          </Link>
+                          ) : (
+                            <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                              <button className={project.liveLink.includes('figma.com') ? "btn-secondary group/btn" : "btn-primary group/btn"}>
+                                {project.liveLink.includes('figma.com') ? (
+                                  <Image 
+                                    src="/Figma-logo.svg.png" 
+                                    alt="Figma" 
+                                    width={16} 
+                                    height={16} 
+                                    className="mr-2 group-hover/btn:scale-110 transition-transform duration-300"
+                                  />
+                                ) : (
+                                  <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
+                                )}
+                                {project.liveLink.includes('figma.com/board') ? 'FigJam' : 
+                                 project.liveLink.includes('figma.com') ? 'Prototype' : 'Live Demo'}
+                              </button>
+                            </Link>
+                          )
                         )}
                         {(project as any).prototypeLink && (
                           <Link href={(project as any).prototypeLink} target="_blank" rel="noopener noreferrer">
