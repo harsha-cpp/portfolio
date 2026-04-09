@@ -3,6 +3,7 @@ import About from "@/components/about"
 import Experience from "@/components/experience"
 import Skills from "@/components/skills"
 import Projects from "@/components/projects"
+import Education from "@/components/education"
 import Contact from "@/components/contact"
 import Changelog from "@/components/changelog"
 import type { Metadata } from "next"
@@ -10,7 +11,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Harsha Tummalapalli | Software Development Engineer",
   description:
-    "Portfolio of Harsha Tummalapalli, a Software Development Engineer specializing in full-stack development, scalable systems architecture, and modern web technologies.",
+    "Harsha Tummalapalli — Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
 }
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Experience />
       <Skills />
       <Projects />
+      <Education />
       <Contact />
       <Changelog />
     </div>

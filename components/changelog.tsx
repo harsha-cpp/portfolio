@@ -20,6 +20,17 @@ export default function Changelog() {
 
   const changelogEntries = [
     {
+      version: "v2.0",
+      date: "Apr 2026",
+      changes: [
+        "Full content overhaul — added Memolane, Digital Fortress experience",
+        "Added OpenLinear, Verin, TRAQ, MedBridge, Carmen ANPR projects",
+        "New dark theme with warm gold accent",
+        "Updated skills from GitHub profile",
+        "Added education section"
+      ]
+    },
+    {
       version: "v1.4",
       date: "Aug 2025",
       changes: [
@@ -73,7 +84,7 @@ export default function Changelog() {
                 <div className="flex items-center justify-between mb-2">
                   <span 
                     className="font-semibold text-sm"
-                    style={{color: 'hsl(0 65% 55%)'}}
+                    style={{color: 'hsl(38 35% 62%)'}}
                   >
                     {entry.version}
                   </span>
@@ -86,7 +97,7 @@ export default function Changelog() {
                 <div className="space-y-1">
                   {entry.changes.map((change, changeIndex) => (
                     <div key={changeIndex} className="flex items-start gap-2">
-                      <Zap className="h-2.5 w-2.5 mt-1 flex-shrink-0" style={{color: 'hsl(0 65% 55%)'}} />
+                      <Zap className="h-2.5 w-2.5 mt-1 flex-shrink-0" style={{color: 'hsl(38 35% 62%)'}} />
                       <span className="text-muted-foreground leading-tight">
                         {change}
                       </span>
@@ -104,7 +115,7 @@ export default function Changelog() {
           <div className="flex items-center justify-between mb-2">
             <span 
               className="font-semibold text-sm"
-              style={{color: 'hsl(0 65% 55%)'}}
+              style={{color: 'hsl(38 35% 62%)'}}
             >
               {latestEntry.version}
             </span>
@@ -117,7 +128,7 @@ export default function Changelog() {
           <div className="space-y-1">
             {latestEntry.changes.map((change, changeIndex) => (
               <div key={changeIndex} className="flex items-start gap-2">
-                <Zap className="h-2.5 w-2.5 mt-1 flex-shrink-0" style={{color: 'hsl(0 65% 55%)'}} />
+                <Zap className="h-2.5 w-2.5 mt-1 flex-shrink-0" style={{color: 'hsl(38 35% 62%)'}} />
                 <span className="text-muted-foreground leading-tight">
                   {change}
                 </span>

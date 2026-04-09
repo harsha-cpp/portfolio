@@ -13,16 +13,16 @@ export default function Hero() {
           <div className="space-y-4">
             <div className="space-y-3">
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight text-left">
-                <motion.span 
+                <motion.span
                   className="font-semibold text-5xl md:text-6xl lg:text-7xl xl:text-8xl whitespace-nowrap font-funnel-display cursor-pointer inline-block"
-                  style={{color: 'hsl(0 65% 55%)'}}
+                  style={{color: 'hsl(38 35% 62%)'}}
                   whileHover={{
                     scale: 1.01,
                     letterSpacing: "0.02em",
-                    color: 'hsl(0 70% 60%)',
-                    textShadow: '0 0 30px hsl(0 65% 55% / 0.3)'
+                    color: 'hsl(38 40% 68%)',
+                    textShadow: '0 0 30px hsl(38 35% 62% / 0.2)'
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 0.2,
                     ease: "easeOut"
                   }}
@@ -32,18 +32,16 @@ export default function Hero() {
                 <br />
                 Software Development Engineer
                 <br />
-                Specialized in Frontend
+                Full Stack
               </h1>
             </div>
 
             <div className="max-w-3xl">
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Passionate about building <span className="cursive-text">scalable</span>, <span className="cursive-text">efficient</span>, and{" "}
-                <span className="cursive-text">robust software solutions</span>. His strengths lie in <span className="cursive-text">system design</span>,{" "}
-                <span className="cursive-text">full-stack development</span>, <span className="cursive-text">performance optimization</span>, and{" "}
-                <span className="cursive-text">clean architecture</span>. He brings a{" "}
-                <span className="cursive-text">problem-solving mindset</span> to every project, ensuring that{" "}
-                <span className="cursive-text">technical excellence</span> drives innovative and maintainable solutions.
+                Building products from zero to production. TypeScript and Go on the backend,
+                React and Next.js on the frontend, PostgreSQL and Redis for data,
+                AWS and Azure for infrastructure. Currently running engineering at{" "}
+                <span className="cursive-text">Memolane</span>.
               </p>
             </div>
 
