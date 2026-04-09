@@ -61,6 +61,7 @@ const config = {
       fontFamily: {
         lexend: ["var(--font-lexend)", "sans-serif"],
         "funnel-display": ["var(--font-funnel-display)", "sans-serif"],
+        "space-grotesk": ["var(--font-space-grotesk)", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {

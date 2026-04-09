@@ -13,10 +13,10 @@ export default function Experience() {
       link: null,
       achievements: [
         "Designed the full stack architecture (Go API, Next.js, PostgreSQL, Redis), wrote Azure Bicep IaC, and deployed to Azure Container Apps with automated CI/CD.",
-        "Built a production recruitment platform — shipped careers portal, applicant tracking, interview scheduling, admin panel with RBAC, email automation via Azure Communication Services. 34 migrations, 100+ commits.",
-        "Ran hiring end-to-end solo — sourced, interviewed, and selected 11 employees across engineering, design, and operations. Automated status emails and onboarding communications.",
-        "Architected the consumer product — authored technical blueprint, benchmarked 35 features against market leaders, designed the DB schema with pgvector for AI recall, and planned a 6-week build roadmap.",
-        "Set up team operations — configured the product monorepo (Bun, Turborepo, Elysia, Next.js, Expo), established GitHub workflows, and structured daily sprint execution with task assignment across 5 engineers.",
+        "Built a production recruitment platform. Shipped careers portal, applicant tracking, interview scheduling, admin panel with RBAC, email automation via Azure Communication Services. 34 migrations, 100+ commits.",
+        "Ran hiring end-to-end solo. Sourced, interviewed, and selected 11 employees across engineering, design, and operations. Automated status emails and onboarding communications.",
+        "Architected the consumer product. Authored technical blueprint, benchmarked 35 features against market leaders, designed the DB schema with pgvector for AI recall, and planned a 6-week build roadmap.",
+        "Set up team operations. Configured the product monorepo (Bun, Turborepo, Elysia, Next.js, Expo), established GitHub workflows, and structured daily sprint execution with task assignment across 5 engineers.",
       ],
     },
     {
@@ -41,7 +41,7 @@ export default function Experience() {
       tags: ["Figma", "React", "Next.js", "TypeScript"],
       link: "https://netts.in",
       achievements: [
-        "Designed and developed the complete company website using React, Next.js, and TypeScript — translating UX research and wireframes into 15+ responsive, high-performance screens.",
+        "Designed and developed the complete company website using React, Next.js, and TypeScript. Translated UX research and wireframes into 15+ responsive, high-performance screens.",
         "Delivered landing pages, product showcases, EV station locators, pricing, and service documentation.",
       ],
     },

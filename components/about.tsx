@@ -11,7 +11,7 @@ export default function About() {
 
           <div className="space-y-5">
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Full-stack engineer who ships end-to-end — from database schema design
+              Full-stack engineer who ships end-to-end. From database schema design
               and Go APIs to React frontends and cloud infrastructure. Currently Founder & CTO
               at <span className="cursive-text">Memolane</span>, where I designed the architecture,
               built the recruitment platform, hired 11 people, and set up the engineering org from scratch.
@@ -24,7 +24,7 @@ export default function About() {
               <span className="cursive-text">PostgreSQL</span>,{" "}
               <span className="cursive-text">Redis</span>,{" "}
               <span className="cursive-text">AWS</span>, and{" "}
-              <span className="cursive-text">Azure</span> — and I care about getting things deployed, not just built.
+              <span className="cursive-text">Azure</span>, and I care about getting things deployed, not just built.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Third-year CS undergrad at VIT Amaravati. I build open-source tools, run hackathons,

@@ -11,13 +11,13 @@ export default function Projects() {
         "Open-source desktop app that bridges a Linear-style kanban board with AI coding agents. One-click task execution that generates pull requests with working code. Per-task git worktree isolation for parallel execution, real-time agent visibility with live tool calls and file edits, and GitHub-native OAuth + PR workflows via the OpenCode SDK sidecar.",
       tags: ["Next.js", "Tauri", "Express.js", "PostgreSQL", "Prisma"],
       codeLink: "https://github.com/harsha-cpp/openlinear",
-      liveLink: null,
+      liveLink: "https://openlinear.tech",
     },
     {
       title: "Verin",
       description:
-        "Enterprise-grade document management system built in Go, optimized for p95 latency.",
-      tags: ["Go", "DMS", "Enterprise"],
+        "Cloud-native document management system. React + Go (Chi) monorepo with PostgreSQL, Redis-backed async jobs via Asynq, and S3-compatible storage. Signed direct-to-storage uploads, OCR and preview generation queued through a Go worker, role-based access (admin/editor/auditor), and OpenAPI-generated client. Built for p95 latency.",
+      tags: ["Go", "React", "PostgreSQL", "Redis", "S3", "Asynq"],
       codeLink: "https://github.com/harsha-cpp/verin",
       liveLink: null,
     },
@@ -40,7 +40,7 @@ export default function Projects() {
     {
       title: "MedBridge",
       description:
-        "Connects clinic networks to share surplus medicines, prevent waste, and eliminate stockouts — all in real-time.",
+        "Connects clinic networks to share surplus medicines, prevent waste, and eliminate stockouts in real-time.",
       tags: ["TypeScript", "Next.js", "Full-Stack"],
       codeLink: "https://github.com/harsha-cpp/medbridge",
       liveLink: "https://medbridge-two.vercel.app",
@@ -48,7 +48,7 @@ export default function Projects() {
     {
       title: "Carmen ANPR Scanner",
       description:
-        "License plate scanner built on Adaptive Recognition's Carmen Video SDK. Upload a video or use your webcam — returns plate number, make, model, color, and country.",
+        "License plate scanner built on Adaptive Recognition's Carmen Video SDK. Upload a video or use your webcam, get plate number, make, model, color, and country.",
       tags: ["TypeScript", "Computer Vision", "SDK Integration"],
       codeLink: "https://github.com/harsha-cpp/carmen-anpr-scanner",
       liveLink: null,

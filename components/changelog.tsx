@@ -23,7 +23,7 @@ export default function Changelog() {
       version: "v2.0",
       date: "Apr 2026",
       changes: [
-        "Full content overhaul — added Memolane, Digital Fortress experience",
+        "Full content overhaul, added Memolane, Digital Fortress experience",
         "Added OpenLinear, Verin, TRAQ, MedBridge, Carmen ANPR projects",
         "New dark theme with warm gold accent",
         "Updated skills from GitHub profile",
