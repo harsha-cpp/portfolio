@@ -1,7 +1,7 @@
 "use client"
 
 /* eslint-disable @next/next/no-img-element */
-import GitHubCalendar from "react-github-calendar"
+import { GitHubCalendar } from "react-github-calendar"
 
 const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
