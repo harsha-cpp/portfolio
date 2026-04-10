@@ -89,8 +89,6 @@ function Marquee({
       >
         <IconSet icons={icons} />
         <IconSet icons={icons} />
-        <IconSet icons={icons} />
-        <IconSet icons={icons} />
       </div>
     </div>
   )
