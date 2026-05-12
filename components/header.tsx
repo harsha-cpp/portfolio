@@ -6,29 +6,25 @@ import { useState, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import Link from "next/link"
-
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact Me", href: "#contact" },
-]
+import { NAV_ITEMS, SPECIAL_PAGES } from "@/lib/data"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const pathname = usePathname()
+  const router = useRouter()
+  const isHome = pathname === "/"
 
   const determineActiveSection = useCallback(() => {
-    const sections = navItems.map((item) => item.href.substring(1))
+    const sections = NAV_ITEMS.map((item) =>
+      item.href === "/" ? "home" : item.href.replace("/#", "")
+    )
     const allSections = [...sections, "open-source", "skills"]
-    
-    // Check if we're near the bottom of the page - if so, contact should be active
+
     const isNearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
     if (isNearBottom) {
       const contactSection = document.getElementById("contact")
@@ -58,29 +54,48 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
+    if (!isHome) return
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 10)
       setActiveSection(determineActiveSection())
     }
 
     window.addEventListener("scroll", handleScroll)
+    setScrolled(window.scrollY > 10)
     setActiveSection(determineActiveSection())
 
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [determineActiveSection])
+  }, [determineActiveSection, isHome])
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault()
-    const targetId = href.substring(1)
-    const element = document.getElementById(targetId)
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: "smooth",
-      })
-      setActiveSection(targetId)
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(false)
+    }
+  }, [isHome])
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (isHome) {
+      e.preventDefault()
+      const targetId = href === "/" ? "home" : href.replace("/#", "")
+      const element = document.getElementById(targetId)
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 80,
+          behavior: "smooth",
+        })
+        setActiveSection(targetId)
+        if (isOpen) setIsOpen(false)
+      }
+    } else {
       if (isOpen) setIsOpen(false)
     }
+  }
+
+  const getNavItemActive = (href: string) => {
+    if (!isHome) return false
+    const sectionId = href === "/" ? "home" : href.replace("/#", "")
+    return activeSection === sectionId
   }
 
   return (
@@ -100,8 +115,22 @@ export default function Header() {
 
         <nav className="hidden md:flex items-center space-x-6">
           <div className="relative flex space-x-4 items-center">
-            {navItems.map((item, index) => {
-              const isActive = activeSection === item.href.substring(1)
+            {[
+              ...NAV_ITEMS.map((item) => ({
+                name: item.name,
+                href: item.href,
+                type: "scroll" as const,
+              })),
+              ...SPECIAL_PAGES.slice(0, 1).map((page) => ({
+                name: page.name,
+                href: page.href,
+                type: "page" as const,
+              })),
+            ].map((item, index) => {
+              const isActive =
+                item.type === "scroll"
+                  ? getNavItemActive(item.href)
+                  : pathname === item.href
 
               return (
                 <motion.div
@@ -120,7 +149,7 @@ export default function Header() {
                   )}
                   <Link
                     href={item.href}
-                    onClick={(e) => scrollToSection(e, item.href)}
+                    onClick={item.type === "scroll" ? (e) => handleNavClick(e, item.href) : undefined}
                     className={cn(
                       "text-sm font-medium transition-colors px-3 py-2 rounded-md relative",
                       isActive ? "text-primary font-semibold" : "text-muted-foreground hover:text-foreground",
@@ -172,14 +201,14 @@ export default function Header() {
       >
         <div className="container py-4 bg-background/95 backdrop-blur-sm">
           <nav className="flex flex-col space-y-4">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.href.substring(1)
+            {NAV_ITEMS.map((item) => {
+              const isActive = getNavItemActive(item.href)
 
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  onClick={(e) => scrollToSection(e, item.href)}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
                     "text-sm font-medium transition-colors py-2 px-3 rounded-md",
                     isActive
@@ -188,6 +217,26 @@ export default function Header() {
                   )}
                 >
                   {item.name}
+                </Link>
+              )
+            })}
+
+            {SPECIAL_PAGES.slice(0, 1).map((page) => {
+              const isActivePage = pathname === page.href
+
+              return (
+                <Link
+                  key={page.name}
+                  href={page.href}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "text-sm font-medium transition-colors py-2 px-3 rounded-md",
+                    isActivePage
+                      ? "bg-primary/10 text-primary font-semibold"
+                      : "text-muted-foreground hover:bg-muted/50 hover:text-foreground",
+                  )}
+                >
+                  {page.name}
                 </Link>
               )
             })}

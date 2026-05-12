@@ -7,8 +7,11 @@ import { cn } from "@/lib/utils"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import AnimatedBackground from "@/components/animated-background"
+import FilmGrain from "@/components/film-grain"
 import NoScriptStyles from "@/components/noscript-styles"
 import MobileBlock from "@/components/mobile-block"
+import ConsoleEasterEgg from "@/components/console-easter-egg"
+import CommandPalette from "@/components/command-palette"
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -45,9 +48,12 @@ export default function ClientLayout({
               </div>
             </noscript>
             <AnimatedBackground />
+            <FilmGrain />
+            <ConsoleEasterEgg />
             <Header />
             <main className="flex-1 relative z-10">{children}</main>
             <Footer />
+            <CommandPalette />
           </div>
         </MobileBlock>
       </body>
