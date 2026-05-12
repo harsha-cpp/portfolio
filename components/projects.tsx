@@ -1,94 +1,9 @@
-import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { projects } from "@/lib/data"
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "OpenLinear",
-      description:
-        "Open-source desktop app that bridges a Linear-style kanban board with AI coding agents. One-click task execution that generates pull requests with working code. Per-task git worktree isolation for parallel execution, real-time agent visibility with live tool calls and file edits, and GitHub-native OAuth + PR workflows via the OpenCode SDK sidecar.",
-      tags: ["Next.js", "Tauri", "Express.js", "PostgreSQL", "Prisma"],
-      codeLink: "https://github.com/harsha-cpp/openlinear",
-      liveLink: "https://openlinear.tech",
-    },
-    {
-      title: "Verin",
-      description:
-        "Cloud-native document management system. React + Go (Chi) monorepo with PostgreSQL, Redis-backed async jobs via Asynq, and S3-compatible storage. Signed direct-to-storage uploads, OCR and preview generation queued through a Go worker, role-based access (admin/editor/auditor), and OpenAPI-generated client. Built for p95 latency.",
-      tags: ["Go", "React", "PostgreSQL", "Redis", "S3", "Asynq"],
-      codeLink: "https://github.com/harsha-cpp/verin",
-      liveLink: null,
-    },
-    {
-      title: "UniMess Portal",
-      description:
-        "Backend service handling mess reviews and complaints for 10,000+ students at VIT-AP. Go/Gin API with concurrent request handling, plus a Next.js admin dashboard for real-time monitoring, complaint tracking, and status management.",
-      tags: ["Go", "Gin", "Next.js", "TypeScript"],
-      codeLink: "https://github.com/harsha-cpp/unimessportal",
-      liveLink: "https://unimessportal.vercel.app",
-    },
-    {
-      title: "TRAQ",
-      description:
-        "AI-powered video analytics system that processes CCTV footage from signalized intersections to generate traffic intelligence. Detects and tracks multiple vehicle categories using YOLO and image recognition. Built for IIIT NETRIK.",
-      tags: ["Python", "YOLO", "Computer Vision", "AI"],
-      codeLink: "https://github.com/harsha-cpp/traq",
-      liveLink: null,
-    },
-    {
-      title: "MedBridge",
-      description:
-        "Connects clinic networks to share surplus medicines, prevent waste, and eliminate stockouts in real-time.",
-      tags: ["TypeScript", "Next.js", "Full-Stack"],
-      codeLink: "https://github.com/harsha-cpp/medbridge",
-      liveLink: "https://medbridge-two.vercel.app",
-    },
-    {
-      title: "Carmen ANPR Scanner",
-      description:
-        "License plate scanner built on Adaptive Recognition's Carmen Video SDK. Upload a video or use your webcam, get plate number, make, model, color, and country.",
-      tags: ["TypeScript", "Computer Vision", "SDK Integration"],
-      codeLink: "https://github.com/harsha-cpp/carmen-anpr-scanner",
-      liveLink: null,
-    },
-    {
-      title: "Purple Technologies Landing Page",
-      description:
-        "Landing page for an IoT solutions company. Hero sections, company stats, service offerings, contact forms. Built with Qwik for instant interactions.",
-      tags: ["Qwik", "Landing Page", "IoT"],
-      codeLink: null,
-      liveLink: "https://purple-technologies-mu.vercel.app/",
-    },
-    {
-      title: "DOTpomodoro",
-      description:
-        "Productivity timer with session tracking, customizable settings, and progress analytics.",
-      tags: ["React", "Web App"],
-      codeLink: null,
-      liveLink: "https://dotpomodoro.space",
-      prototypeLink: "https://www.figma.com/design/NzTZfZXz3jvBq9wwfupxSZ/DOTpomodoro?node-id=0-1&t=JWbMJDNodExZvuGK-1",
-    },
-    {
-      title: "Netts Mobility Website",
-      description:
-        "Company website and React Native mobile app for an EV mobility startup. 15+ screens including ride booking, fleet management, EV station locators, and pricing.",
-      tags: ["React Native", "Next.js", "TypeScript"],
-      codeLink: null,
-      liveLink: "https://netts.in",
-      prototypeLink: "https://www.figma.com/design/dTVdo4MP7PH1CbsxzzRl1i/Netts-Mobility-Application?node-id=0-1&t=eJmSpHrKWIYMQ511-1",
-    },
-    {
-      title: "Piggywise",
-      description:
-        "Personal finance app with expense tracking and budget management. User research, personas, and frontend built from scratch.",
-      tags: ["TypeScript", "Next.js", "Finance"],
-      codeLink: "https://github.com/harsha-cpp/piggywise",
-      liveLink: "https://piggywise-seven.vercel.app",
-    },
-  ]
-
   return (
     <div className="w-full section-alt">
       <section id="projects" className="py-20 w-full relative">
@@ -105,10 +20,18 @@ export default function Projects() {
                 <div key={project.title} className="group">
                   <div className="relative p-6 rounded-xl bg-card/60 border border-border/50 transition-colors duration-200 hover:border-border h-full flex flex-col">
                     <div className="flex flex-col h-full space-y-4">
-                      <div className="flex items-center">
-                        <h3 className="text-lg font-semibold text-white group-hover:text-primary transition-colors duration-200">
-                          {project.title}
-                        </h3>
+                      <div className="flex items-center justify-between">
+                        <Link href={`/projects/${project.slug}`} className="flex items-center gap-2 hover:gap-3 transition-all duration-200">
+                          <h3 className="text-lg font-semibold text-white group-hover:text-primary transition-colors duration-200">
+                            {project.title}
+                          </h3>
+                          <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
+                        </Link>
+                        {project.featured && (
+                          <span className="text-[10px] uppercase tracking-[0.15em] text-primary/80 border border-primary/30 px-2 py-0.5 rounded-full">
+                            Case Study
+                          </span>
+                        )}
                       </div>
 
                       <p className="text-sm text-muted-foreground leading-relaxed flex-1">
@@ -153,8 +76,8 @@ export default function Projects() {
                             </button>
                           </Link>
                         )}
-                        {(project as any).prototypeLink && (
-                          <Link href={(project as any).prototypeLink} target="_blank" rel="noopener noreferrer">
+                        {project.prototypeLink && (
+                          <Link href={project.prototypeLink} target="_blank" rel="noopener noreferrer">
                             <button type="button" className="btn-secondary group/btn">
                               <Image
                                 src="/Figma-logo.svg.png"
