@@ -1,0 +1,28 @@
+{
+  "messages": [
+    {
+      "id": "a3f1c2d4-1111-4a2b-9c8d-1e2f3a4b5c6d",
+      "name": "Priya Sharma",
+      "message": "Stumbled here from your Memolane writeup. The case study sections are a masterclass in technical storytelling. Took notes.",
+      "createdAt": "2026-05-12T08:42:18Z"
+    },
+    {
+      "id": "b4e2d3c5-2222-4b3c-8d9e-2f3a4b5c6d7e",
+      "name": "Daniel Okafor",
+      "message": "The film grain detail is a chef's kiss. Tiny touch, huge difference. Cheers from Lagos.",
+      "createdAt": "2026-05-10T19:03:55Z"
+    },
+    {
+      "id": "c5f3e4d6-3333-4c4d-9e0f-3a4b5c6d7e8f",
+      "name": "Mei Tanaka",
+      "message": "Sent this to a friend who keeps asking what a portfolio should look like in 2026. This is the answer.",
+      "createdAt": "2026-05-07T14:21:30Z"
+    },
+    {
+      "id": "d6f4e5d7-4444-4d5e-9f1a-4b5c6d7e8f9a",
+      "name": "Lukas Bauer",
+      "message": "Reading about your hiring of 11 people while still in undergrad reset my expectations of what's possible. Keep building.",
+      "createdAt": "2026-04-29T11:08:42Z"
+    }
+  ]
+}
