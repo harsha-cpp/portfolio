@@ -84,7 +84,7 @@ export default function Changelog() {
                 <div className="flex items-center justify-between mb-2">
                   <span 
                     className="font-semibold text-sm"
-                    style={{color: 'hsl(38 35% 62%)'}}
+                    style={{color: 'hsl(172 45% 55%)'}}
                   >
                     {entry.version}
                   </span>
@@ -97,7 +97,7 @@ export default function Changelog() {
                 <div className="space-y-1">
                   {entry.changes.map((change, changeIndex) => (
                     <div key={changeIndex} className="flex items-start gap-2">
-                      <Zap className="h-2.5 w-2.5 mt-1 flex-shrink-0" style={{color: 'hsl(38 35% 62%)'}} />
+                      <Zap className="h-2.5 w-2.5 mt-1 flex-shrink-0" style={{color: 'hsl(172 45% 55%)'}} />
                       <span className="text-muted-foreground leading-tight">
                         {change}
                       </span>
@@ -115,7 +115,7 @@ export default function Changelog() {
           <div className="flex items-center justify-between mb-2">
             <span 
               className="font-semibold text-sm"
-              style={{color: 'hsl(38 35% 62%)'}}
+              style={{color: 'hsl(172 45% 55%)'}}
             >
               {latestEntry.version}
             </span>
@@ -128,7 +128,7 @@ export default function Changelog() {
           <div className="space-y-1">
             {latestEntry.changes.map((change, changeIndex) => (
               <div key={changeIndex} className="flex items-start gap-2">
-                <Zap className="h-2.5 w-2.5 mt-1 flex-shrink-0" style={{color: 'hsl(38 35% 62%)'}} />
+                <Zap className="h-2.5 w-2.5 mt-1 flex-shrink-0" style={{color: 'hsl(172 45% 55%)'}} />
                 <span className="text-muted-foreground leading-tight">
                   {change}
                 </span>

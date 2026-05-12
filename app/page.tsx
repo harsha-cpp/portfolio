@@ -10,7 +10,7 @@ import type { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Harsha Tummalapalli | Software Development Engineer",
   description:
-    "Harsha Tummalapalli — Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
+    "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
 }
 
 export default function Home() {

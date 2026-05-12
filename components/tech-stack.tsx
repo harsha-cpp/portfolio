@@ -45,7 +45,7 @@ const noLogoSkills = [
 ]
 
 const goldTheme = {
-  dark: ["#161820", "#2a2210", "#4d3e1a", "#7a6428", "#b8943e"] as const,
+  dark: ["#161820", "#0d3630", "#145e50", "#1e8a78", "#2db8a0"] as const,
 }
 
 function IconSet({ icons }: { icons: typeof row1 }) {

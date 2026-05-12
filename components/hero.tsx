@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Download, Github, Linkedin, Mail } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
+import TextScramble from "@/components/text-scramble"
 
 export default function Hero() {
   return (
@@ -11,29 +12,38 @@ export default function Hero() {
       <div className="container px-4 md:px-6 mx-auto relative z-10">
         <div className="max-w-4xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-none 2xl:w-full 2xl:px-8">
           <div className="space-y-4">
-            <div className="space-y-3">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light leading-tight text-left">
+            <div className="space-y-5">
+              <h1>
                 <motion.span
                   className="font-semibold text-5xl md:text-6xl lg:text-7xl xl:text-8xl whitespace-nowrap font-funnel-display cursor-pointer inline-block"
-                  style={{color: 'hsl(38 35% 62%)'}}
+                  style={{color: 'hsl(172 45% 55%)'}}
                   whileHover={{
                     scale: 1.01,
                     letterSpacing: "0.02em",
-                    color: 'hsl(38 40% 68%)',
-                    textShadow: '0 0 30px hsl(38 35% 62% / 0.2)'
+                    color: 'hsl(172 40% 60%)',
+                    textShadow: '0 0 30px hsl(172 45% 55% / 0.2)'
                   }}
                   transition={{
                     duration: 0.2,
                     ease: "easeOut"
                   }}
                 >
-                  Harsha Tummalapalli
+                  <TextScramble text="Harsha Tummalapalli" />
                 </motion.span>
-                <br />
-                Software Development Engineer
-                <br />
-                Full Stack
               </h1>
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium tracking-wide text-primary border border-primary/30 rounded-full bg-primary/[0.06]">
+                  SDE
+                </span>
+                <span className="text-muted-foreground/40 text-sm select-none">&middot;</span>
+                <span className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium tracking-wide text-primary border border-primary/30 rounded-full bg-primary/[0.06]">
+                  Full Stack
+                </span>
+                <span className="text-muted-foreground/40 text-sm select-none">&middot;</span>
+                <span className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium tracking-wide text-primary border border-primary/30 rounded-full bg-primary/[0.06]">
+                  Founder
+                </span>
+              </div>
             </div>
 
             <div className="max-w-3xl">

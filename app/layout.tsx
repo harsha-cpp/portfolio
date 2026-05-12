@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://harshatummalapalli.com'),
   title: "Harsha Tummalapalli | Software Development Engineer",
   description:
-    "Harsha Tummalapalli — Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
+    "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
   keywords: [
     "Harsha Tummalapalli",
     "Software Development Engineer",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     url: "https://harshatummalapalli.com",
     title: "Harsha Tummalapalli | Software Development Engineer",
     description:
-      "Harsha Tummalapalli — Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
+      "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
     siteName: "Harsha Tummalapalli Portfolio",
     images: [
       {
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Harsha Tummalapalli | Software Development Engineer",
     description:
-      "Harsha Tummalapalli — Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
+      "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
     creator: "@harsha_cpp",
     images: ["/favicon.png"],
   },

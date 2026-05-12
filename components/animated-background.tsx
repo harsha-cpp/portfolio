@@ -87,7 +87,7 @@ export default function AnimatedBackground() {
         // Draw particle
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = `hsla(38, 30%, 55%, ${particle.opacity})`
+        ctx.fillStyle = `hsla(172, 50%, 45%, ${particle.opacity})`
         ctx.fill()
 
         // Draw connections to nearby particles
@@ -103,7 +103,7 @@ export default function AnimatedBackground() {
             ctx.beginPath()
             ctx.moveTo(particle.x, particle.y)
             ctx.lineTo(otherParticle.x, otherParticle.y)
-            ctx.strokeStyle = `hsla(38, 30%, 55%, ${lineOpacity})`
+            ctx.strokeStyle = `hsla(172, 50%, 45%, ${lineOpacity})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
