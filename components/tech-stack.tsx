@@ -5,90 +5,140 @@ import { GitHubCalendar } from "react-github-calendar"
 
 const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
-const row1 = [
-  { name: "TypeScript", icon: `${CDN}/typescript/typescript-original.svg` },
-  { name: "Go", icon: `${CDN}/go/go-original-wordmark.svg` },
-  { name: "JavaScript", icon: `${CDN}/javascript/javascript-original.svg` },
-  { name: "Python", icon: `${CDN}/python/python-original.svg` },
-  { name: "Swift", icon: `${CDN}/swift/swift-original.svg` },
-  { name: "React", icon: `${CDN}/react/react-original.svg` },
-  { name: "Next.js", icon: `${CDN}/nextjs/nextjs-original.svg`, invert: true },
-  { name: "Node.js", icon: `${CDN}/nodejs/nodejs-original.svg` },
-  { name: "Express", icon: `${CDN}/express/express-original.svg`, invert: true },
-  { name: "HTML5", icon: `${CDN}/html5/html5-original.svg` },
-  { name: "CSS3", icon: `${CDN}/css3/css3-original.svg` },
-  { name: "Tailwind", icon: `${CDN}/tailwindcss/tailwindcss-original.svg` },
-  { name: "Framer Motion", icon: `${CDN}/framermotion/framermotion-original.svg`, invert: true },
-]
+type Tech = {
+  name: string
+  icon: string
+  invert?: boolean
+  aliases?: string[]
+}
 
-const row2 = [
-  { name: "PostgreSQL", icon: `${CDN}/postgresql/postgresql-original.svg` },
-  { name: "MySQL", icon: `${CDN}/mysql/mysql-original.svg` },
-  { name: "Redis", icon: `${CDN}/redis/redis-original.svg` },
-  { name: "MongoDB", icon: `${CDN}/mongodb/mongodb-original.svg` },
-  { name: "DynamoDB", icon: `${CDN}/dynamodb/dynamodb-original.svg` },
-  { name: "Docker", icon: `${CDN}/docker/docker-original.svg` },
-  { name: "AWS", icon: `${CDN}/amazonwebservices/amazonwebservices-original-wordmark.svg`, invert: true },
-  { name: "Azure", icon: `${CDN}/azure/azure-original.svg` },
-  { name: "Vercel", icon: `${CDN}/vercel/vercel-original.svg`, invert: true },
-  { name: "Cloudflare", icon: `${CDN}/cloudflare/cloudflare-original.svg` },
-  { name: "Git", icon: `${CDN}/git/git-original.svg` },
-  { name: "Figma", icon: `${CDN}/figma/figma-original.svg` },
-  { name: "Prisma", icon: `${CDN}/prisma/prisma-original.svg`, invert: true },
-]
+type Category = {
+  label: string
+  items: Tech[]
+}
 
-const noLogoSkills = [
-  "CI/CD",
-  "User Research",
-  "Prototyping",
-  "Design Systems",
+const categories: Category[] = [
+  {
+    label: "API & Server",
+    items: [
+      { name: "Go", icon: `${CDN}/go/go-original-wordmark.svg`, aliases: ["Gin", "Golang"] },
+      { name: "Node.js", icon: `${CDN}/nodejs/nodejs-original.svg`, aliases: ["Node", "NodeJS"] },
+      { name: "Express", icon: `${CDN}/express/express-original.svg`, invert: true, aliases: ["Express.js", "ExpressJS"] },
+      { name: "Elysia", icon: `${CDN}/bun/bun-original.svg` },
+      { name: "Swift", icon: `${CDN}/swift/swift-original.svg` },
+    ],
+  },
+  {
+    label: "Client",
+    items: [
+      { name: "React", icon: `${CDN}/react/react-original.svg`, aliases: ["React Native"] },
+      { name: "Next.js", icon: `${CDN}/nextjs/nextjs-original.svg`, invert: true, aliases: ["NextJS", "Next"] },
+      { name: "TypeScript", icon: `${CDN}/typescript/typescript-original.svg`, aliases: ["TS"] },
+      { name: "JavaScript", icon: `${CDN}/javascript/javascript-original.svg`, aliases: ["JS"] },
+      { name: "Tailwind", icon: `${CDN}/tailwindcss/tailwindcss-original.svg`, aliases: ["TailwindCSS", "Tailwind CSS"] },
+      { name: "Framer Motion", icon: `${CDN}/framermotion/framermotion-original.svg`, invert: true },
+    ],
+  },
+  {
+    label: "Data",
+    items: [
+      { name: "PostgreSQL", icon: `${CDN}/postgresql/postgresql-original.svg`, aliases: ["Postgres"] },
+      { name: "MySQL", icon: `${CDN}/mysql/mysql-original.svg` },
+      { name: "Redis", icon: `${CDN}/redis/redis-original.svg` },
+      { name: "MongoDB", icon: `${CDN}/mongodb/mongodb-original.svg`, aliases: ["Mongo"] },
+      { name: "DynamoDB", icon: `${CDN}/dynamodb/dynamodb-original.svg` },
+      { name: "Prisma", icon: `${CDN}/prisma/prisma-original.svg`, invert: true },
+    ],
+  },
+  {
+    label: "Infrastructure",
+    items: [
+      { name: "Docker", icon: `${CDN}/docker/docker-original.svg` },
+      { name: "AWS", icon: `${CDN}/amazonwebservices/amazonwebservices-original-wordmark.svg`, invert: true, aliases: ["Amazon Web Services", "S3"] },
+      { name: "Azure", icon: `${CDN}/azure/azure-original.svg`, aliases: ["Microsoft Azure"] },
+      { name: "Vercel", icon: `${CDN}/vercel/vercel-original.svg`, invert: true },
+      { name: "Cloudflare", icon: `${CDN}/cloudflare/cloudflare-original.svg` },
+      { name: "CI/CD", icon: `${CDN}/githubactions/githubactions-original.svg`, invert: true },
+    ],
+  },
+  {
+    label: "Craft",
+    items: [
+      { name: "Figma", icon: `${CDN}/figma/figma-original.svg` },
+      { name: "Python", icon: `${CDN}/python/python-original.svg` },
+      { name: "HTML5", icon: `${CDN}/html5/html5-original.svg`, aliases: ["HTML"] },
+      { name: "CSS3", icon: `${CDN}/css3/css3-original.svg`, aliases: ["CSS"] },
+      { name: "Git", icon: `${CDN}/git/git-original.svg` },
+    ],
+  },
 ]
 
 const goldTheme = {
-  dark: ["#161820", "#0d3630", "#145e50", "#1e8a78", "#2db8a0"] as const,
+  dark: ["#161820", "#0d3630", "#145e50", "#1e8a78", "#2db8a0"],
 }
 
-function IconSet({ icons }: { icons: typeof row1 }) {
+const projectCounts: Record<string, number> = {
+  "Go": 4,
+  "Node.js": 2,
+  "Express": 2,
+  "Elysia": 1,
+  "Swift": 1,
+  "React": 7,
+  "Next.js": 8,
+  "TypeScript": 9,
+  "JavaScript": 3,
+  "Tailwind": 6,
+  "Framer Motion": 5,
+  "PostgreSQL": 4,
+  "Redis": 3,
+  "MongoDB": 1,
+  "Prisma": 2,
+  "Docker": 3,
+  "AWS": 3,
+  "Azure": 2,
+  "Vercel": 5,
+  "CI/CD": 3,
+  "Figma": 3,
+  "Python": 2,
+  "Git": 11,
+}
+
+function TechCard({ tech }: { tech: Tech }) {
+  const count = projectCounts[tech.name] ?? 0
   return (
-    <div className="flex items-center gap-14 flex-shrink-0 pr-14">
-      {icons.map((tech) => (
-        <div
-          key={tech.name}
-          className="flex flex-col items-center gap-2.5 flex-shrink-0"
-        >
-          <img
-            src={tech.icon}
-            alt={tech.name}
-            className={`h-10 w-10 object-contain ${tech.invert ? "icon-invert" : ""}`}
-            draggable={false}
-          />
-          <span className="text-[11px] text-muted-foreground/50 font-medium tracking-wide">
-            {tech.name}
+    <a
+      href={count > 0 ? "/#projects" : undefined}
+      className="group flex items-center justify-between gap-3 px-3.5 py-3 bg-card border border-border/40 hover:border-border transition-colors duration-200"
+    >
+      <div className="flex flex-col min-w-0">
+        <span className="text-sm text-foreground truncate">{tech.name}</span>
+        {count > 0 && (
+          <span className="text-[10px] text-muted-foreground/60 mt-0.5 tracking-wide">
+            {count} project{count > 1 ? "s" : ""}
           </span>
-        </div>
-      ))}
-    </div>
+        )}
+      </div>
+      <img
+        src={tech.icon}
+        alt=""
+        aria-hidden="true"
+        draggable={false}
+        className={`h-5 w-5 object-contain flex-shrink-0 ${tech.invert ? "icon-invert opacity-80" : ""}`}
+      />
+    </a>
   )
 }
 
-function Marquee({
-  icons,
-  direction = "left",
-}: {
-  icons: typeof row1
-  direction?: "left" | "right"
-}) {
+function CategoryBlock({ category }: { category: Category }) {
   return (
-    <div className="marquee-track relative overflow-hidden">
-      <div
-        className={
-          direction === "left"
-            ? "flex animate-marquee-left"
-            : "flex animate-marquee-right"
-        }
-      >
-        <IconSet icons={icons} />
-        <IconSet icons={icons} />
+    <div>
+      <h3 className="text-xs uppercase tracking-widest text-muted-foreground/70 mb-4 font-medium">
+        {category.label}
+      </h3>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+        {category.items.map((tech) => (
+          <TechCard key={tech.name} tech={tech} />
+        ))}
       </div>
     </div>
   )
@@ -96,7 +146,7 @@ function Marquee({
 
 export default function TechStack() {
   return (
-    <section id="skills" className="py-24 overflow-hidden">
+    <section id="skills" className="py-24">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="text-center mb-20">
           <h2 className="shimmer-text text-4xl sm:text-5xl md:text-6xl font-light tracking-[0.2em] uppercase leading-none font-space-grotesk">
@@ -104,19 +154,9 @@ export default function TechStack() {
           </h2>
         </div>
 
-        <div className="space-y-8 mb-16">
-          <Marquee icons={row1} direction="left" />
-          <Marquee icons={row2} direction="right" />
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-3 mb-24">
-          {noLogoSkills.map((skill) => (
-            <span
-              key={skill}
-              className="px-4 py-2 text-sm text-muted-foreground/70 border border-border/30 rounded-full transition-colors duration-200 hover:border-border/60 hover:text-muted-foreground"
-            >
-              {skill}
-            </span>
+        <div className="space-y-12 mb-24 max-w-6xl mx-auto">
+          {categories.map((cat) => (
+            <CategoryBlock key={cat.label} category={cat} />
           ))}
         </div>
 

@@ -1,6 +1,15 @@
 import Link from "next/link"
-import { Github, Linkedin, Mail, Twitter, MapPin, Calendar } from "lucide-react"
+import { Github, Linkedin, Mail, MapPin, Calendar } from "lucide-react"
 import { SITE, NAV_ITEMS, SPECIAL_PAGES } from "@/lib/data"
+import FooterParticles from "@/components/footer-particles"
+
+function XIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  )
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -9,12 +18,13 @@ export default function Footer() {
     { name: "GitHub", href: SITE.github, icon: Github, external: true },
     { name: "LinkedIn", href: SITE.linkedin, icon: Linkedin, external: true },
     { name: "Email", href: `mailto:${SITE.email}`, icon: Mail, external: false },
-    { name: "Twitter", href: `https://twitter.com/${SITE.twitter.replace("@", "")}`, icon: Twitter, external: true },
+    { name: "X", href: `https://x.com/${SITE.twitter.replace("@", "")}`, icon: XIcon, external: true },
   ]
 
   return (
-    <footer className="border-t border-border/40 bg-background">
-      <div className="container px-4 md:px-6 mx-auto py-16">
+    <footer className="relative border-t border-border/40 bg-background overflow-hidden">
+      <FooterParticles />
+      <div className="relative z-10 container px-4 md:px-6 mx-auto py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-4 lg:pr-6">
             <Link href="/" className="inline-block">
@@ -104,18 +114,25 @@ export default function Footer() {
                   <span>Book a call</span>
                 </a>
               </li>
+              <li className="pt-4">
+                <img
+                  src="/monster-energy-logo.png"
+                  alt="Monster Energy"
+                  className="h-14 w-auto opacity-50 hover:opacity-80 transition-opacity"
+                />
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-border/30">
+      <div className="relative z-10 border-t border-border/30">
         <div className="container px-4 md:px-6 mx-auto py-6 flex flex-col md:flex-row items-center justify-between gap-3">
           <p className="text-xs text-muted-foreground">
             &copy; {currentYear} Harsha Tummalapalli
           </p>
           <p className="text-xs text-muted-foreground/70">
-            Built with Next.js, Tailwind, and too much coffee.
+              Built with Next.js, Tailwind, and too much caffeine.
           </p>
         </div>
       </div>

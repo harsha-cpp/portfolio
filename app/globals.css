@@ -23,7 +23,7 @@
     --border: 220 5% 14%;
     --input: 220 5% 14%;
     --ring: 172 50% 45%;
-    --radius: 0.75rem;
+    --radius: 0rem;
   }
 }
 
@@ -65,7 +65,7 @@
   padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 500;
-  border-radius: 0.75rem;
+  border-radius: 0;
   background: hsl(172 50% 45%);
   border: 1px solid hsl(172 50% 45% / 0.6);
   transition: all 0.2s ease;
@@ -88,7 +88,7 @@
   padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 500;
-  border-radius: 0.75rem;
+  border-radius: 0;
   background: transparent;
   border: 1px solid hsl(220 5% 18%);
   transition: all 0.2s ease;

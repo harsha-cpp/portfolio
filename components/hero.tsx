@@ -1,91 +1,101 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Download, Github, Linkedin, Mail } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import TextScramble from "@/components/text-scramble"
 
 export default function Hero() {
   return (
-    <section id="home" className="pt-4 pb-12 md:pt-8 md:pb-20 flex items-center min-h-[75vh] relative">
-      <div className="container px-4 md:px-6 mx-auto relative z-10">
-        <div className="max-w-4xl lg:max-w-6xl xl:max-w-7xl 2xl:max-w-none 2xl:w-full 2xl:px-8">
-          <div className="space-y-4">
-            <div className="space-y-5">
-              <h1>
-                <motion.span
-                  className="font-semibold text-5xl md:text-6xl lg:text-7xl xl:text-8xl whitespace-nowrap font-funnel-display cursor-pointer inline-block"
-                  style={{color: 'hsl(172 45% 55%)'}}
-                  whileHover={{
-                    scale: 1.01,
-                    letterSpacing: "0.02em",
-                    color: 'hsl(172 40% 60%)',
-                    textShadow: '0 0 30px hsl(172 45% 55% / 0.2)'
-                  }}
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeOut"
-                  }}
-                >
-                  <TextScramble text="Harsha Tummalapalli" />
-                </motion.span>
-              </h1>
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium tracking-wide text-primary border border-primary/30 rounded-full bg-primary/[0.06]">
-                  SDE
-                </span>
-                <span className="text-muted-foreground/40 text-sm select-none">&middot;</span>
-                <span className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium tracking-wide text-primary border border-primary/30 rounded-full bg-primary/[0.06]">
-                  Full Stack
-                </span>
-                <span className="text-muted-foreground/40 text-sm select-none">&middot;</span>
-                <span className="inline-flex items-center px-3.5 py-1.5 text-sm font-medium tracking-wide text-primary border border-primary/30 rounded-full bg-primary/[0.06]">
-                  Founder
-                </span>
-              </div>
-            </div>
+    <section id="home" className="relative flex flex-col items-start justify-center min-h-screen px-4 md:px-6">
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
 
-            <div className="max-w-3xl">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Building products from zero to production. TypeScript and Go on the backend,
-                React and Next.js on the frontend, PostgreSQL and Redis for data,
-                AWS and Azure for infrastructure. Currently running engineering at{" "}
-                <span className="cursive-text">Memolane</span>.
-              </p>
-            </div>
+      <div className="container mx-auto">
+        <div className="max-w-4xl">
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <Button asChild size="lg" className="btn-primary rounded-full px-8 text-base">
-                <Link href="#contact">Get In Touch</Link>
-              </Button>
-              <Button variant="outline" size="lg" className="rounded-full px-8 text-base border-primary/20 hover:bg-primary/10">
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </Button>
-            </div>
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="font-funnel-display text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground tracking-tight leading-[1.05] mb-4"
+          >
+            <TextScramble text="Harsha Tummalapalli" />
+          </motion.h1>
 
-            <div className="flex gap-4">
-              <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 hover:text-primary">
-                <Link href="https://github.com/harsha-cpp" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-5 w-5" />
-                  <span className="sr-only">GitHub</span>
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 hover:text-primary">
-                <Link href="https://www.linkedin.com/in/sri-harsha-tummalapalli/" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild className="hover:bg-primary/10 hover:text-primary">
-                <Link href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=sriharshatummalapalli@gmail.com" target="_blank" rel="noopener noreferrer">
-                  <Mail className="h-5 w-5" />
-                  <span className="sr-only">Email</span>
-                </Link>
-              </Button>
-            </div>
-          </div>
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="font-funnel-display text-5xl sm:text-6xl lg:text-7xl font-bold text-muted-foreground/40 tracking-tight leading-[0.95]"
+          >
+            I build things that ship.
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+            className="mt-10 text-base md:text-lg text-muted-foreground leading-relaxed max-w-[540px]"
+          >
+            I design systems, write backend services, and ship products
+            end-to-end. Currently leading engineering at{" "}
+            <span className="text-foreground font-medium">Memolane</span>, architecting
+            the platform, scaling the infrastructure, and getting an AI
+            product into production.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
+            className="mt-12 flex flex-wrap items-center gap-4"
+          >
+            <Link
+              href="#contact"
+              className="btn-primary  px-6 py-3 text-sm font-medium"
+            >
+              Get In Touch
+            </Link>
+            <Link
+              href="/#projects"
+              className="btn-secondary  px-6 py-3 text-sm font-medium"
+            >
+              View Work
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.5 }}
+            className="mt-10 flex items-center gap-5"
+          >
+            <Link
+              href="https://github.com/harsha-cpp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground/50 hover:text-primary transition-colors duration-200"
+            >
+              <Github className="h-[18px] w-[18px]" />
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/sri-harsha-tummalapalli/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground/50 hover:text-primary transition-colors duration-200"
+            >
+              <Linkedin className="h-[18px] w-[18px]" />
+            </Link>
+            <Link
+              href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=sriharshatummalapalli@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground/50 hover:text-primary transition-colors duration-200"
+            >
+              <Mail className="h-[18px] w-[18px]" />
+            </Link>
+          </motion.div>
+
         </div>
       </div>
     </section>

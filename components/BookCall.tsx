@@ -76,7 +76,7 @@ export default function BookCall() {
     <Card className="card-enhanced overflow-hidden h-full">
       <CardContent className="p-6">
         <div className="flex items-start gap-4 mb-4">
-          <div className="bg-primary/10 p-3 rounded-full border border-primary/20 mt-1">
+          <div className="bg-primary/10 p-3  border border-primary/20 mt-1">
             <Calendar className="h-6 w-6 text-primary" />
           </div>
           <div className="flex-1">

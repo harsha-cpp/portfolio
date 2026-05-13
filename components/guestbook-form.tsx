@@ -134,7 +134,7 @@ export default function GuestbookForm() {
               disabled={submitting}
               autoComplete="name"
               placeholder="Your name"
-              className="w-full rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground/70 px-4 py-3 text-sm transition-colors focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/30 disabled:opacity-60"
+              className="w-full  bg-card border border-border text-foreground placeholder:text-muted-foreground/70 px-4 py-3 text-sm transition-colors focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/30 disabled:opacity-60"
             />
           </div>
 
@@ -162,7 +162,7 @@ export default function GuestbookForm() {
               disabled={submitting}
               rows={4}
               placeholder="Leave a note — a hello, a critique, a project you're proud of"
-              className="w-full resize-none rounded-lg bg-card border border-border text-foreground placeholder:text-muted-foreground/70 px-4 py-3 text-sm leading-relaxed transition-colors focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/30 disabled:opacity-60"
+              className="w-full resize-none  bg-card border border-border text-foreground placeholder:text-muted-foreground/70 px-4 py-3 text-sm leading-relaxed transition-colors focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/30 disabled:opacity-60"
             />
           </div>
 

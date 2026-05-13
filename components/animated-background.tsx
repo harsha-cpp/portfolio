@@ -1,137 +1,109 @@
 "use client"
 
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from "react"
 
-interface Particle {
-  x: number
-  y: number
-  baseX: number
-  baseY: number
-  opacity: number
-  size: number
+const CELL_SIZE = 50
+const FADE_DURATION = 2000
+
+interface ActiveCell {
+  key: string
+  activatedAt: number
 }
 
 export default function AnimatedBackground() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const particlesRef = useRef<Particle[]>([])
-  const mouseRef = useRef({ x: 0, y: 0 })
-  const animationRef = useRef<number>()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [cells, setCells] = useState<ActiveCell[]>([])
+  const [gridOpacity, setGridOpacity] = useState(1)
+  const rafRef = useRef<number>()
+  const lastCellRef = useRef("")
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-      initParticles()
+    const onScroll = () => {
+      const scrolled = window.scrollY
+      const viewH = window.innerHeight
+      const opacity = Math.max(0.3, 1 - (scrolled / viewH) * 0.7)
+      setGridOpacity(opacity)
     }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
-    const initParticles = () => {
-      const particles: Particle[] = []
-      const spacing = 50
-      const cols = Math.floor(canvas.width / spacing)
-      const rows = Math.floor(canvas.height / spacing)
+  const getCellFromEvent = useCallback((e: MouseEvent) => {
+    const container = containerRef.current
+    if (!container) return null
+    const scrollX = window.scrollX
+    const scrollY = window.scrollY
+    const x = e.clientX + scrollX
+    const y = e.clientY + scrollY
+    const col = Math.floor(x / CELL_SIZE)
+    const row = Math.floor(y / CELL_SIZE)
+    return { col, row, key: `${col}-${row}` }
+  }, [])
 
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-          particles.push({
-            x: i * spacing + spacing / 2,
-            y: j * spacing + spacing / 2,
-            baseX: i * spacing + spacing / 2,
-            baseY: j * spacing + spacing / 2,
-            opacity: 0.1,
-            size: 2
-          })
-        }
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    const cell = getCellFromEvent(e)
+    if (!cell || cell.key === lastCellRef.current) return
+    lastCellRef.current = cell.key
+
+    setCells((prev) => {
+      const existing = prev.find((c) => c.key === cell.key)
+      if (existing) {
+        return prev.map((c) =>
+          c.key === cell.key ? { ...c, activatedAt: Date.now() } : c
+        )
       }
-      particlesRef.current = particles
+      return [...prev, { key: cell.key, activatedAt: Date.now() }]
+    })
+  }, [getCellFromEvent])
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [handleMouseMove])
+
+  useEffect(() => {
+    const cleanup = () => {
+      const now = Date.now()
+      setCells((prev) => prev.filter((c) => now - c.activatedAt < FADE_DURATION))
+      rafRef.current = requestAnimationFrame(cleanup)
     }
-
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current.x = e.clientX
-      mouseRef.current.y = e.clientY
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      
-      const particles = particlesRef.current
-      const mouse = mouseRef.current
-
-      // Update particles
-      particles.forEach(particle => {
-        const dx = mouse.x - particle.x
-        const dy = mouse.y - particle.y
-        const distance = Math.sqrt(dx * dx + dy * dy)
-        const maxDistance = 150
-
-        if (distance < maxDistance) {
-          const force = (maxDistance - distance) / maxDistance
-          particle.opacity = Math.min(0.8, 0.1 + force * 0.7)
-          particle.size = Math.min(4, 2 + force * 2)
-          
-          // Subtle movement toward cursor
-          particle.x = particle.baseX + (dx * force * 0.1)
-          particle.y = particle.baseY + (dy * force * 0.1)
-        } else {
-          particle.opacity = Math.max(0.05, particle.opacity - 0.02)
-          particle.size = Math.max(1, particle.size - 0.02)
-          particle.x += (particle.baseX - particle.x) * 0.1
-          particle.y += (particle.baseY - particle.y) * 0.1
-        }
-
-        // Draw particle
-        ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = `hsla(172, 50%, 45%, ${particle.opacity})`
-        ctx.fill()
-
-        // Draw connections to nearby particles
-        particles.forEach(otherParticle => {
-          if (particle === otherParticle) return
-          
-          const dx2 = particle.x - otherParticle.x
-          const dy2 = particle.y - otherParticle.y
-          const distance2 = Math.sqrt(dx2 * dx2 + dy2 * dy2)
-          
-          if (distance2 < 100 && particle.opacity > 0.2 && otherParticle.opacity > 0.2) {
-            const lineOpacity = Math.min(particle.opacity, otherParticle.opacity) * 0.3
-            ctx.beginPath()
-            ctx.moveTo(particle.x, particle.y)
-            ctx.lineTo(otherParticle.x, otherParticle.y)
-            ctx.strokeStyle = `hsla(172, 50%, 45%, ${lineOpacity})`
-            ctx.lineWidth = 0.5
-            ctx.stroke()
-          }
-        })
-      })
-
-      animationRef.current = requestAnimationFrame(animate)
-    }
-
-    resizeCanvas()
-    window.addEventListener('resize', resizeCanvas)
-    window.addEventListener('mousemove', handleMouseMove)
-    animate()
-
+    rafRef.current = requestAnimationFrame(cleanup)
     return () => {
-      window.removeEventListener('resize', resizeCanvas)
-      window.removeEventListener('mousemove', handleMouseMove)
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
-      }
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
   }, [])
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 0.35 }}
-    />
+    <div
+      ref={containerRef}
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+      style={{
+        backgroundImage:
+          `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${CELL_SIZE}' height='${CELL_SIZE}'%3E%3Cpath d='M${CELL_SIZE} 0L${CELL_SIZE} ${CELL_SIZE} 0 ${CELL_SIZE}' fill='none' stroke='rgba(255,255,255,0.03)' stroke-width='1'/%3E%3C/svg%3E")`,
+        backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px`,
+        opacity: gridOpacity,
+        transition: "opacity 0.2s ease-out",
+      }}
+    >
+      {cells.map((cell) => {
+        const [col, row] = cell.key.split("-").map(Number)
+        const elapsed = Date.now() - cell.activatedAt
+        const opacity = Math.max(0, 1 - elapsed / FADE_DURATION) * 0.08
+
+        return (
+          <div
+            key={cell.key}
+            className="absolute"
+            style={{
+              left: col * CELL_SIZE + 1,
+              top: row * CELL_SIZE + 1,
+              width: CELL_SIZE - 1,
+              height: CELL_SIZE - 1,
+              backgroundColor: `hsla(172, 50%, 45%, ${opacity})`,
+            }}
+          />
+        )
+      })}
+    </div>
   )
 }

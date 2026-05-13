@@ -78,7 +78,7 @@ export default function Changelog() {
             {olderEntries.reverse().map((entry, index) => (
                               <div 
                   key={index} 
-                  className="text-xs border border-border/40 rounded-lg p-3 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-colors"
+                  className="text-xs border border-border/40  p-3 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-colors"
               >
                 {/* Version and Date */}
                 <div className="flex items-center justify-between mb-2">
@@ -110,7 +110,7 @@ export default function Changelog() {
         )}
 
         {/* Latest entry card */}
-        <div className="text-xs border border-border/40 rounded-lg p-3 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-colors">
+        <div className="text-xs border border-border/40  p-3 bg-background/80 backdrop-blur-sm hover:bg-background/90 transition-colors">
           {/* Version and Date */}
           <div className="flex items-center justify-between mb-2">
             <span 

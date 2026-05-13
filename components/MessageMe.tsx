@@ -46,7 +46,7 @@ export default function MessageMe() {
     return (
       <Card className="card-enhanced overflow-hidden h-full">
         <CardContent className="p-6 flex flex-col items-center justify-center min-h-[320px] text-center">
-          <div className="bg-green-500/10 p-4 rounded-full border border-green-500/20 mb-4">
+          <div className="bg-green-500/10 p-4  border border-green-500/20 mb-4">
             <Check className="h-6 w-6 text-green-500" />
           </div>
           <h3 className="font-medium text-lg mb-1">Message sent</h3>
@@ -65,7 +65,7 @@ export default function MessageMe() {
     <Card className="card-enhanced overflow-hidden h-full">
       <CardContent className="p-6">
         <div className="flex items-start gap-4 mb-5">
-          <div className="bg-primary/10 p-3 rounded-full border border-primary/20 mt-1">
+          <div className="bg-primary/10 p-3  border border-primary/20 mt-1">
             <Mail className="h-6 w-6 text-primary" />
           </div>
           <div>
@@ -97,8 +97,8 @@ export default function MessageMe() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             maxLength={500}
-            className="resize-none text-sm min-h-[100px]"
-            rows={4}
+              className="resize-none text-sm min-h-[200px]"
+              rows={8}
           />
           <div className="flex items-center justify-between">
             <span className="text-xs text-muted-foreground/50">

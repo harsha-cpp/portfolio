@@ -94,7 +94,7 @@ export default function CommandPalette() {
       label="Command Palette"
       className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh] px-4"
       overlayClassName="fixed inset-0 bg-black/70 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
-      contentClassName="relative w-full max-w-xl overflow-hidden rounded-xl border border-[hsl(220_5%_14%)] bg-[hsl(220_6%_8%)] shadow-2xl shadow-black/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2 duration-200"
+      contentClassName="relative w-full max-w-xl overflow-hidden  border border-[hsl(220_5%_14%)] bg-[hsl(220_6%_8%)] shadow-2xl shadow-black/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-top-2 data-[state=open]:slide-in-from-top-2 duration-200"
     >
       <div className="flex items-center gap-3 border-b border-[hsl(220_5%_14%)] px-4">
         <Search className="h-4 w-4 shrink-0 text-muted-foreground" />
@@ -217,7 +217,7 @@ export default function CommandPalette() {
             }
           >
             <ExternalLink className="h-4 w-4" />
-            <span>Twitter</span>
+            <span>X (Twitter)</span>
             <ExternalLink className="ml-auto h-3 w-3 text-muted-foreground/60" />
           </CommandItem>
         </Command.Group>

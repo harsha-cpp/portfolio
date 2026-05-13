@@ -18,7 +18,7 @@ export default function Projects() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-12">
               {projects.map((project) => (
                 <div key={project.title} className="group">
-                  <div className="relative p-6 rounded-xl bg-card/60 border border-border/50 transition-colors duration-200 hover:border-border h-full flex flex-col">
+                  <div className="relative p-6  bg-background border border-border/50 transition-colors duration-200 hover:border-border h-full flex flex-col">
                     <div className="flex flex-col h-full space-y-4">
                       <div className="flex items-center justify-between">
                         <Link href={`/projects/${project.slug}`} className="flex items-center gap-2 hover:gap-3 transition-all duration-200">
@@ -28,7 +28,7 @@ export default function Projects() {
                           <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
                         </Link>
                         {project.featured && (
-                          <span className="text-[10px] uppercase tracking-[0.15em] text-primary/80 border border-primary/30 px-2 py-0.5 rounded-full">
+                          <span className="text-[10px] uppercase tracking-[0.15em] text-primary/80 border border-primary/30 px-2 py-0.5 ">
                             Case Study
                           </span>
                         )}
@@ -42,7 +42,7 @@ export default function Projects() {
                         {project.tags.slice(0, 5).map((tag) => (
                           <span
                             key={tag}
-                            className="px-3 py-1.5 text-xs font-medium bg-secondary/60 border border-border/40 text-muted-foreground rounded-full"
+                            className="px-3 py-1.5 text-xs font-medium bg-secondary/60 border border-border/40 text-muted-foreground "
                           >
                             {tag}
                           </span>

@@ -80,7 +80,7 @@ export default function Experience() {
                       {experience.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="px-2 py-0.5 text-xs font-medium bg-secondary/60 border border-border/40 text-muted-foreground rounded-full"
+                          className="px-2 py-0.5 text-xs font-medium bg-secondary/60 border border-border/40 text-muted-foreground "
                         >
                           {tag}
                         </span>
@@ -90,7 +90,7 @@ export default function Experience() {
                     <ul className="mt-2 space-y-2 mb-4">
                       {experience.achievements.map((achievement, i) => (
                         <li key={i} className="flex items-start">
-                          <span className="mr-2 mt-2 h-1 w-1 rounded-full bg-primary/50 flex-shrink-0"></span>
+                          <span className="mr-2 mt-2 h-1 w-1  bg-primary/50 flex-shrink-0"></span>
                           <span className="text-sm text-muted-foreground">{achievement}</span>
                         </li>
                       ))}
@@ -102,7 +102,7 @@ export default function Experience() {
                           href={experience.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-3 py-2 text-xs font-medium text-muted-foreground hover:text-primary transition-colors duration-200 rounded-lg hover:bg-primary/5 group"
+                          className="inline-flex items-center gap-2 px-3 py-2 text-xs font-medium text-muted-foreground hover:text-primary transition-colors duration-200  hover:bg-primary/5 group"
                         >
                           <ExternalLink className="h-3.5 w-3.5 group-hover:scale-110 transition-transform duration-200" />
                           Visit Website

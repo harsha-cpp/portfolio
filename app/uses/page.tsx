@@ -117,7 +117,7 @@ export default function UsesPage() {
                     <li key={item.name} className="group">
                       <Wrapper
                         {...wrapperProps}
-                        className={`block py-7 md:py-8 px-4 md:px-5 -mx-4 md:-mx-5 rounded-lg transition-colors duration-200 ${
+                        className={`block py-7 md:py-8 px-4 md:px-5 -mx-4 md:-mx-5  transition-colors duration-200 ${
                           item.link ? "hover:bg-primary/[0.04]" : ""
                         }`}
                       >

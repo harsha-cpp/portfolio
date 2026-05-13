@@ -45,7 +45,7 @@ export default function MobileBlock({ children }: { children: React.ReactNode })
         <div className="text-center space-y-8 max-w-md mx-auto">
           <div className="relative">
             <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
-            <div className="relative bg-card/50 backdrop-blur-sm border border-primary/20 rounded-2xl p-8 space-y-6">
+            <div className="relative bg-card/50 backdrop-blur-sm border border-primary/20  p-8 space-y-6">
               <div className="flex justify-center space-x-4 mb-6">
                 <div className="p-3 bg-primary/10 rounded-full border border-primary/20">
                   <Smartphone className="h-8 w-8 text-muted-foreground" />
