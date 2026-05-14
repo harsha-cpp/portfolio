@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import { changelog } from "@/lib/data"
 
 export const metadata: Metadata = {
-  title: "Changelog — Harsha Tummalapalli",
+  title: "Changelog - Harsha Tummalapalli",
   description:
-    "Version history of this site. Treated as a product — every version is intentional.",
+    "Version history of this site. Treated as a product - every version is intentional.",
 }
 
 export default function ChangelogPage() {

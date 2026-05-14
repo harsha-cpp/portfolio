@@ -2,11 +2,11 @@ import type { Metadata } from "next"
 import GuestbookForm from "@/components/guestbook-form"
 
 export const metadata: Metadata = {
-  title: "Guestbook — Harsha Tummalapalli",
+  title: "Guestbook - Harsha Tummalapalli",
   description:
     "Leave a message. A small, public corner of the internet where you can say hello, share a thought, or simply mark your visit.",
   openGraph: {
-    title: "Guestbook — Harsha Tummalapalli",
+    title: "Guestbook - Harsha Tummalapalli",
     description:
       "Leave a message. A small, public corner of the internet where you can say hello.",
     type: "article",
@@ -26,7 +26,7 @@ export default function GuestbookPage() {
               A little corner of the internet for{" "}
               <span className="cursive-text">saying hello</span>. Leave a message,
               share a thought, or mark that you stopped by. No accounts, no
-              tracking — just your name and a few words.
+              tracking - just your name and a few words.
             </p>
           </header>
 

@@ -18,16 +18,16 @@ export async function generateMetadata({
     return { title: "Project Not Found" }
   }
   return {
-    title: `${project.title} — ${SITE.name}`,
+    title: `${project.title} - ${SITE.name}`,
     description: project.tagline,
     openGraph: {
-      title: `${project.title} — ${SITE.name}`,
+      title: `${project.title} - ${SITE.name}`,
       description: project.tagline,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${project.title} — ${SITE.name}`,
+      title: `${project.title} - ${SITE.name}`,
       description: project.tagline,
     },
   }

@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { colophon } from "@/lib/data"
 
 export const metadata: Metadata = {
-  title: "Colophon — How this site was built",
+  title: "Colophon - How this site was built",
   description:
     "A detailed breakdown of the technology, typography, color palette, and design philosophy behind this portfolio.",
 }
@@ -28,7 +28,7 @@ export default function ColophonPage() {
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl">
           A colophon is a statement at the end of a book describing how it was
-          produced. This is the same — for a website.
+          produced. This is the same - for a website.
         </p>
       </header>
 
@@ -188,7 +188,7 @@ export default function ColophonPage() {
 
       <footer className="mt-24 pt-10 border-t border-border/30">
         <p className="text-xs text-muted-foreground font-space-grotesk uppercase tracking-[0.2em]">
-          Set in Lexend, Funnel Display & Space Grotesk —
+          Set in Lexend, Funnel Display & Space Grotesk -
           <br className="md:hidden" /> hand-crafted in TypeScript.
         </p>
       </footer>
