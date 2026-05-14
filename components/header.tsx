@@ -23,7 +23,7 @@ export default function Header() {
     const sections = NAV_ITEMS.map((item) =>
       item.href === "/" ? "home" : item.href.replace("/#", "")
     )
-    const allSections = [...sections, "open-source", "skills"]
+    const allSections = [...sections, "open-source"]
 
     const isNearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100
     if (isNearBottom) {
@@ -44,7 +44,6 @@ export default function Header() {
         if (rect.top <= threshold && rect.bottom >= threshold) {
           const sectionId = allSections[i]
           if (sectionId === "open-source") return "projects"
-          if (sectionId === "skills") return "experience"
           if (!sections.includes(sectionId)) return "home"
           return sectionId
         }
@@ -109,7 +108,7 @@ export default function Header() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-2xl font-bold gradient-text">HT</span>
+            <span className="text-lg font-semibold text-foreground">harsha.</span>
           </motion.div>
         </Link>
 
@@ -130,7 +129,7 @@ export default function Header() {
               const isActive =
                 item.type === "scroll"
                   ? getNavItemActive(item.href)
-                  : pathname === item.href
+                  : pathname === item.href || pathname === item.href + "/"
 
               return (
                 <motion.div
@@ -140,10 +139,10 @@ export default function Header() {
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                   className="relative"
                 >
-                  {isActive && (
+                  {isActive && item.type === "scroll" && (
                     <motion.div
                       layoutId="activeSection"
-                      className="absolute inset-0 bg-primary/10 rounded-md -z-10"
+                      className="absolute inset-0 bg-primary/10 -z-10"
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -151,17 +150,21 @@ export default function Header() {
                     href={item.href}
                     onClick={item.type === "scroll" ? (e) => handleNavClick(e, item.href) : undefined}
                     className={cn(
-                      "text-sm font-medium transition-colors px-3 py-2 rounded-md relative",
+                      "text-sm font-medium transition-colors px-3 py-2 relative",
                       isActive ? "text-primary font-semibold" : "text-muted-foreground hover:text-foreground",
                     )}
+                    style={isActive && item.type === "page" ? { color: "hsl(172 50% 45%)" } : undefined}
                   >
                     {item.name}
-                    {isActive && (
+                    {isActive && item.type === "scroll" && (
                       <motion.div
                         className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-primary/60"
                         layoutId="underline"
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
+                    )}
+                    {isActive && item.type === "page" && (
+                      <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary" />
                     )}
                   </Link>
                 </motion.div>

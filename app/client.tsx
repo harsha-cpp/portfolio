@@ -41,7 +41,7 @@ export default function ClientLayout({
       </head>
       <body className={cn("min-h-screen bg-background antialiased dark", lexend.variable, funnelDisplay.variable, spaceGrotesk.variable)}>
         <MobileBlock>
-          <div className="relative flex min-h-screen flex-col overflow-hidden">
+            <div className="relative flex min-h-screen flex-col">
             <noscript>
               <div className="bg-primary/20 p-4 text-center text-sm border-b border-primary/30">
                 For the best experience, please enable JavaScript. Some features may be limited without it.

@@ -64,7 +64,13 @@ export default function AnimatedBackground() {
   useEffect(() => {
     const cleanup = () => {
       const now = Date.now()
-      setCells((prev) => prev.filter((c) => now - c.activatedAt < FADE_DURATION))
+      setCells((prev) => {
+        const next = prev.filter((c) => now - c.activatedAt < FADE_DURATION)
+        setTimeout(() => {
+          window.dispatchEvent(new CustomEvent("grid-cells", { detail: next.length }))
+        }, 0)
+        return next
+      })
       rafRef.current = requestAnimationFrame(cleanup)
     }
     rafRef.current = requestAnimationFrame(cleanup)
