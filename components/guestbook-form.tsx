@@ -161,7 +161,7 @@ export default function GuestbookForm() {
               maxLength={MAX_MESSAGE}
               disabled={submitting}
               rows={4}
-              placeholder="Leave a note — a hello, a critique, a project you're proud of"
+              placeholder="Leave a note - a hello, a critique, a project you're proud of"
               className="w-full resize-none  bg-card border border-border text-foreground placeholder:text-muted-foreground/70 px-4 py-3 text-sm leading-relaxed transition-colors focus:outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/30 disabled:opacity-60"
             />
           </div>

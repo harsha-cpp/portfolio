@@ -37,7 +37,7 @@ export default function ConsoleEasterEgg() {
     )
 
     console.log(
-      "%c  profile()  — who I am\n  skills()   — what I work with\n  hire()     — let's talk",
+      "%c  profile()  - who I am\n  skills()   - what I work with\n  hire()     - let's talk",
       "color: #2db8a0; font-family: monospace; font-size: 12px;"
     )
 

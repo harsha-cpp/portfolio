@@ -6,7 +6,7 @@ import { Suspense } from "react"
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://harshatummalapalli.com'),
-  title: "Harsha Tummalapalli | Software Development Engineer",
+  title: "Harsha Tummalapalli",
   description:
     "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
   keywords: [
@@ -37,43 +37,26 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Harsha Tummalapalli" }],
   creator: "Harsha Tummalapalli",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
-    apple: [{ url: "/apple-touch-icon.png" }],
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://harshatummalapalli.com",
-    title: "Harsha Tummalapalli | Software Development Engineer",
+    title: "Harsha Tummalapalli",
     description:
-      "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
-    siteName: "Harsha Tummalapalli Portfolio",
-    images: [
-      {
-        url: "/favicon.png",
-        width: 512,
-        height: 512,
-        alt: "Harsha Tummalapalli Logo",
-      },
-    ],
+      "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure.",
+    siteName: "Harsha Tummalapalli",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Harsha Tummalapalli | Software Development Engineer",
+    title: "Harsha Tummalapalli",
     description:
-      "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
-    creator: "@harsha_cpp",
-    images: ["/favicon.png"],
+      "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure.",
+    creator: "@harsha16x",
   },
   robots: {
     index: true,
     follow: true,
   },
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

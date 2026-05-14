@@ -20,12 +20,12 @@ export default function UsesPage() {
   const totalItems = usesData.reduce((sum, s) => sum + s.items.length, 0)
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen">
       <header className="container px-4 md:px-6 mx-auto pt-20 md:pt-28 pb-16 md:pb-24">
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-muted-foreground mb-8">
             <span className="h-px w-8 bg-border" />
-            <span className="font-space-grotesk">Vol. 01 — Workspace</span>
+            <span className="font-space-grotesk">Vol. 01 - Workspace</span>
           </div>
           <h1 className="font-funnel-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-foreground leading-[0.95]">
             Workspace
@@ -76,7 +76,7 @@ export default function UsesPage() {
             </span>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 relative">
-              <div className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+              <div className="lg:col-span-4 lg:sticky lg:top-20 lg:self-start">
                 <div className="flex items-center gap-4 mb-6">
                   <span className="font-funnel-display text-5xl md:text-6xl font-bold text-primary tabular-nums leading-none">
                     {section.number}
@@ -176,7 +176,7 @@ export default function UsesPage() {
               <p className="text-base text-muted-foreground leading-relaxed">
                 Every late-night deploy and early-morning code review is fueled by
                 Monster Ultra White. Zero sugar, maximum focus. The white can is
-                non-negotiable — it&apos;s part of the stack at this point.
+                non-negotiable - it&apos;s part of the stack at this point.
               </p>
             </div>
           </div>
@@ -192,7 +192,7 @@ export default function UsesPage() {
             </div>
             <h2 className="font-funnel-display text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.05]">
               Curious about a tool, or have one I should{" "}
-              <span className="cursive-text">try</span>?
+              <span className="cursive-text">try?</span>
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
               I&apos;m always trading notes on workflows, keyboards, and the

@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────
-// Centralized data layer — single source of truth for all content
+// Centralized data layer - single source of truth for all content
 // ─────────────────────────────────────────────────────────────
 
 export const SITE = {
@@ -9,7 +9,7 @@ export const SITE = {
   github: "https://github.com/harsha-cpp",
   linkedin: "https://www.linkedin.com/in/sri-harsha-tummalapalli/",
   email: "sriharshatummalapalli@gmail.com",
-  twitter: "@harsha_cpp",
+  twitter: "@harsha16x",
   location: "Hyderabad, India",
   phone: "+91 8328663371",
   cal: "harshatummalapalli",
@@ -27,7 +27,7 @@ export interface Project {
   liveLink: string | null
   prototypeLink?: string
   featured: boolean
-  // Case study fields (optional — only for featured projects)
+  // Case study fields (optional - only for featured projects)
   caseStudy?: {
     hero: string // one-line hero subtitle
     role: string
@@ -55,32 +55,32 @@ export const projects: Project[] = [
     caseStudy: {
       hero: "An open-source bridge between project management and AI code generation",
       role: "Solo Engineer & Designer",
-      timeline: "Mar 2026 — Present",
+      timeline: "Mar 2026 - Present",
       stack: ["Next.js", "Tauri", "Express.js", "PostgreSQL", "Prisma", "OpenCode SDK", "GitHub OAuth"],
       sections: [
         {
           number: "01",
           title: "Why I Built This",
           content:
-            "Every developer I know has the same workflow: read a Linear ticket, context-switch to the IDE, write the code, push a PR, go back to Linear and move the card. That's four context switches per task.\n\nI wanted to collapse that into one click. Select a task on the board, hit 'Execute,' and get a pull request with working code — reviewed, tested, and ready to merge. Not a copilot that autocompletes lines, but an agent that takes ownership of entire tasks.\n\nThe gap in the market was clear: AI coding tools operate inside editors. Project management tools have no idea code exists. OpenLinear sits in the middle — it understands both your backlog and your codebase.",
+            "Every developer I know has the same workflow: read a Linear ticket, context-switch to the IDE, write the code, push a PR, go back to Linear and move the card. That's four context switches per task.\n\nI wanted to collapse that into one click. Select a task on the board, hit 'Execute,' and get a pull request with working code - reviewed, tested, and ready to merge. Not a copilot that autocompletes lines, but an agent that takes ownership of entire tasks.\n\nThe gap in the market was clear: AI coding tools operate inside editors. Project management tools have no idea code exists. OpenLinear sits in the middle - it understands both your backlog and your codebase.",
         },
         {
           number: "02",
           title: "How It Works",
           content:
-            "OpenLinear is a Tauri desktop app (Rust shell, Next.js UI) with an Express.js sidecar running the OpenCode SDK. When you execute a task, the sidecar spins up an isolated git worktree, runs the AI agent against it, and streams tool calls and file edits back to the UI in real-time.\n\nThe kanban board is a full Linear-style project manager — columns, drag-and-drop, labels, priorities, assignments. But every card has an 'Execute' button. Click it and you can watch the agent read files, reason about architecture, write code, and create a PR — all without leaving the app.\n\nGitHub OAuth handles identity. The agent creates PRs under your account. You review the diff right in the app.",
+            "OpenLinear is a Tauri desktop app (Rust shell, Next.js UI) with an Express.js sidecar running the OpenCode SDK. When you execute a task, the sidecar spins up an isolated git worktree, runs the AI agent against it, and streams tool calls and file edits back to the UI in real-time.\n\nThe kanban board is a full Linear-style project manager - columns, drag-and-drop, labels, priorities, assignments. But every card has an 'Execute' button. Click it and you can watch the agent read files, reason about architecture, write code, and create a PR - all without leaving the app.\n\nGitHub OAuth handles identity. The agent creates PRs under your account. You review the diff right in the app.",
         },
         {
           number: "03",
           title: "Key Decisions",
           content:
-            "Tauri over Electron — Electron bundles an entire Chromium. Tauri uses the system webview and ships a ~3MB binary. For a dev tool that sits open all day, memory matters. The tradeoff: fewer cross-platform guarantees on Linux webview rendering. I accepted that because the primary audience is macOS developers.\n\nGit worktree isolation — Rather than having the agent modify your working directory (and potentially break your in-progress work), each task execution creates a fresh worktree. Parallel tasks run in parallel worktrees. This was non-negotiable for trust: if you can't trust the tool not to corrupt your local state, you won't use it.\n\nExpress sidecar over in-process — The OpenCode SDK is a Node process. Tauri's backend is Rust. Instead of bridging FFI, I run Express alongside Tauri and communicate via localhost HTTP. Simpler debugging, independent restarts, and the SDK can evolve without Rust recompilation.",
+            "Tauri over Electron - Electron bundles an entire Chromium. Tauri uses the system webview and ships a ~3MB binary. For a dev tool that sits open all day, memory matters. The tradeoff: fewer cross-platform guarantees on Linux webview rendering. I accepted that because the primary audience is macOS developers.\n\nGit worktree isolation - Rather than having the agent modify your working directory (and potentially break your in-progress work), each task execution creates a fresh worktree. Parallel tasks run in parallel worktrees. This was non-negotiable for trust: if you can't trust the tool not to corrupt your local state, you won't use it.\n\nExpress sidecar over in-process - The OpenCode SDK is a Node process. Tauri's backend is Rust. Instead of bridging FFI, I run Express alongside Tauri and communicate via localhost HTTP. Simpler debugging, independent restarts, and the SDK can evolve without Rust recompilation.",
         },
         {
           number: "04",
           title: "What I Learned",
           content:
-            "Building AI-powered developer tools taught me that reliability is the entire product. A flashy demo means nothing if the agent hallucinates a file path 5% of the time. I spent more time on error recovery and rollback logic than on the happy path.\n\nThe hardest UX challenge was transparency. Developers need to trust the agent. Showing live tool calls and file diffs in real-time — not just the final PR — was the difference between 'this is magic' and 'I'd never let this touch my code.'\n\nShipping a desktop app in 2026 is still harder than it should be. Auto-updates, code signing, notarization, platform-specific builds — the infrastructure overhead for a solo developer is significant. But the result is a tool that feels native and fast in a way web apps never will.",
+            "Building AI-powered developer tools taught me that reliability is the entire product. A flashy demo means nothing if the agent hallucinates a file path 5% of the time. I spent more time on error recovery and rollback logic than on the happy path.\n\nThe hardest UX challenge was transparency. Developers need to trust the agent. Showing live tool calls and file diffs in real-time - not just the final PR - was the difference between 'this is magic' and 'I'd never let this touch my code.'\n\nShipping a desktop app in 2026 is still harder than it should be. Auto-updates, code signing, notarization, platform-specific builds - the infrastructure overhead for a solo developer is significant. But the result is a tool that feels native and fast in a way web apps never will.",
         },
       ],
     },
@@ -98,7 +98,7 @@ export const projects: Project[] = [
     caseStudy: {
       hero: "A document management system designed for compliance-first organizations",
       role: "Solo Engineer",
-      timeline: "Dec 2025 — Feb 2026",
+      timeline: "Dec 2025 - Feb 2026",
       stack: ["Go", "Chi", "React", "PostgreSQL", "Redis", "Asynq", "S3", "OpenAPI"],
       sections: [
         {
@@ -111,19 +111,19 @@ export const projects: Project[] = [
           number: "02",
           title: "How It Works",
           content:
-            "The API is Go with Chi router — chosen over Gin for its stdlib-compatible middleware chain. Documents upload directly to S3 via pre-signed URLs (the server never touches the file bytes). Once uploaded, a Redis-backed Asynq job fires for OCR extraction and thumbnail generation.\n\nRole-based access is granular: admin, editor, auditor. Auditors can view documents and access logs but can't modify anything. Every action (view, download, edit, delete) is logged to an immutable audit table with timestamp, user, IP, and action type.\n\nThe React frontend is generated from the OpenAPI spec — types, API client, and request hooks are all auto-generated. Zero drift between backend and frontend contracts.",
+            "The API is Go with Chi router - chosen over Gin for its stdlib-compatible middleware chain. Documents upload directly to S3 via pre-signed URLs (the server never touches the file bytes). Once uploaded, a Redis-backed Asynq job fires for OCR extraction and thumbnail generation.\n\nRole-based access is granular: admin, editor, auditor. Auditors can view documents and access logs but can't modify anything. Every action (view, download, edit, delete) is logged to an immutable audit table with timestamp, user, IP, and action type.\n\nThe React frontend is generated from the OpenAPI spec - types, API client, and request hooks are all auto-generated. Zero drift between backend and frontend contracts.",
         },
         {
           number: "03",
           title: "Key Decisions",
           content:
-            "Pre-signed uploads over server proxy — The server never handles file bytes. Clients upload directly to S3 using a pre-signed URL. This eliminated the server as a bandwidth bottleneck and reduced p95 upload latency by 60%. The tradeoff: more complex client-side error handling for multipart uploads.\n\nAsynq over direct processing — OCR and thumbnail generation take 2-8 seconds per document. Processing inline would block the upload response. Asynq (Redis-backed, Go-native) queues these as background jobs with automatic retries. Failed jobs retry 3x with exponential backoff before alerting.\n\nOpenAPI-first development — I wrote the OpenAPI spec before writing any code. The Go server validates requests against the spec at runtime. The React client is generated from it. This front-loaded design time but eliminated an entire class of integration bugs.",
+            "Pre-signed uploads over server proxy - The server never handles file bytes. Clients upload directly to S3 using a pre-signed URL. This eliminated the server as a bandwidth bottleneck and reduced p95 upload latency by 60%. The tradeoff: more complex client-side error handling for multipart uploads.\n\nAsynq over direct processing - OCR and thumbnail generation take 2-8 seconds per document. Processing inline would block the upload response. Asynq (Redis-backed, Go-native) queues these as background jobs with automatic retries. Failed jobs retry 3x with exponential backoff before alerting.\n\nOpenAPI-first development - I wrote the OpenAPI spec before writing any code. The Go server validates requests against the spec at runtime. The React client is generated from it. This front-loaded design time but eliminated an entire class of integration bugs.",
         },
         {
           number: "04",
           title: "What I Learned",
           content:
-            "Async job processing changes everything about how you think about user experience. The upload feels instant even though processing happens over 8 seconds. But you need to design for partial states — what does the UI show while OCR is running? What happens if the job fails after the user has already navigated away?\n\nGo's simplicity is its superpower for backend services. No ORM, no magic. sql.DB + hand-written queries + proper error handling. It's verbose but I can read any file and understand exactly what it does. After working in TypeScript ORMs, this felt like fresh air.",
+            "Async job processing changes everything about how you think about user experience. The upload feels instant even though processing happens over 8 seconds. But you need to design for partial states - what does the UI show while OCR is running? What happens if the job fails after the user has already navigated away?\n\nGo's simplicity is its superpower for backend services. No ORM, no magic. sql.DB + hand-written queries + proper error handling. It's verbose but I can read any file and understand exactly what it does. After working in TypeScript ORMs, this felt like fresh air.",
         },
       ],
     },
@@ -141,32 +141,32 @@ export const projects: Project[] = [
     caseStudy: {
       hero: "Building a consumer product and engineering org from zero",
       role: "Founder & CTO",
-      timeline: "Jan 2026 — Present",
+      timeline: "Jan 2026 - Present",
       stack: ["Go", "PostgreSQL", "Redis", "Azure Container Apps", "Next.js", "Expo", "Turborepo", "Bun", "Elysia"],
       sections: [
         {
           number: "01",
           title: "Why I Built This",
           content:
-            "Every photo app stores images. None of them understand memories. I benchmarked 35 features across market leaders and found the same pattern: storage-first, meaning-last. No one was using AI to surface context — who was there, what happened before and after, how that moment connects to a larger story.\n\nMemolane is built on a simple thesis: your memories have a narrative arc, and technology should help you discover it, not just archive it. The database schema uses pgvector for semantic search across memories — not keyword matching, but meaning matching.",
+            "Every photo app stores images. None of them understand memories. I benchmarked 35 features across market leaders and found the same pattern: storage-first, meaning-last. No one was using AI to surface context - who was there, what happened before and after, how that moment connects to a larger story.\n\nMemolane is built on a simple thesis: your memories have a narrative arc, and technology should help you discover it, not just archive it. The database schema uses pgvector for semantic search across memories - not keyword matching, but meaning matching.",
         },
         {
           number: "02",
           title: "How It Works",
           content:
-            "The consumer product is a monorepo: Bun workspace with Turborepo orchestration. Elysia API server, Next.js web app, Expo mobile app — all sharing types and utilities from internal packages.\n\nInfrastructure is Azure-native: Container Apps for the API, Azure Communication Services for email automation, Blob Storage for media, PostgreSQL Flexible Server with pgvector extension. Everything is defined in Bicep IaC and deploys through GitHub Actions CI/CD.\n\nBefore building the consumer product, I built the company itself. The recruitment platform handles the careers portal, applicant tracking, interview scheduling, admin panel with RBAC, and automated status emails. 34 database migrations. 100+ commits. All shipped by me before the first employee started.",
+            "The consumer product is a monorepo: Bun workspace with Turborepo orchestration. Elysia API server, Next.js web app, Expo mobile app - all sharing types and utilities from internal packages.\n\nInfrastructure is Azure-native: Container Apps for the API, Azure Communication Services for email automation, Blob Storage for media, PostgreSQL Flexible Server with pgvector extension. Everything is defined in Bicep IaC and deploys through GitHub Actions CI/CD.\n\nBefore building the consumer product, I built the company itself. The recruitment platform handles the careers portal, applicant tracking, interview scheduling, admin panel with RBAC, and automated status emails. 34 database migrations. 100+ commits. All shipped by me before the first employee started.",
         },
         {
           number: "03",
           title: "Key Decisions",
           content:
-            "Go API over Node.js — With pgvector similarity searches, embedding generation, and media processing, the API is CPU-bound. Go's goroutines handle concurrent requests without the event loop bottleneck. I benchmarked both: Go handled 3x the throughput for vector operations.\n\nAzure over AWS — Azure Container Apps give me serverless containers with auto-scaling at a fraction of ECS/Fargate complexity. Communication Services replaced three separate email tools. The student credits didn't hurt either.\n\nMonorepo with Bun — A 5-person engineering team needs to move fast without stepping on each other. The monorepo (Bun + Turborepo) means shared types, atomic PRs across API and frontend, and cached builds that run the full pipeline in under 2 minutes.\n\nBuilding the recruitment platform first — Counter-intuitive, but hiring 11 people through spreadsheets would have been a disaster. Building the internal tool first gave me a production codebase to evaluate candidates against and onboarding flows that ran automatically.",
+            "Go API over Node.js - With pgvector similarity searches, embedding generation, and media processing, the API is CPU-bound. Go's goroutines handle concurrent requests without the event loop bottleneck. I benchmarked both: Go handled 3x the throughput for vector operations.\n\nAzure over AWS - Azure Container Apps give me serverless containers with auto-scaling at a fraction of ECS/Fargate complexity. Communication Services replaced three separate email tools. The student credits didn't hurt either.\n\nMonorepo with Bun - A 5-person engineering team needs to move fast without stepping on each other. The monorepo (Bun + Turborepo) means shared types, atomic PRs across API and frontend, and cached builds that run the full pipeline in under 2 minutes.\n\nBuilding the recruitment platform first - Counter-intuitive, but hiring 11 people through spreadsheets would have been a disaster. Building the internal tool first gave me a production codebase to evaluate candidates against and onboarding flows that ran automatically.",
         },
         {
           number: "04",
           title: "What I Learned",
           content:
-            "The hardest part of being a technical founder isn't the code — it's context switching between architecture decisions, hiring interviews, and sprint planning in the same afternoon. You have to be comfortable with nothing being fully 'done' because you're always unblocking someone else.\n\nHiring is engineering. You're designing a system (the team) that needs to handle load (work), scale (new problems), and degrade gracefully (when someone is sick or leaves). The same principles apply.\n\nI learned that infrastructure-as-code isn't optional, it's survival. When I needed to spin up a staging environment for candidate code reviews, it took 10 minutes with Bicep. Without IaC, it would have taken a day.",
+            "The hardest part of being a technical founder isn't the code - it's context switching between architecture decisions, hiring interviews, and sprint planning in the same afternoon. You have to be comfortable with nothing being fully 'done' because you're always unblocking someone else.\n\nHiring is engineering. You're designing a system (the team) that needs to handle load (work), scale (new problems), and degrade gracefully (when someone is sick or leaves). The same principles apply.\n\nI learned that infrastructure-as-code isn't optional, it's survival. When I needed to spin up a staging environment for candidate code reviews, it took 10 minutes with Bicep. Without IaC, it would have taken a day.",
         },
       ],
     },
@@ -284,7 +284,7 @@ export const experiences: Experience[] = [
     period: "Jan 2026 - Present",
     location: "Hyderabad, India",
     tags: ["Go", "PostgreSQL", "Redis", "Azure", "CI/CD"],
-    link: null,
+    link: "https://memolane.in",
     achievements: [
       "Designed the full stack architecture (Go API, Next.js, PostgreSQL, Redis), wrote Azure Bicep IaC, and deployed to Azure Container Apps with automated CI/CD.",
       "Built a production recruitment platform. Shipped careers portal, applicant tracking, interview scheduling, admin panel with RBAC, email automation via Azure Communication Services. 34 migrations, 100+ commits.",
@@ -299,7 +299,7 @@ export const experiences: Experience[] = [
     period: "Aug 2025 - Jan 2026",
     location: "India",
     tags: ["Go", "Gin", "Next.js", "TypeScript"],
-    link: null,
+    link: "https://digitalfortress.in",
     achievements: [
       "Built a scalable backend service using Golang (Gin framework) to handle reviews and complaints for 10,000+ students, streamlining daily institutional operations.",
       "Designed RESTful APIs with structured routing, middleware, validation, and centralized error handling.",
@@ -308,15 +308,15 @@ export const experiences: Experience[] = [
     ],
   },
   {
-    title: "User Experience Designer",
+    title: "Design Intern",
     company: "Netts Mobility",
     period: "Apr 2025 - Jul 2025",
     location: "Bengaluru, India",
-    tags: ["Figma", "React", "Next.js", "TypeScript"],
+    tags: ["Figma", "UI/UX", "Prototyping"],
     link: "https://netts.in",
     achievements: [
-      "Designed and developed the complete company website using React, Next.js, and TypeScript. Translated UX research and wireframes into 15+ responsive, high-performance screens.",
-      "Delivered landing pages, product showcases, EV station locators, pricing, and service documentation.",
+      "Designed mobile and web interfaces with 20+ interactive screens covering ride booking, fleet management, EV station locators, and pricing flows.",
+      "Delivered the complete company website design and collaborated with engineering on implementation.",
     ],
   },
 ]
@@ -331,15 +331,19 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
-    version: "v3.0",
+    version: "v2.1",
     date: "May 2026",
     changes: [
-      "Added /uses, /now, /colophon, /changelog pages",
-      "Project case study pages with detailed breakdowns",
-      "⌘K command palette for power-user navigation",
-      "Enhanced footer with special page links",
-      "Film grain texture, magnetic buttons, text scramble",
-      "Dev console Easter egg for fellow engineers",
+      "Redesigned hero with text scramble effect and staggered animations",
+      "Switched entire theme from gold to teal",
+      "Added interactive grid background with hover-activated cells",
+      "Redesigned tech stack into categorized boxy cards",
+      "Redesigned contact section into 2-column layout",
+      "Added live IST clock and active grid counter",
+      "Switched to fully boxy/sharp design language",
+      "Added command palette, guestbook, and case study pages",
+      "Custom scrollbar with teal gradient",
+      "Monster Energy footer tribute",
     ],
   },
   {
@@ -390,8 +394,8 @@ export const changelog: ChangelogEntry[] = [
 
 export const NAV_ITEMS = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/#about" },
   { name: "Experience", href: "/#experience" },
+  { name: "Stack", href: "/#skills" },
   { name: "Projects", href: "/#projects" },
   { name: "Contact Me", href: "/#contact" },
 ] as const
@@ -427,27 +431,23 @@ export const usesData: UsesSection[] = [
     items: [
       {
         name: "MacBook Air M2 (15\", 16GB)",
-        description: "Primary machine. Silent, fanless, handles Docker containers and multiple Node processes without breaking a sweat. 16GB is the sweet spot for running PostgreSQL, Redis, and a Next.js dev server simultaneously.",
+        description: "Primary machine. Silent, fanless, handles Docker containers and multiple processes without thermal throttling. 16GB is the sweet spot for running databases, dev servers, and an IDE simultaneously.",
       },
       {
-        name: "Dell UltraSharp U2723QE (27\" 4K)",
-        description: "External monitor for the desk setup. USB-C single-cable connection. Color accuracy matters when you're building UIs — what I see is what users see.",
+        name: "Lenovo ThinkVision 24\" 144Hz",
+        description: "External monitor for the desk. High refresh for smooth scrolling through codebases and UI work. 24 inches is the right size for keeping everything in peripheral vision.",
       },
       {
-        name: "Keychron K2 (Brown switches)",
-        description: "Mechanical keyboard. Brown switches for the tactile bump without the click noise. Wireless for a clean desk, but I keep it wired for zero-latency typing.",
+        name: "OnePlus Nord Buds 3 Pro",
+        description: "Active noise cancellation for deep work sessions. Quick switch between devices. Good enough audio quality that I forget they're wireless.",
       },
       {
-        name: "Logitech MX Master 3S",
+        name: "Logitech MX Master 3S for Mac",
         description: "The scroll wheel alone is worth it. Infinite scroll for long codebases, horizontal scroll for wide tables. Side buttons mapped to Mission Control and window management.",
       },
       {
-        name: "Sony WH-1000XM5",
-        description: "Noise cancelling for deep work. The transparency mode is good enough that I forget to take them off when someone walks over.",
-      },
-      {
         name: "IKEA BEKANT Standing Desk",
-        description: "Sit-stand desk. I alternate every 90 minutes. The electric motor remembers two heights — no excuses not to stand.",
+        description: "Sit-stand desk. I alternate every 90 minutes. The electric motor remembers two heights. No excuses not to stand.",
       },
     ],
   },
@@ -457,41 +457,41 @@ export const usesData: UsesSection[] = [
     subtitle: "The software I write code in, every day",
     items: [
       {
-        name: "VS Code + Cursor",
-        description: "VS Code for quick edits and familiar extensions. Cursor for AI-assisted development — the tab completion is genuinely useful for boilerplate, and the inline chat saves context switches to ChatGPT.",
+        name: "Ghostty",
+        description: "GPU-accelerated terminal emulator. Native on macOS, fast rendering, clean typography. Replaced every other terminal I've tried.",
+        link: "https://ghostty.org",
+      },
+      {
+        name: "Zed",
+        description: "Code editor built in Rust. Native performance, multiplayer editing, built-in terminal. My primary editor for Rust and Go projects where speed matters.",
+        link: "https://zed.dev",
+      },
+      {
+        name: "Cursor",
+        description: "AI-native code editor. The tab completion and inline chat are genuinely useful for boilerplate generation and refactoring. Main editor for TypeScript projects.",
         link: "https://cursor.sh",
       },
       {
-        name: "Neovim (occasional)",
-        description: "For quick terminal edits, git commit messages, and when I'm SSHed into a server. Not my daily driver, but I keep the muscle memory alive.",
+        name: "Codex",
+        description: "OpenAI's coding agent. Use it for large-scale refactors and generating test suites. Works best when you give it precise, scoped instructions.",
       },
       {
-        name: "Warp Terminal",
-        description: "Modern terminal with block-based output. The AI command suggestions are hit-or-miss, but the input editor (multi-line, syntax highlighted) is a genuine improvement over iTerm2.",
-        link: "https://warp.dev",
-      },
-      {
-        name: "GitHub Copilot",
-        description: "Always-on in VS Code. Best at test generation and repetitive patterns. I reject about 40% of suggestions, but the 60% that land save meaningful time.",
+        name: "OpenCode",
+        description: "Terminal-based AI coding agent. Runs in the terminal, understands project context, delegates to sub-agents. Powers most of my automation workflows.",
+        link: "https://opencode.ai",
       },
       {
         name: "Docker Desktop",
-        description: "Local development databases (PostgreSQL, Redis, MongoDB) all run in containers. docker-compose up and the entire stack is ready. No installing databases on the host machine ever again.",
+        description: "Local development databases all run in containers. docker-compose up and the entire stack is ready. No installing databases on the host machine.",
       },
       {
-        name: "TablePlus",
-        description: "GUI for databases. Native macOS app, fast, supports PostgreSQL, MySQL, Redis, MongoDB. I use it for quick queries and data inspection — SQL files for anything production-adjacent.",
-        link: "https://tableplus.com",
+        name: "openUsage",
+        description: "Utility for checking API usage limits across providers. Keeps me from hitting rate limits mid-flow.",
       },
       {
-        name: "Figma",
-        description: "Wireframes, component design, prototyping. I design before I code — even for personal projects. The Dev Mode is worth the subscription for auto-generating CSS from designs.",
-        link: "https://figma.com",
-      },
-      {
-        name: "Bruno",
-        description: "API client that stores requests as files in git. Replaced Postman entirely. The collection lives in the repo, not in a cloud account I might lose access to.",
-        link: "https://usebruno.com",
+        name: "VSCodium",
+        description: "Open-source VS Code without telemetry. Use it for quick edits and when I need the extension ecosystem without the Microsoft tracking.",
+        link: "https://vscodium.com",
       },
     ],
   },
@@ -502,36 +502,31 @@ export const usesData: UsesSection[] = [
     items: [
       {
         name: "zsh + Oh My Zsh",
-        description: "Shell with plugins for git aliases, autocompletions, and syntax highlighting. The git plugin alone saves hundreds of keystrokes per day (gst, gco, gp).",
+        description: "Shell with plugins for git aliases, autocompletions, and syntax highlighting. The git plugin alone saves hundreds of keystrokes per day.",
+      },
+      {
+        name: "Bun",
+        description: "JavaScript runtime and toolkit. Faster than Node for scripts, built-in bundler and test runner. Use it for monorepo tooling at Memolane.",
+        link: "https://bun.sh",
       },
       {
         name: "pnpm",
-        description: "Package manager. Strict dependency resolution, content-addressable storage, and workspace support for monorepos. npm and yarn feel slow after pnpm.",
+        description: "Package manager. Strict dependency resolution, content-addressable storage, and workspace support for monorepos. npm feels slow after pnpm.",
         link: "https://pnpm.io",
       },
       {
-        name: "Turborepo",
-        description: "Monorepo build orchestration. Caches build outputs, runs tasks in parallel, and only rebuilds what changed. The Memolane monorepo builds in under 2 minutes with warm cache.",
-        link: "https://turbo.build",
-      },
-      {
-        name: "lazygit",
-        description: "Terminal UI for git. Staging hunks, interactive rebase, and branch management without leaving the terminal. Faster than any GUI for complex git operations.",
-        link: "https://github.com/jesseduffield/lazygit",
-      },
-      {
-        name: "fzf + ripgrep",
-        description: "Fuzzy finder + fast grep. Ctrl+R for command history, Ctrl+T for file finder, and rg for searching codebases. Orders of magnitude faster than grep.",
-      },
-      {
-        name: "Raycast",
-        description: "Spotlight replacement. Clipboard history, window management, snippets, and custom scripts. The calculator and color picker alone justify the switch from Alfred.",
-        link: "https://raycast.com",
+        name: "npm",
+        description: "Still use it for global installs and quick prototypes where pnpm's strictness is overkill.",
       },
       {
         name: "gh (GitHub CLI)",
-        description: "Create PRs, review issues, check CI status — all from the terminal. gh pr create with a template is faster than the web UI.",
+        description: "Create PRs, review issues, check CI status from the terminal. gh pr create with a template is faster than the web UI.",
         link: "https://cli.github.com",
+      },
+      {
+        name: "Raycast",
+        description: "Spotlight replacement. Clipboard history, window management, snippets, and custom scripts. The calculator and color picker alone justify it.",
+        link: "https://raycast.com",
       },
     ],
   },
@@ -541,37 +536,36 @@ export const usesData: UsesSection[] = [
     subtitle: "The daily-driver apps outside the editor",
     items: [
       {
-        name: "Arc Browser",
-        description: "Chromium-based browser with workspaces. I separate contexts — Work, Personal, Research — each with their own tabs, bookmarks, and extensions. Vertical tabs were the unlock.",
-        link: "https://arc.net",
-      },
-      {
-        name: "Linear",
-        description: "Project management. Fast, keyboard-driven, and opinionated about workflows. Issues, cycles, and roadmaps. I use it for everything — personal projects included.",
-        link: "https://linear.app",
+        name: "Firefox",
+        description: "Primary browser. Privacy-focused, great DevTools, container tabs for separating work and personal contexts. Chromium-free by choice.",
+        link: "https://firefox.com",
       },
       {
         name: "Notion",
-        description: "Knowledge base and long-form writing. Meeting notes, technical specs, PRDs, decision logs. Not my task manager (that's Linear), but my thinking tool.",
+        description: "Knowledge base and long-form writing. Meeting notes, technical specs, PRDs, decision logs. Not my task manager, but my thinking tool.",
         link: "https://notion.so",
       },
       {
-        name: "Slack",
-        description: "Team communication at Memolane. Channels organized by squad, project, and function. Huddles for quick sync — replaced 80% of scheduled meetings.",
+        name: "Discord",
+        description: "Developer communities, async collaboration, and voice calls with the team. Better than Slack for open-source community management.",
+      },
+      {
+        name: "Telegram (OpenClaw)",
+        description: "Quick messaging and OpenClaw community channels. Lightweight, fast, good bot ecosystem for notifications.",
       },
       {
         name: "Cal.com",
-        description: "Scheduling. Open-source Calendly alternative. Connected to my portfolio for booking calls. Automatic timezone detection and buffer time between meetings.",
+        description: "Scheduling. Open-source Calendly alternative. Connected to my portfolio for booking calls. Automatic timezone detection.",
         link: "https://cal.com",
       },
       {
-        name: "Vercel",
-        description: "Deployment platform for Next.js. Preview deployments on every PR, edge functions, and analytics. Every personal project deploys here.",
-        link: "https://vercel.com",
+        name: "Apple Music",
+        description: "Background music for deep work. Spatial audio with the Nord Buds. Lo-fi, electronic, and video game soundtracks on rotation.",
       },
       {
-        name: "Spotify",
-        description: "Background music for deep work. Lo-fi playlists, instrumental hip-hop, and video game soundtracks. Music is part of the workflow.",
+        name: "NordVPN",
+        description: "VPN for security on public networks and accessing region-locked documentation. Always-on when working from cafes.",
+        link: "https://nordvpn.com",
       },
     ],
   },
@@ -597,17 +591,17 @@ export const colophon = {
   ],
   colors: [
     { name: "Background", value: "hsl(220 8% 4%)", swatch: "#0a0b0d", detail: "Near-black with a cool blue-gray tint" },
-    { name: "Primary / Teal", value: "hsl(172 50% 45%)", swatch: "#2db8a0", detail: "Cool teal accent — buttons, links, emphasis" },
+    { name: "Primary / Teal", value: "hsl(172 50% 45%)", swatch: "#2db8a0", detail: "Cool teal accent - buttons, links, emphasis" },
     { name: "Foreground", value: "hsl(0 0% 93%)", swatch: "#ededed", detail: "Off-white text for comfortable reading" },
     { name: "Muted", value: "hsl(220 3% 48%)", swatch: "#787a7d", detail: "Secondary text, descriptions, metadata" },
     { name: "Card", value: "hsl(220 6% 8%)", swatch: "#131416", detail: "Elevated surface for cards and dialogs" },
     { name: "Border", value: "hsl(220 5% 14%)", swatch: "#222326", detail: "Subtle separation, low-contrast borders" },
   ],
   philosophy: [
-    "Dark-only. No light mode toggle — the design was conceived in darkness and lives there.",
+    "Dark-only. No light mode toggle - the design was conceived in darkness and lives there.",
     "Content over chrome. Every animation earns its milliseconds. No motion for motion's sake.",
     "Hardcoded content. No CMS, no database for portfolio content. Data lives in TypeScript files with full type safety.",
     "Performance is a feature. Zero layout shift. Minimal JavaScript. Server-rendered where possible.",
-    "The site is the resume. Every detail — from font choice to error handling — demonstrates engineering taste.",
+    "The site is the resume. Every detail - from font choice to error handling - demonstrates engineering taste.",
   ],
 }
