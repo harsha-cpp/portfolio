@@ -128,13 +128,35 @@
   }
 }
 
-/* Scrollbar styles */
+/* Scrollbar styles - global with left-side gradient accent */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, hsl(172 50% 45% / 0.6), hsl(172 50% 45% / 0.1));
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, hsl(172 50% 45% / 0.8), hsl(172 50% 45% / 0.2));
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(172 50% 45% / 0.4) transparent;
+}
+
 .scrollbar-thin {
   scrollbar-width: thin;
 }
 
 .scrollbar-thin::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-track {
@@ -142,12 +164,12 @@
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--border) / 0.4);
-  border-radius: 2px;
+  background: linear-gradient(to bottom, hsl(172 50% 45% / 0.6), hsl(172 50% 45% / 0.1));
+  border-radius: 0;
 }
 
-.scrollbar-thin:hover::-webkit-scrollbar-thumb {
-  background-color: hsl(var(--border) / 0.6);
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, hsl(172 50% 45% / 0.8), hsl(172 50% 45% / 0.2));
 }
 
 .scrollbar-none {

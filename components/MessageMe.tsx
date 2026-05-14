@@ -7,15 +7,27 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Send, Check, Loader2 } from "lucide-react"
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
 export default function MessageMe() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle")
+  const [errors, setErrors] = useState<{ name?: string; email?: string }>({})
+
+  const validate = () => {
+    const next: { name?: string; email?: string } = {}
+    if (!name.trim()) next.name = "Name is required"
+    if (!email.trim() || !EMAIL_RE.test(email.trim())) next.email = "Valid email is required"
+    setErrors(next)
+    return Object.keys(next).length === 0
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!message.trim()) return
+    if (!validate()) return
 
     setStatus("sending")
 
@@ -39,23 +51,28 @@ export default function MessageMe() {
     setName("")
     setEmail("")
     setMessage("")
+    setErrors({})
     setStatus("idle")
   }
 
   if (status === "sent") {
     return (
-      <Card className="card-enhanced overflow-hidden h-full">
-        <CardContent className="p-6 flex flex-col items-center justify-center min-h-[320px] text-center">
-          <div className="bg-green-500/10 p-4  border border-green-500/20 mb-4">
-            <Check className="h-6 w-6 text-green-500" />
+      <Card className="card-enhanced overflow-hidden h-full rounded-none">
+        <CardContent className="p-8 flex flex-col items-center justify-center min-h-[320px] text-center">
+          <div className="bg-primary/10 p-5 border border-primary/30 mb-5">
+            <Check className="h-10 w-10 text-primary" strokeWidth={2.5} />
           </div>
-          <h3 className="font-medium text-lg mb-1">Message sent</h3>
-          <p className="text-sm text-muted-foreground mb-6">
-            I'll get back to you soon.
+          <h3 className="font-medium text-xl text-foreground mb-2">Message sent</h3>
+          <p className="text-sm text-muted-foreground mb-8">
+            I&apos;ll get back to you soon.
           </p>
-          <Button variant="outline" size="sm" onClick={reset}>
+          <button
+            type="button"
+            onClick={reset}
+            className="btn-secondary"
+          >
             Send another
-          </Button>
+          </button>
         </CardContent>
       </Card>
     )
@@ -76,21 +93,39 @@ export default function MessageMe() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-3">
+        <form onSubmit={handleSubmit} className="space-y-3" noValidate>
           <div className="grid grid-cols-2 gap-3">
-            <Input
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="text-sm"
-            />
-            <Input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="text-sm"
-            />
+            <div>
+              <Input
+                placeholder="Name"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value)
+                  if (errors.name) setErrors((p) => ({ ...p, name: undefined }))
+                }}
+                aria-invalid={!!errors.name}
+                className={`text-sm ${errors.name ? "border-red-500/70 focus-visible:ring-red-500/40" : ""}`}
+              />
+              {errors.name && (
+                <p className="text-xs text-red-400 mt-1">{errors.name}</p>
+              )}
+            </div>
+            <div>
+              <Input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  if (errors.email) setErrors((p) => ({ ...p, email: undefined }))
+                }}
+                aria-invalid={!!errors.email}
+                className={`text-sm ${errors.email ? "border-red-500/70 focus-visible:ring-red-500/40" : ""}`}
+              />
+              {errors.email && (
+                <p className="text-xs text-red-400 mt-1">{errors.email}</p>
+              )}
+            </div>
           </div>
           <Textarea
             placeholder="Your message..."

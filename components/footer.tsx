@@ -28,7 +28,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-4 lg:pr-6">
             <Link href="/" className="inline-block">
-              <span className="gradient-text text-2xl font-bold tracking-tight">HT</span>
+              <span className="text-2xl font-semibold text-foreground tracking-tight">Harsha Tummalapalli</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               Full-stack engineer building products from zero to production.
@@ -115,11 +115,16 @@ export default function Footer() {
                 </a>
               </li>
               <li className="pt-4">
-                <img
-                  src="/monster-energy-logo.png"
-                  alt="Monster Energy"
-                  className="h-14 w-auto opacity-50 hover:opacity-80 transition-opacity"
-                />
+                <a href="https://www.monsterenergy.com" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-3">
+                  <img
+                    src="/monster-energy-logo.png"
+                    alt="Monster Energy"
+                    className="h-14 w-auto brightness-150 drop-shadow-[0_0_8px_rgba(149,214,0,0.4)] group-hover:drop-shadow-[0_0_14px_rgba(149,214,0,0.6)] transition-all"
+                  />
+                  <span className="text-xs text-muted-foreground/70 leading-tight">
+                    Energized By<br /><span className="text-[#95D600] font-medium">Monster</span>
+                  </span>
+                </a>
               </li>
             </ul>
           </div>

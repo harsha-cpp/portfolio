@@ -148,9 +148,9 @@ export default function TechStack() {
   return (
     <section id="skills" className="py-24">
       <div className="container px-4 md:px-6 mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="shimmer-text text-4xl sm:text-5xl md:text-6xl font-light tracking-[0.2em] uppercase leading-none font-space-grotesk">
-            Tech Stack
+        <div className="mb-16">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl text-white">
+            Tech <span className="cursive-text">Stack</span>
           </h2>
         </div>
 

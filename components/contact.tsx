@@ -76,7 +76,7 @@ export default function Contact() {
                       >
                         {page.name}
                       </Link>
-                      <span className="text-muted-foreground"> — {page.description.toLowerCase()}</span>
+                      <span className="text-muted-foreground"> - {page.description.toLowerCase()}</span>
                     </div>
                   ))}
                 </div>
