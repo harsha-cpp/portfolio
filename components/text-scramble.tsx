@@ -14,7 +14,7 @@ interface TextScrambleProps {
 
 export default function TextScramble({ text, className }: TextScrambleProps) {
   const [chars, setChars] = useState<{ char: string; resolved: boolean }[]>(
-    () => text.split("").map((ch) => ({ char: ch === " " ? " " : GLYPHS[Math.floor(Math.random() * GLYPHS.length)], resolved: ch === " " }))
+    () => text.split("").map((ch) => ({ char: ch, resolved: true }))
   )
   const rafRef = useRef<number | null>(null)
   const startRef = useRef<number | null>(null)

@@ -9,7 +9,6 @@ import Footer from "@/components/footer"
 import AnimatedBackground from "@/components/animated-background"
 import FilmGrain from "@/components/film-grain"
 import NoScriptStyles from "@/components/noscript-styles"
-import MobileBlock from "@/components/mobile-block"
 import ConsoleEasterEgg from "@/components/console-easter-egg"
 import CommandPalette from "@/components/command-palette"
 
@@ -40,8 +39,7 @@ export default function ClientLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={cn("min-h-screen bg-background antialiased dark", lexend.variable, funnelDisplay.variable, spaceGrotesk.variable)}>
-        <MobileBlock>
-            <div className="relative flex min-h-screen flex-col">
+        <div className="relative flex min-h-screen flex-col">
             <noscript>
               <div className="bg-primary/20 p-4 text-center text-sm border-b border-primary/30">
                 For the best experience, please enable JavaScript. Some features may be limited without it.
@@ -52,10 +50,9 @@ export default function ClientLayout({
             <ConsoleEasterEgg />
             <Header />
             <main className="flex-1 relative z-10">{children}</main>
-            <Footer />
-            <CommandPalette />
-          </div>
-        </MobileBlock>
+          <Footer />
+          <CommandPalette />
+        </div>
       </body>
     </html>
   )

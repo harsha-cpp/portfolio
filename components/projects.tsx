@@ -1,101 +1,96 @@
-import { ExternalLink, Github, ArrowRight } from "lucide-react"
+"use client"
+
+import { ExternalLink, ArrowRight } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { projects } from "@/lib/data"
+
+const FEATURED_SLUGS = ["openlinear", "memolane", "medbridge"]
+
+const featured = FEATURED_SLUGS.map(
+  (slug) => projects.find((p) => p.slug === slug)!
+).filter(Boolean)
+
+const PRIMARY_TAG: Record<string, string> = {
+  openlinear: "Next.js",
+  memolane: "Go",
+  medbridge: "Next.js",
+}
+
+function ProjectCard({ project }: { project: typeof featured[number] }) {
+  const router = useRouter()
+
+  return (
+    <div
+      className="group relative flex items-center min-h-[72px] px-5 py-4 bg-background border border-border/50 hover:border-border transition-colors duration-200 overflow-hidden cursor-pointer"
+      onClick={() => router.push(`/projects/${project.slug}`)}
+    >
+      {/* left accent bar */}
+      <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary via-primary/40 to-transparent" />
+
+      {/* project name — left */}
+      <div className="flex-1 min-w-0 pr-4">
+        <span className="text-base font-semibold text-foreground group-hover:text-primary transition-colors duration-200 truncate block">
+          {project.title}
+        </span>
+
+      </div>
+
+      {/* right side: primary stack badge + live link + arrow */}
+      <div className="flex items-center gap-3 flex-shrink-0">
+        {/* primary stack pill */}
+        <span className="hidden sm:inline-flex px-2.5 py-1 text-xs font-medium bg-secondary/60 border border-border/40 text-muted-foreground">
+          {PRIMARY_TAG[project.slug] ?? project.tags[0]}
+        </span>
+
+        {/* live link — real <a>, stops propagation to prevent double-nav */}
+        {project.liveLink && (
+          <a
+            href={project.liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="p-1.5 text-muted-foreground/50 hover:text-primary transition-colors duration-200"
+            aria-label={`Open ${project.title} live site`}
+          >
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        )}
+
+        {/* arrow */}
+        <ArrowRight className="h-4 w-4 text-muted-foreground/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all duration-200" />
+      </div>
+    </div>
+  )
+}
 
 export default function Projects() {
   return (
     <div className="w-full section-alt">
       <section id="projects" className="py-20 w-full relative">
         <div className="container px-4 md:px-6 mx-auto relative z-10">
-          <div className="space-y-12">
-            <div className="space-y-4 text-left">
-              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl text-white">
-                Projects <span className="cursive-text">& Work</span>
-              </h2>
-            </div>
+          <div className="space-y-10">
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 mt-12">
-              {projects.map((project) => (
-                <div key={project.title} className="group">
-                  <div className="relative p-6  bg-background border border-border/50 transition-colors duration-200 hover:border-border h-full flex flex-col">
-                    <div className="flex flex-col h-full space-y-4">
-                      <div className="flex items-center justify-between">
-                        <Link href={`/projects/${project.slug}`} className="flex items-center gap-2 hover:gap-3 transition-all duration-200">
-                          <h3 className="text-lg font-semibold text-white group-hover:text-primary transition-colors duration-200">
-                            {project.title}
-                          </h3>
-                          <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors duration-200" />
-                        </Link>
-                        {project.featured && (
-                          <span className="text-[10px] uppercase tracking-[0.15em] text-primary/80 border border-primary/30 px-2 py-0.5 ">
-                            Case Study
-                          </span>
-                        )}
-                      </div>
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl text-white">
+              <span className="cursive-text">projects</span>
+            </h2>
 
-                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                        {project.description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.slice(0, 5).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1.5 text-xs font-medium bg-secondary/60 border border-border/40 text-muted-foreground "
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex items-center gap-3 pt-2">
-                        {project.codeLink && (
-                          <Link href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                            <button type="button" className="btn-secondary group/btn">
-                              <Github className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
-                              Code
-                            </button>
-                          </Link>
-                        )}
-                        {project.liveLink && (
-                          <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                            <button type="button" className={project.liveLink.includes('figma.com') ? "btn-secondary group/btn" : "btn-primary group/btn"}>
-                              {project.liveLink.includes('figma.com') ? (
-                                <Image
-                                  src="/Figma-logo.svg.png"
-                                  alt="Figma"
-                                  width={16}
-                                  height={16}
-                                  className="mr-2 group-hover/btn:scale-110 transition-transform duration-300"
-                                />
-                              ) : (
-                                <ExternalLink className="mr-2 h-4 w-4 group-hover/btn:scale-110 transition-transform duration-300" />
-                              )}
-                              {project.liveLink.includes('figma.com') ? 'Prototype' : 'Live Demo'}
-                            </button>
-                          </Link>
-                        )}
-                        {project.prototypeLink && (
-                          <Link href={project.prototypeLink} target="_blank" rel="noopener noreferrer">
-                            <button type="button" className="btn-secondary group/btn">
-                              <Image
-                                src="/Figma-logo.svg.png"
-                                alt="Figma"
-                                width={16}
-                                height={16}
-                                className="mr-2 group-hover/btn:scale-110 transition-transform duration-300"
-                              />
-                              Prototype
-                            </button>
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div className="flex flex-col gap-3">
+              {featured.map((project) => (
+                <ProjectCard key={project.slug} project={project} />
               ))}
             </div>
+
+            <div className="flex justify-start">
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 group"
+              >
+                view all projects
+                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-0.5 transition-transform duration-200" />
+              </Link>
+            </div>
+
           </div>
         </div>
       </section>

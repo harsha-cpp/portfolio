@@ -213,7 +213,7 @@ export default function Header() {
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
-                    "text-sm font-medium transition-colors py-2 px-3 rounded-md",
+                    "text-sm font-medium transition-colors py-2 px-3",
                     isActive
                       ? "bg-primary/10 text-primary font-semibold"
                       : "text-muted-foreground hover:bg-muted/50 hover:text-foreground",
@@ -233,7 +233,7 @@ export default function Header() {
                   href={page.href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "text-sm font-medium transition-colors py-2 px-3 rounded-md",
+                    "text-sm font-medium transition-colors py-2 px-3",
                     isActivePage
                       ? "bg-primary/10 text-primary font-semibold"
                       : "text-muted-foreground hover:bg-muted/50 hover:text-foreground",
