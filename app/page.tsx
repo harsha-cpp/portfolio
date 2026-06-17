@@ -1,4 +1,5 @@
 import Hero from "@/components/hero"
+import MobileOSS from "@/components/mobile-oss"
 import Experience from "@/components/experience"
 import TechStack from "@/components/tech-stack"
 import Projects from "@/components/projects"
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <div className="w-full">
       <Hero />
+      <MobileOSS />
       <Experience />
       <TechStack />
       <Projects />
