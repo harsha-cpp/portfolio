@@ -1,7 +1,9 @@
 "use client"
 
 /* eslint-disable @next/next/no-img-element */
+import { useState, useEffect } from "react"
 import { GitHubCalendar } from "react-github-calendar"
+import type { Activity } from "react-github-calendar"
 
 const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
@@ -77,6 +79,29 @@ const goldTheme = {
   dark: ["#161820", "#0d3630", "#145e50", "#1e8a78", "#2db8a0"],
 }
 
+function boostLevels(data: Activity[]): Activity[] {
+  const counts = data.map((d) => d.count).filter((c) => c > 0)
+  if (counts.length === 0) return data
+
+  counts.sort((a, b) => a - b)
+  const p25 = counts[Math.floor(counts.length * 0.25)]
+  const p50 = counts[Math.floor(counts.length * 0.50)]
+  const p75 = counts[Math.floor(counts.length * 0.75)]
+
+  return data.map((d): Activity => {
+    if (d.count === 0) return { ...d, level: 0 }
+    if (d.count <= p25) return { ...d, level: 1 }
+    if (d.count <= p50) return { ...d, level: 2 }
+    if (d.count <= p75) return { ...d, level: 3 }
+    return { ...d, level: 4 }
+  })
+}
+
+function formatDate(dateStr: string) {
+  const d = new Date(dateStr + "T00:00:00")
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
+}
+
 const projectCounts: Record<string, number> = {
   "Go": 4,
   "Node.js": 2,
@@ -145,12 +170,27 @@ function CategoryBlock({ category }: { category: Category }) {
 }
 
 export default function TechStack() {
+  const [top3, setTop3] = useState<Activity[]>([])
+
+  useEffect(() => {
+    fetch("https://github-contributions-api.jogruber.de/v4/harsha-cpp?y=last")
+      .then((r) => r.json())
+      .then((data) => {
+        const sorted = [...(data.contributions as Activity[])]
+          .filter((d) => d.count > 0)
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 3)
+        setTop3(sorted)
+      })
+      .catch(() => {})
+  }, [])
+
   return (
     <section id="skills" className="py-24">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="mb-16">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl text-white">
-            Tech <span className="cursive-text">Stack</span>
+            <span className="cursive-text">stack</span>
           </h2>
         </div>
 
@@ -160,20 +200,53 @@ export default function TechStack() {
           ))}
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-full">
           <p className="text-xs text-muted-foreground/40 mb-6 tracking-[0.25em] uppercase font-medium">
             GitHub Contributions
           </p>
-          <div className="max-w-full overflow-x-auto pb-2">
+          <div className="w-full overflow-x-auto flex justify-center">
             <GitHubCalendar
               username="harsha-cpp"
               colorScheme="dark"
               theme={goldTheme}
-              blockSize={13}
+              blockSize={14}
               blockMargin={4}
               fontSize={13}
+              transformData={boostLevels}
             />
           </div>
+
+          {top3.length > 0 && (
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              {top3.map((day, i) => (
+                <div
+                  key={day.date}
+                  className="flex items-center gap-2 px-3 py-1.5 border border-border/40 bg-card"
+                >
+                  {/* rank badge */}
+                  <span className="text-[10px] font-medium text-primary font-space-grotesk tracking-widest">
+                    #{i + 1}
+                  </span>
+                  {/* arrow pointing up toward graph */}
+                  <svg
+                    className="text-primary flex-shrink-0 -rotate-90"
+                    width="10"
+                    height="10"
+                    viewBox="0 0 10 10"
+                    fill="none"
+                  >
+                    <path d="M5 1L9 9H1L5 1Z" fill="currentColor" />
+                  </svg>
+                  <span className="text-xs text-foreground/80 font-space-grotesk">
+                    {formatDate(day.date)}
+                  </span>
+                  <span className="text-xs text-primary font-medium font-space-grotesk">
+                    {day.count} commits
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
