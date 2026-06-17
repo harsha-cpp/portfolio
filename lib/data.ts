@@ -136,7 +136,7 @@ export const projects: Project[] = [
       "The product I'm building as Founder & CTO. Designed the full stack architecture (Go API, Next.js, PostgreSQL, Redis), wrote Azure Bicep IaC, and deployed to Azure Container Apps. Built a production recruitment platform, hired 11 people, and set up the engineering org from scratch.",
     tags: ["Go", "PostgreSQL", "Redis", "Azure", "Next.js", "Turborepo"],
     codeLink: null,
-    liveLink: null,
+    liveLink: "https://memolane.in",
     featured: true,
     caseStudy: {
       hero: "Building a consumer product and engineering org from zero",
