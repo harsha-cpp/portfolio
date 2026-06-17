@@ -23,8 +23,12 @@ yarn-error.log*
 .vercel
 
 # misc
+.DS_Store
+app/.DS_Store
 .playwright-mcp/
 portfolio-full.png
+.omo/
+package-lock.json
 
 # typescript
 *.tsbuildinfo
