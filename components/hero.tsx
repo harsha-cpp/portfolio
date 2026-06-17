@@ -114,14 +114,14 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-16 lg:gap-12">
 
           {/* ── Left: existing hero content ── */}
-          <div className="max-w-2xl lg:max-w-2xl flex-1">
+          <div className="max-w-2xl lg:max-w-none flex-1">
 
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.1 }}
             style={{ willChange: "opacity" }}
-            className="font-funnel-display text-3xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-[1.05] mb-3"
+            className="font-funnel-display text-[1.75rem] sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground tracking-tight leading-[1.05] mb-3 whitespace-nowrap"
           >
             <TextScramble text="Harsha Tummalapalli" />
           </motion.h1>
@@ -131,7 +131,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.2 }}
             style={{ willChange: "opacity" }}
-            className="font-funnel-display text-3xl sm:text-5xl lg:text-6xl font-bold text-muted-foreground/40 tracking-tight leading-[0.95]"
+            className="font-funnel-display text-[1.5rem] sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-muted-foreground/40 tracking-tight leading-[1.05] break-words"
           >
             I build things that ship.
           </motion.h2>
