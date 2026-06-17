@@ -107,7 +107,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section id="home" className="relative flex flex-col items-start justify-center min-h-screen px-4 md:px-6 pt-safe-top">
+    <section id="home" className="relative flex flex-col items-start justify-center min-h-screen pt-safe-top">
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
 
       <div className="container mx-auto">
