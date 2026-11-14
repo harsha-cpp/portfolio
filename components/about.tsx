@@ -13,8 +13,9 @@ export default function About() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Full-stack engineer who ships end-to-end. From database schema design
               and Go APIs to React frontends and cloud infrastructure. Currently an AI Engineer
-              at <span className="cursive-text">TOPO AI</span>, building verification workflows
-              and document processing pipelines. Previously a Founding Engineer at Memolane.
+              at <a href="https://topolabs.ai" target="_blank" rel="noopener noreferrer" className="cursive-text">topolabs.ai</a>, building verification workflows
+              and document processing pipelines. Previously a Founding Engineer at{" "}
+              <a href="https://memolane.in" target="_blank" rel="noopener noreferrer" className="cursive-text">Memolane</a>.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
               Before that, I wrote Go backend services for a student population of 10,000+

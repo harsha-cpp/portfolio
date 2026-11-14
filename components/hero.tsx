@@ -144,8 +144,10 @@ export default function Hero() {
           >
             I build backend systems, distributed workflows, and AI tools.
             Currently an AI Engineer at{" "}
-            <span className="text-foreground font-medium">TOPO AI</span>, developing
+            <a href="https://topolabs.ai" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium hover:text-primary transition-colors">topolabs.ai</a>, developing
             agentic verification workflows and document processing pipelines.
+            {" "}Previously a Founding Engineer at{" "}
+            <a href="https://memolane.in" target="_blank" rel="noopener noreferrer" className="text-foreground font-medium hover:text-primary transition-colors">Memolane</a>.
           </motion.p>
 
           <motion.div
