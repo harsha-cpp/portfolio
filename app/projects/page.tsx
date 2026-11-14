@@ -38,14 +38,14 @@ export default function ProjectsPage() {
             Projects
           </h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-xl">
-            Things I've designed, built, and shipped — from consumer products to open-source tools.
+            Products, developer tools and experiments across backend systems, full stack and AI.
           </p>
         </header>
 
         {/* featured */}
         <section className="mt-12">
           <h2 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-6">
-            Featured
+            Project studies
           </h2>
           <div className="flex flex-col gap-3">
             {featured.map((project) => (

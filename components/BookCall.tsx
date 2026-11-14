@@ -27,6 +27,7 @@ export default function BookCall() {
       cal("ui", {
         theme: "dark",
         cssVarsPerTheme: {
+          light: {},
           dark: {
             "cal-bg": "transparent",
             "cal-bg-emphasis": "hsl(220, 6%, 10%)",
@@ -35,8 +36,8 @@ export default function BookCall() {
             "cal-text-muted": "hsl(220, 3%, 48%)",
             "cal-border": "hsl(220, 5%, 18%)",
             "cal-border-emphasis": "hsl(220, 5%, 22%)",
-        "cal-brand": "hsl(172, 50%, 45%)",
-        "cal-brand-emphasis": "hsl(172, 45%, 55%)",
+            "cal-brand": "hsl(172, 50%, 45%)",
+            "cal-brand-emphasis": "hsl(172, 45%, 55%)",
             "cal-brand-text": "hsl(220, 8%, 4%)",
           },
         },

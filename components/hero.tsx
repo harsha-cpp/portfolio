@@ -142,11 +142,10 @@ export default function Hero() {
             transition={{ duration: 0.4, delay: 0.3 }}
             className="mt-10 text-base md:text-lg text-muted-foreground leading-relaxed max-w-[540px]"
           >
-            I design systems, write backend services, and ship products
-            end-to-end. Currently leading engineering at{" "}
-            <span className="text-foreground font-medium">Memolane</span>, architecting
-            the platform, scaling the infrastructure, and getting an AI
-            product into production.
+            I build backend systems, distributed workflows, and AI tools.
+            Currently an AI Engineer at{" "}
+            <span className="text-foreground font-medium">TOPO AI</span>, developing
+            agentic verification workflows and document processing pipelines.
           </motion.p>
 
           <motion.div

@@ -12,13 +12,13 @@ export default function About() {
           <div className="space-y-5">
             <p className="text-lg text-muted-foreground leading-relaxed">
               Full-stack engineer who ships end-to-end. From database schema design
-              and Go APIs to React frontends and cloud infrastructure. Currently Founder & CTO
-              at <span className="cursive-text">Memolane</span>, where I designed the architecture,
-              built the recruitment platform, hired 11 people, and set up the engineering org from scratch.
+              and Go APIs to React frontends and cloud infrastructure. Currently an AI Engineer
+              at <span className="cursive-text">TOPO AI</span>, building verification workflows
+              and document processing pipelines. Previously a Founding Engineer at Memolane.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Before that, I wrote backend services in Go handling 10K+ concurrent users
-              at Digital Fortress and shipped 15+ screens as a UX designer at Netts Mobility.
+              Before that, I wrote Go backend services for a student population of 10,000+
+              at Digital Fortress and designed 20+ screens at Netts Mobility.
               I work across <span className="cursive-text">TypeScript</span>,{" "}
               <span className="cursive-text">Go</span>,{" "}
               <span className="cursive-text">PostgreSQL</span>,{" "}
@@ -27,7 +27,7 @@ export default function About() {
               <span className="cursive-text">Azure</span>, and I care about getting things deployed, not just built.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Third-year CS undergrad at VIT Amaravati. I build open-source tools, run hackathons,
+              CS undergrad at VIT Amaravati, graduating in May 2027. I build open-source tools, run hackathons,
               and spend my time figuring out how to make software that actually works at scale.
             </p>
           </div>

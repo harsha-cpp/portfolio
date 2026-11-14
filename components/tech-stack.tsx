@@ -2,14 +2,29 @@
 
 /* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react"
-import { GitHubCalendar } from "react-github-calendar"
+import dynamic from "next/dynamic"
 import type { Activity } from "react-github-calendar"
+import { projects } from "@/lib/data"
+
+// The calendar's loading animation reads browser motion preferences on first render.
+const GitHubCalendar = dynamic(
+  () => import("react-github-calendar").then((mod) => mod.GitHubCalendar),
+  {
+    ssr: false,
+    loading: () => (
+      <div role="status" className="min-h-[170px] flex items-center text-sm text-muted-foreground">
+        Loading GitHub contributions…
+      </div>
+    ),
+  }
+)
 
 const CDN = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons"
 
 type Tech = {
   name: string
-  icon: string
+  icon?: string
+  iconLabel?: string
   invert?: boolean
   aliases?: string[]
 }
@@ -23,6 +38,10 @@ const categories: Category[] = [
   {
     label: "API & Server",
     items: [
+      { name: "Python", icon: `${CDN}/python/python-original.svg` },
+      { name: "FastAPI", icon: `${CDN}/fastapi/fastapi-original.svg` },
+      { name: "Hono", iconLabel: "hn" },
+      { name: "Celery", iconLabel: "q" },
       { name: "Go", icon: `${CDN}/go/go-original-wordmark.svg`, aliases: ["Gin", "Golang"] },
       { name: "Node.js", icon: `${CDN}/nodejs/nodejs-original.svg`, aliases: ["Node", "NodeJS"] },
       { name: "Express", icon: `${CDN}/express/express-original.svg`, invert: true, aliases: ["Express.js", "ExpressJS"] },
@@ -33,12 +52,12 @@ const categories: Category[] = [
   {
     label: "Client",
     items: [
-      { name: "React", icon: `${CDN}/react/react-original.svg`, aliases: ["React Native"] },
+      { name: "React", icon: `${CDN}/react/react-original.svg`, aliases: ["React Native", "Next.js", "Expo"] },
       { name: "Next.js", icon: `${CDN}/nextjs/nextjs-original.svg`, invert: true, aliases: ["NextJS", "Next"] },
       { name: "TypeScript", icon: `${CDN}/typescript/typescript-original.svg`, aliases: ["TS"] },
       { name: "JavaScript", icon: `${CDN}/javascript/javascript-original.svg`, aliases: ["JS"] },
       { name: "Tailwind", icon: `${CDN}/tailwindcss/tailwindcss-original.svg`, aliases: ["TailwindCSS", "Tailwind CSS"] },
-      { name: "Framer Motion", icon: `${CDN}/framermotion/framermotion-original.svg`, invert: true },
+      { name: "Framer Motion", icon: `${CDN}/motion/motion-original.svg`, invert: true },
     ],
   },
   {
@@ -50,13 +69,15 @@ const categories: Category[] = [
       { name: "MongoDB", icon: `${CDN}/mongodb/mongodb-original.svg`, aliases: ["Mongo"] },
       { name: "DynamoDB", icon: `${CDN}/dynamodb/dynamodb-original.svg` },
       { name: "Prisma", icon: `${CDN}/prisma/prisma-original.svg`, invert: true },
+      { name: "SQLite", icon: `${CDN}/sqlite/sqlite-original.svg` },
+      { name: "Neo4j", iconLabel: "n4j" },
     ],
   },
   {
     label: "Infrastructure",
     items: [
       { name: "Docker", icon: `${CDN}/docker/docker-original.svg` },
-      { name: "AWS", icon: `${CDN}/amazonwebservices/amazonwebservices-original-wordmark.svg`, invert: true, aliases: ["Amazon Web Services", "S3"] },
+      { name: "AWS", icon: `${CDN}/amazonwebservices/amazonwebservices-original.svg`, invert: true, aliases: ["Amazon Web Services", "S3"] },
       { name: "Azure", icon: `${CDN}/azure/azure-original.svg`, aliases: ["Microsoft Azure"] },
       { name: "Vercel", icon: `${CDN}/vercel/vercel-original.svg`, invert: true },
       { name: "Cloudflare", icon: `${CDN}/cloudflare/cloudflare-original.svg` },
@@ -64,10 +85,20 @@ const categories: Category[] = [
     ],
   },
   {
+    label: "AI & ML",
+    items: [
+      { name: "PyTorch", icon: `${CDN}/pytorch/pytorch-original.svg` },
+      { name: "LightGBM", iconLabel: "gbm" },
+      { name: "MiniLM", iconLabel: "lm" },
+      { name: "spaCy", iconLabel: "nlp" },
+      { name: "Tesseract", iconLabel: "ocr" },
+      { name: "OpenCode SDK", iconLabel: "oc" },
+    ],
+  },
+  {
     label: "Craft",
     items: [
       { name: "Figma", icon: `${CDN}/figma/figma-original.svg` },
-      { name: "Python", icon: `${CDN}/python/python-original.svg` },
       { name: "HTML5", icon: `${CDN}/html5/html5-original.svg`, aliases: ["HTML"] },
       { name: "CSS3", icon: `${CDN}/css3/css3-original.svg`, aliases: ["CSS"] },
       { name: "Git", icon: `${CDN}/git/git-original.svg` },
@@ -102,37 +133,22 @@ function formatDate(dateStr: string) {
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })
 }
 
-const projectCounts: Record<string, number> = {
-  "Go": 4,
-  "Node.js": 2,
-  "Express": 2,
-  "Elysia": 1,
-  "Swift": 1,
-  "React": 7,
-  "Next.js": 8,
-  "TypeScript": 9,
-  "JavaScript": 3,
-  "Tailwind": 6,
-  "Framer Motion": 5,
-  "PostgreSQL": 4,
-  "Redis": 3,
-  "MongoDB": 1,
-  "Prisma": 2,
-  "Docker": 3,
-  "AWS": 3,
-  "Azure": 2,
-  "Vercel": 5,
-  "CI/CD": 3,
-  "Figma": 3,
-  "Python": 2,
-  "Git": 11,
+function countProjects(tech: Tech) {
+  const names = new Set([tech.name, ...(tech.aliases ?? [])].map((name) => name.toLowerCase()))
+  return projects.filter((project) => {
+    const recorded = [...project.tags, ...(project.caseStudy?.stack ?? []), ...(project.technologies ?? [])]
+    if (project.liveLink && new URL(project.liveLink).hostname.endsWith(".vercel.app")) recorded.push("Vercel")
+    if (project.prototypeLink && new URL(project.prototypeLink).hostname.endsWith("figma.com")) recorded.push("Figma")
+    if (project.codeLink && new URL(project.codeLink).hostname === "github.com") recorded.push("Git")
+    return recorded.some((name) => names.has(name.toLowerCase()))
+  }).length
 }
 
 function TechCard({ tech }: { tech: Tech }) {
-  const count = projectCounts[tech.name] ?? 0
+  const count = countProjects(tech)
   return (
     <a
-      href={count > 0 ? "/#projects" : undefined}
+      href={count > 0 ? "/projects" : undefined}
       className="group flex items-center justify-between gap-3 px-3.5 py-3 bg-card border border-border/40 hover:border-border transition-colors duration-200"
     >
       <div className="flex flex-col min-w-0">
@@ -143,13 +159,19 @@ function TechCard({ tech }: { tech: Tech }) {
           </span>
         )}
       </div>
-      <img
-        src={tech.icon}
-        alt=""
-        aria-hidden="true"
-        draggable={false}
-        className={`h-5 w-5 object-contain flex-shrink-0 ${tech.invert ? "icon-invert opacity-80" : ""}`}
-      />
+      {tech.icon ? (
+        <img
+          src={tech.icon}
+          alt=""
+          aria-hidden="true"
+          draggable={false}
+          className={`h-5 w-5 object-contain flex-shrink-0 ${tech.invert ? "icon-invert opacity-80" : ""}`}
+        />
+      ) : (
+        <span aria-hidden="true" className="text-[10px] text-primary/70 font-space-grotesk flex-shrink-0">
+          {tech.iconLabel}
+        </span>
+      )}
     </a>
   )
 }

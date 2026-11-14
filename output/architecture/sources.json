@@ -1,0 +1,168 @@
+{
+  "diagrams": [
+    {
+      "diagram": "blade",
+      "repository": "https://github.com/triachq/blade",
+      "ref": "main",
+      "commit": "c63f61bfe96ef9a78366b2ba31fa5ada7c3813e8",
+      "sources": [
+        "README.md",
+        "detection/README.md",
+        "backend/blade_backend/scan/api.py",
+        "backend/blade_backend/tasks/scan_tasks.py",
+        "infra/docker-compose.prod.yml"
+      ],
+      "outputs": [
+        "blade.excalidraw",
+        "blade.svg",
+        "blade.png"
+      ],
+      "commitHistory": {
+        "branch": "main",
+        "timezone": "UTC",
+        "timestampField": "commit.committer.date",
+        "count": 9,
+        "first": {
+          "sha": "3ebc3f94ec7bcc790329e4ea75f75e56db9a55ca",
+          "authorDate": "2026-09-03T23:08:59Z",
+          "committerDate": "2026-09-03T23:08:59Z",
+          "author": "harsha-cpp",
+          "message": "blade, codebase revamp commit",
+          "parents": []
+        },
+        "last": {
+          "sha": "c63f61bfe96ef9a78366b2ba31fa5ada7c3813e8",
+          "authorDate": "2026-09-30T16:40:15Z",
+          "committerDate": "2026-09-30T16:40:15Z",
+          "author": "harsha-cpp",
+          "message": "extension deployed",
+          "parents": [
+            "3cf83d0629d94d8f21241888ca1242071f76deb3"
+          ]
+        }
+      }
+    },
+    {
+      "diagram": "entity",
+      "repository": "https://github.com/harsha-cpp/entity",
+      "ref": "main",
+      "commit": "4221b0f8780b6430560ce54195dc768f45416855",
+      "sources": [
+        "README.md",
+        "docs/ER_HANDOVER_2026-09-27.md",
+        "scripts/build_neural_last4_submission.py"
+      ],
+      "outputs": [
+        "entity.excalidraw",
+        "entity.svg",
+        "entity.png"
+      ],
+      "commitHistory": {
+        "branch": "main",
+        "timezone": "UTC",
+        "timestampField": "commit.committer.date",
+        "count": 71,
+        "first": {
+          "sha": "f8d8fe0b8d5025ff32cd59c3417582db7f06b1a1",
+          "authorDate": "2026-09-25T05:50:56Z",
+          "committerDate": "2026-09-25T05:50:56Z",
+          "author": "Mohith-c7",
+          "message": "Initialize repository structure and development environment (Stage 0)",
+          "parents": []
+        },
+        "last": {
+          "sha": "4221b0f8780b6430560ce54195dc768f45416855",
+          "authorDate": "2026-09-27T18:14:59Z",
+          "committerDate": "2026-09-27T18:14:59Z",
+          "author": "harsha-cpp",
+          "message": "merged final Harsha development and project retrospective into main",
+          "parents": [
+            "7d91d2be12bb6bca26019c26a0d8c10864b2e041",
+            "00d14e380c8de0e958a491536a42daaa4dfc8afa"
+          ]
+        }
+      }
+    },
+    {
+      "diagram": "openlinear",
+      "repository": "https://github.com/kaizen403/openlinear",
+      "ref": "dev",
+      "commit": "922dbd79b8faf620e6548eb319bb17fb28fb2542",
+      "sources": [
+        "README.md",
+        "docs/ARCHITECTURE.md",
+        "docs/features/architecture.md",
+        "apps/sidecar/package.json"
+      ],
+      "outputs": [
+        "openlinear.excalidraw",
+        "openlinear.svg",
+        "openlinear.png"
+      ],
+      "commitHistory": {
+        "branch": "dev",
+        "timezone": "UTC",
+        "timestampField": "commit.committer.date",
+        "count": 736,
+        "first": {
+          "sha": "616f871b31d9de5c6fe191e476aa4af90a28a200",
+          "authorDate": "2026-02-05T18:19:33Z",
+          "committerDate": "2026-02-05T18:19:33Z",
+          "author": "kaizen403",
+          "message": "chore: add opencode sdk spike script",
+          "parents": []
+        },
+        "last": {
+          "sha": "922dbd79b8faf620e6548eb319bb17fb28fb2542",
+          "authorDate": "2026-10-22T03:48:53Z",
+          "committerDate": "2026-10-22T03:48:53Z",
+          "author": "kaizen403",
+          "message": "Merge dev into main so the October execution fixes are on the production branch.",
+          "parents": [
+            "2ba06dee3e4138a6ab5dac1759ab910aec8104a2",
+            "f20432c8ff3dca7c45f8af15a3bc7532799ff81c"
+          ]
+        }
+      }
+    },
+    {
+      "diagram": "vahaan-watch",
+      "repository": "https://github.com/kaizen403/vahaan-watch",
+      "ref": "main",
+      "commit": "2869ee518385edc3d37f190d5907df347de8488e",
+      "sources": [
+        "README.md",
+        "apps/workstation-agent/src/sync/outbox.ts"
+      ],
+      "outputs": [
+        "vahaan-watch.excalidraw",
+        "vahaan-watch.svg",
+        "vahaan-watch.png"
+      ],
+      "commitHistory": {
+        "branch": "main",
+        "timezone": "UTC",
+        "timestampField": "commit.committer.date",
+        "count": 134,
+        "first": {
+          "sha": "706c88706f7548a67e6d9db0a8b1df4e8f861468",
+          "authorDate": "2026-03-21T04:04:21Z",
+          "committerDate": "2026-03-21T04:04:21Z",
+          "author": "kaizen403",
+          "message": "carmen anpr scanner - next.js web app with c++ video sdk integration",
+          "parents": []
+        },
+        "last": {
+          "sha": "2869ee518385edc3d37f190d5907df347de8488e",
+          "authorDate": "2026-04-15T11:26:33Z",
+          "committerDate": "2026-04-15T11:26:33Z",
+          "author": "kaizen403",
+          "message": "fix(auth): set SameSite=None for cross-subdomain cookie in browser fetch",
+          "parents": [
+            "439837333c7cc2d66b69bb25f1b75422525d2f4e"
+          ]
+        }
+      }
+    }
+  ]
+}

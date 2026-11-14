@@ -6,51 +6,9 @@ import { Badge } from "@/components/ui/badge"
 import { ExternalLink, ChevronDown } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const experiences = [
-  {
-    title: "Founder & CTO",
-    company: "Memolane",
-    period: "Jan 2026 - Present",
-    location: "Hyderabad, India",
-    tags: ["Go", "PostgreSQL", "Redis", "Azure", "CI/CD"],
-    link: null,
-    achievements: [
-      "Designed the full stack architecture (Go API, Next.js, PostgreSQL, Redis), wrote Azure Bicep IaC, and deployed to Azure Container Apps with automated CI/CD.",
-      "Built a production recruitment platform. Shipped careers portal, applicant tracking, interview scheduling, admin panel with RBAC, email automation via Azure Communication Services. 34 migrations, 100+ commits.",
-      "Ran hiring end-to-end solo. Sourced, interviewed, and selected 11 employees across engineering, design, and operations. Automated status emails and onboarding communications.",
-      "Architected the consumer product. Authored technical blueprint, benchmarked 35 features against market leaders, designed the DB schema with pgvector for AI recall, and planned a 6-week build roadmap.",
-      "Set up team operations. Configured the product monorepo (Bun, Turborepo, Elysia, Next.js, Expo), established GitHub workflows, and structured daily sprint execution with task assignment across 5 engineers.",
-    ],
-  },
-  {
-    title: "Backend Developer",
-    company: "Digital Fortress",
-    period: "Aug 2025 - Jan 2026",
-    location: "India",
-    tags: ["Go", "Gin", "Next.js", "TypeScript"],
-    link: null,
-    achievements: [
-      "Built a scalable backend service using Golang (Gin framework) to handle reviews and complaints for 10,000+ students, streamlining daily institutional operations.",
-      "Designed RESTful APIs with structured routing, middleware, validation, and centralized error handling.",
-      "Developed a Next.js admin dashboard for real-time monitoring, complaint tracking, filtering, and status management.",
-      "Monitored development of mobile application simultaneously with junior developer.",
-    ],
-  },
-  {
-    title: "User Experience Designer",
-    company: "Netts Mobility",
-    period: "Apr 2025 - Jul 2025",
-    location: "Bengaluru, India",
-    tags: ["Figma", "React", "Next.js", "TypeScript"],
-    link: "https://netts.in",
-    achievements: [
-      "Designed and developed the complete company website using React, Next.js, and TypeScript. Translated UX research and wireframes into 15+ responsive, high-performance screens.",
-      "Delivered landing pages, product showcases, EV station locators, pricing, and service documentation.",
-    ],
-  },
-]
+import { experiences, type Experience as ExperienceEntry } from "@/lib/data"
 
-function ExperienceCard({ experience, index }: { experience: typeof experiences[number]; index: number }) {
+function ExperienceCard({ experience, index }: { experience: ExperienceEntry; index: number }) {
   const [open, setOpen] = useState(false)
 
   return (

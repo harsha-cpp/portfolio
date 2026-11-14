@@ -6,7 +6,7 @@ export default function FooterParticles() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mouseRef = useRef({ x: 0, y: 0 })
   const particlesRef = useRef<{ x: number; y: number; baseX: number; baseY: number; opacity: number; size: number }[]>([])
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | undefined>(undefined)
 
   useEffect(() => {
     const canvas = canvasRef.current

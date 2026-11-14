@@ -47,7 +47,7 @@ export default function ConsoleEasterEgg() {
         "color: #2db8a0; font-family: monospace;"
       )
       console.log(
-        "%c  Name     : Harsha Tummalapalli\n  Title    : Software Development Engineer\n  Location : Hyderabad, India\n  Role     : Founder & CTO @ Memolane",
+        "%c  Name     : Harsha Tummalapalli\n  Title    : Software Development Engineer\n  Location : Hyderabad, India\n  Role     : AI Engineer @ TOPO AI",
         "color: #ededed; font-family: monospace; font-size: 12px;"
       )
       console.log(

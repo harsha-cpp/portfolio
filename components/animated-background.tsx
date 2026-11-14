@@ -14,7 +14,7 @@ export default function AnimatedBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [cells, setCells] = useState<ActiveCell[]>([])
   const [gridOpacity, setGridOpacity] = useState(1)
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | undefined>(undefined)
   const lastCellRef = useRef("")
 
   useEffect(() => {

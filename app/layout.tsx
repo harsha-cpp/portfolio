@@ -5,10 +5,10 @@ import ClientLayout from "./client"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://harshatummalapalli.com'),
+  metadataBase: new URL('https://harsha16x.in'),
   title: "Harsha Tummalapalli",
   description:
-    "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. Founder & CTO at Memolane.",
+    "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure. AI Engineer at TOPO AI.",
   keywords: [
     "Harsha Tummalapalli",
     "Software Development Engineer",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://harshatummalapalli.com",
+    url: "https://harsha16x.in",
     title: "Harsha Tummalapalli",
     description:
       "Harsha Tummalapalli | Full-stack engineer. TypeScript, Go, PostgreSQL, AWS, Azure.",

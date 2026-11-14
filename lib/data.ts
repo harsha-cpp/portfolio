@@ -5,7 +5,7 @@
 export const SITE = {
   name: "Harsha Tummalapalli",
   title: "Software Development Engineer",
-  url: "https://harshatummalapalli.com",
+  url: "https://harsha16x.in",
   github: "https://github.com/harsha-cpp",
   linkedin: "https://www.linkedin.com/in/sri-harsha-tummalapalli/",
   email: "sriharshatummalapalli@gmail.com",
@@ -23,14 +23,30 @@ export interface Project {
   tagline: string
   description: string
   tags: string[]
+  technologies?: string[]
   codeLink: string | null
   liveLink: string | null
   prototypeLink?: string
   featured: boolean
+  overview?: string
+  focusAreas?: string[]
+  commitRange?: {
+    first: string
+    last: string
+    count: number
+    branch: string
+  }
+  architecture?: {
+    src: string
+    alt: string
+    width: number
+    height: number
+    caption: string
+  }
   // Case study fields (optional - only for featured projects)
   caseStudy?: {
     hero: string // one-line hero subtitle
-    role: string
+    role?: string
     timeline: string
     stack: string[]
     sections: {
@@ -43,47 +59,267 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "openlinear",
-    title: "OpenLinear",
-    tagline: "AI-powered project management that writes code for you",
-    description:
-      "Open-source desktop app that bridges a Linear-style kanban board with AI coding agents. One-click task execution that generates pull requests with working code. Per-task git worktree isolation for parallel execution, real-time agent visibility with live tool calls and file edits, and GitHub-native OAuth + PR workflows via the OpenCode SDK sidecar.",
-    tags: ["Next.js", "Tauri", "Express.js", "PostgreSQL", "Prisma"],
-    codeLink: "https://github.com/harsha-cpp/openlinear",
-    liveLink: "https://openlinear.tech",
-    featured: true,
-    caseStudy: {
-      hero: "An open-source bridge between project management and AI code generation",
-      role: "Solo Engineer & Designer",
-      timeline: "Mar 2026 - Present",
-      stack: ["Next.js", "Tauri", "Express.js", "PostgreSQL", "Prisma", "OpenCode SDK", "GitHub OAuth"],
-      sections: [
-        {
-          number: "01",
-          title: "Why I Built This",
-          content:
-            "Every developer I know has the same workflow: read a Linear ticket, context-switch to the IDE, write the code, push a PR, go back to Linear and move the card. That's four context switches per task.\n\nI wanted to collapse that into one click. Select a task on the board, hit 'Execute,' and get a pull request with working code - reviewed, tested, and ready to merge. Not a copilot that autocompletes lines, but an agent that takes ownership of entire tasks.\n\nThe gap in the market was clear: AI coding tools operate inside editors. Project management tools have no idea code exists. OpenLinear sits in the middle - it understands both your backlog and your codebase.",
-        },
-        {
-          number: "02",
-          title: "How It Works",
-          content:
-            "OpenLinear is a Tauri desktop app (Rust shell, Next.js UI) with an Express.js sidecar running the OpenCode SDK. When you execute a task, the sidecar spins up an isolated git worktree, runs the AI agent against it, and streams tool calls and file edits back to the UI in real-time.\n\nThe kanban board is a full Linear-style project manager - columns, drag-and-drop, labels, priorities, assignments. But every card has an 'Execute' button. Click it and you can watch the agent read files, reason about architecture, write code, and create a PR - all without leaving the app.\n\nGitHub OAuth handles identity. The agent creates PRs under your account. You review the diff right in the app.",
-        },
-        {
-          number: "03",
-          title: "Key Decisions",
-          content:
-            "Tauri over Electron - Electron bundles an entire Chromium. Tauri uses the system webview and ships a ~3MB binary. For a dev tool that sits open all day, memory matters. The tradeoff: fewer cross-platform guarantees on Linux webview rendering. I accepted that because the primary audience is macOS developers.\n\nGit worktree isolation - Rather than having the agent modify your working directory (and potentially break your in-progress work), each task execution creates a fresh worktree. Parallel tasks run in parallel worktrees. This was non-negotiable for trust: if you can't trust the tool not to corrupt your local state, you won't use it.\n\nExpress sidecar over in-process - The OpenCode SDK is a Node process. Tauri's backend is Rust. Instead of bridging FFI, I run Express alongside Tauri and communicate via localhost HTTP. Simpler debugging, independent restarts, and the SDK can evolve without Rust recompilation.",
-        },
-        {
-          number: "04",
-          title: "What I Learned",
-          content:
-            "Building AI-powered developer tools taught me that reliability is the entire product. A flashy demo means nothing if the agent hallucinates a file path 5% of the time. I spent more time on error recovery and rollback logic than on the happy path.\n\nThe hardest UX challenge was transparency. Developers need to trust the agent. Showing live tool calls and file diffs in real-time - not just the final PR - was the difference between 'this is magic' and 'I'd never let this touch my code.'\n\nShipping a desktop app in 2026 is still harder than it should be. Auto-updates, code signing, notarization, platform-specific builds - the infrastructure overhead for a solo developer is significant. But the result is a tool that feels native and fast in a way web apps never will.",
-        },
-      ],
+    "slug": "blade",
+    "title": "Blade",
+    "tagline": "Healthcare data protection at the point of entry.",
+    "description": "A Chrome extension and Python backend that check outgoing Gmail messages and block sensitive patient data in web inputs.",
+    "tags": [
+      "FastAPI",
+      "React",
+      "Chrome MV3",
+      "PostgreSQL",
+      "Celery",
+      "Redis"
+    ],
+    "technologies": ["TypeScript", "Python", "React", "FastAPI", "PostgreSQL", "Redis", "Celery", "spaCy", "Tesseract", "PaddleOCR", "Docker", "MinIO", "Vite", "Git"],
+    "codeLink": "https://github.com/triachq/blade",
+    "liveLink": null,
+    "featured": true,
+    "architecture": {
+      "src": "/architecture/blade.svg",
+      "alt": "Blade architecture showing Gmail and a local web input guard, the Chrome service worker, FastAPI detection and policy checks, PostgreSQL, Redis, Celery and attachment storage.",
+      "width": 1380,
+      "height": 1011,
+      "caption": "Gmail scans go to the backend. Web input checks run locally."
     },
+    "caseStudy": {
+      "hero": "Catch patient data before it leaves the workflow.",
+      "timeline": "03 Sep 2026 - 30 Sep 2026",
+      "stack": [
+        "Chrome MV3",
+        "React",
+        "FastAPI",
+        "PostgreSQL",
+        "Celery",
+        "Redis",
+        "spaCy"
+      ],
+      "sections": [
+        {
+          "number": "01",
+          "title": "Two paths for patient data",
+          "content": "Gmail sends wait for a backend scan of the message and attachments. On other websites, the extension checks typed and pasted text locally using the same rule pack. Only masked findings and the site hostname leave that input path for audit."
+        },
+        {
+          "number": "02",
+          "title": "Deep scans without tying up the API",
+          "content": "FastAPI imports the Python detection library directly. Queued attachment scans run in Celery through Redis, with bytes staged in MinIO. Text extraction uses Tesseract first and PaddleOCR for difficult pages. The worker reuses the same detection library."
+        },
+        {
+          "number": "03",
+          "title": "A verdict you can trace",
+          "content": "Tenant policies determine the response, from a warning to quarantine or blocking. Device enrollment and a hash-chained audit log record who triggered a scan and its outcome. On 119 labelled documents, the detection engine reached 98.26% entity F1."
+        }
+      ]
+    },
+    "overview": "A browser safety check for teams handling patient data. It scans outgoing email and attachments, and stops sensitive information from being entered into other websites. Admins set the rules and review blocked activity.",
+    "focusAreas": [
+      "Full stack",
+      "Backend",
+      "Security"
+    ],
+    "commitRange": {
+      "first": "2026-09-03T23:08:59Z",
+      "last": "2026-09-30T16:40:15Z",
+      "count": 9,
+      "branch": "main"
+    }
+  },
+  {
+    "slug": "entity",
+    "title": "Entity",
+    "tagline": "Matching businesses across noisy, multilingual records.",
+    "description": "An offline retrieval and ranking pipeline that resolves business records using bounded candidate search, LightGBM and sparse neural reranking.",
+    "tags": [
+      "Python",
+      "LightGBM",
+      "PyTorch",
+      "MiniLM",
+      "Native Indexes"
+    ],
+    "technologies": ["Python", "LightGBM", "PyTorch", "MiniLM", "NumPy", "pandas", "Git"],
+    "codeLink": "https://github.com/harsha-cpp/entity",
+    "liveLink": null,
+    "featured": true,
+    "architecture": {
+      "src": "/architecture/entity.svg",
+      "alt": "Entity architecture showing TSV inputs, normalization, disk indexes, bounded retrieval, pair features, LightGBM, offline MiniLM reranking, decisions and validated exports.",
+      "width": 1380,
+      "height": 1002,
+      "caption": "Bounded retrieval and offline scoring, with the candidate set preserved for validation."
+    },
+    "caseStudy": {
+      "hero": "Find the same business when the records disagree.",
+      "timeline": "25 Sep 2026 - 27 Sep 2026",
+      "stack": [
+        "Python",
+        "LightGBM",
+        "PyTorch",
+        "MiniLM",
+        "Native Indexes"
+      ],
+      "sections": [
+        {
+          "number": "01",
+          "title": "Find the right pairs first",
+          "content": "Names, addresses and identifiers vary across sources. Normalization and disk-backed posting lists narrow the search to bounded candidate pools. Bridge lookups recover additional candidates before pair features capture name, address and numeric evidence."
+        },
+        {
+          "number": "02",
+          "title": "Spend model time where it matters",
+          "content": "LightGBM scores candidate pairs with context about competing owners. A sparse route applies offline MiniLM scoring and an adapter to selected pairs. Decision rules use that evidence without forcing a match for records that should remain singletons."
+        },
+        {
+          "number": "03",
+          "title": "Freeze the run, verify the result",
+          "content": "The latest completed submission covered 1,732,544 test references and received a team-reported portal macro F0.5 of 0.970. Both validators passed. Versioned models, source hashes and the exact scored candidates preserve the run separately from later local experiments."
+        }
+      ]
+    },
+    "overview": "A system that figures out whether messy business records describe the same company. Built for the Amazon ML Challenge, it handles different names, incomplete addresses and multiple languages, then exports matches that can be checked and reproduced.",
+    "focusAreas": [
+      "ML",
+      "Data pipelines"
+    ],
+    "commitRange": {
+      "first": "2026-09-25T05:50:56Z",
+      "last": "2026-09-27T18:14:59Z",
+      "count": 71,
+      "branch": "main"
+    }
+  },
+  {
+    "slug": "openlinear",
+    "title": "OpenLinear",
+    "tagline": "From a task on the board to a pull request.",
+    "description": "A desktop workspace connecting a kanban board to local coding agents, isolated git worktrees and GitHub pull requests.",
+    "tags": [
+      "Next.js",
+      "Tauri",
+      "Express.js",
+      "PostgreSQL",
+      "Prisma",
+      "OpenCode SDK"
+    ],
+    "technologies": ["TypeScript", "React", "Next.js", "Tauri", "Node.js", "Express.js", "PostgreSQL", "Prisma", "OpenCode SDK", "Docker", "Git"],
+    "codeLink": "https://github.com/kaizen403/openlinear",
+    "liveLink": "https://openlinear.tech",
+    "featured": true,
+    "architecture": {
+      "src": "/architecture/openlinear.svg",
+      "alt": "OpenLinear architecture showing the Tauri board, local execution sidecar, coding agent, git worktrees, cloud metadata API, PostgreSQL and GitHub.",
+      "width": 1380,
+      "height": 1038,
+      "caption": "Local code execution, cloud task metadata and live updates to the board."
+    },
+    "caseStudy": {
+      "hero": "A task becomes code, with every tool call visible.",
+      "timeline": "05 Feb 2026 - 22 Oct 2026",
+      "stack": [
+        "Next.js",
+        "Tauri",
+        "Express.js",
+        "PostgreSQL",
+        "Prisma",
+        "OpenCode SDK"
+      ],
+      "sections": [
+        {
+          "number": "01",
+          "title": "From ticket to pull request",
+          "content": "Select a task, run the agent and get a pull request. The Tauri app brings the board and execution into one workspace. Tool calls, file edits and progress stream back over SSE so you can follow the work as it happens."
+        },
+        {
+          "number": "02",
+          "title": "Parallel tasks, separate branches",
+          "content": "Parallel and queue modes give each task its own git worktree. Changes stay separate until the batch merge, where conflicts can be skipped or stop the run. Combined mode uses one worktree and agent session for the selected tasks."
+        },
+        {
+          "number": "03",
+          "title": "Local execution, shared context",
+          "content": "An Express sidecar manages OpenCode on your machine. The cloud API stores tasks, teams and repository metadata in PostgreSQL through Prisma. GitHub OAuth connects the repositories and PR workflow, while model credentials stay with the local agent."
+        }
+      ]
+    },
+    "overview": "A desktop project manager that can act on your backlog. Pick a task on the board and a local coding agent works on the repository, streams its progress and opens a GitHub pull request for review.",
+    "focusAreas": [
+      "Full stack",
+      "Backend",
+      "AI"
+    ],
+    "commitRange": {
+      "first": "2026-02-05T18:19:33Z",
+      "last": "2026-10-22T03:48:53Z",
+      "count": 736,
+      "branch": "dev"
+    }
+  },
+  {
+    "slug": "carmen-anpr",
+    "title": "Vahaan Watch",
+    "tagline": "Plate matching that keeps working without a connection.",
+    "description": "ANPR surveillance built at the request of A.P. Police, with local watchlist matching, field alerts and reliable event sync.",
+    "tags": [
+      "Next.js",
+      "Hono",
+      "Node.js",
+      "PostgreSQL",
+      "SQLite",
+      "Tesseract"
+    ],
+    "technologies": ["TypeScript", "React", "Next.js", "Node.js", "Hono", "PostgreSQL", "SQLite", "Tesseract", "ffmpeg", "Docker", "Turborepo", "Git"],
+    "codeLink": "https://github.com/kaizen403/vahaan-watch",
+    "liveLink": null,
+    "featured": true,
+    "architecture": {
+      "src": "/architecture/vahaan-watch.svg",
+      "alt": "Vahaan Watch architecture showing camera capture, the edge agent, tablet alerts, a local SQLite hitlist, the event outbox, Hono API, PostgreSQL and admin portal.",
+      "width": 1380,
+      "height": 973,
+      "caption": "Matches happen at the edge. Events sync when the connection returns."
+    },
+    "caseStudy": {
+      "hero": "Plate matching built at the request of A.P. Police.",
+      "timeline": "21 Mar 2026 - 15 Apr 2026",
+      "stack": [
+        "Next.js",
+        "Hono",
+        "Node.js",
+        "PostgreSQL",
+        "SQLite",
+        "Tesseract",
+        "ffmpeg"
+      ],
+      "sections": [
+        {
+          "number": "01",
+          "title": "A match cannot wait for the network",
+          "content": "The workstation agent captures video with ffmpeg, reads plates and checks a local SQLite copy of the hitlist. A match triggers a nearby tablet alert over WebSocket. Field devices can keep matching when the central API is unreachable."
+        },
+        {
+          "number": "02",
+          "title": "Sync without counting twice",
+          "content": "Detections and match events enter a local outbox before upload. Retry and backoff handle connection failures. Stable event IDs and idempotent ingestion let devices send an event again without creating a second central record."
+        },
+        {
+          "number": "03",
+          "title": "One view across field devices",
+          "content": "A Hono API manages device registration, hitlists and event ingestion in PostgreSQL. The Next.js portal brings alerts, watchlists, analytics and workstation health into one view. Versioned hitlist sync keeps local copies aligned with central updates."
+        }
+      ]
+    },
+    "overview": "A vehicle surveillance system built at the request of A.P. Police. Devices read number plates from camera feeds, check local watchlists and alert a nearby tablet. A central dashboard brings device health and detections together when a connection is available.",
+    "focusAreas": [
+      "Full stack",
+      "Backend",
+      "Computer vision"
+    ],
+    "commitRange": {
+      "first": "2026-03-21T04:04:21Z",
+      "last": "2026-04-15T11:26:33Z",
+      "count": 134,
+      "branch": "main"
+    }
   },
   {
     slug: "verin",
@@ -92,9 +328,10 @@ export const projects: Project[] = [
     description:
       "Cloud-native document management system. React + Go (Chi) monorepo with PostgreSQL, Redis-backed async jobs via Asynq, and S3-compatible storage. Signed direct-to-storage uploads, OCR and preview generation queued through a Go worker, role-based access (admin/editor/auditor), and OpenAPI-generated client. Built for p95 latency.",
     tags: ["Go", "React", "PostgreSQL", "Redis", "S3", "Asynq"],
+    technologies: ["TypeScript", "React", "Go", "Chi", "PostgreSQL", "Redis", "Asynq", "S3", "Docker"],
     codeLink: "https://github.com/harsha-cpp/verin",
     liveLink: null,
-    featured: true,
+    featured: false,
     caseStudy: {
       hero: "A document management system designed for compliance-first organizations",
       role: "Solo Engineer",
@@ -133,15 +370,15 @@ export const projects: Project[] = [
     title: "Memolane",
     tagline: "AI-powered memory platform for the moments that matter",
     description:
-      "The product I'm building as Founder & CTO. Designed the full stack architecture (Go API, Next.js, PostgreSQL, Redis), wrote Azure Bicep IaC, and deployed to Azure Container Apps. Built a production recruitment platform, hired 11 people, and set up the engineering org from scratch.",
+      "Built as a Founding Engineer at Memolane. Designed the full stack architecture (Go API, Next.js, PostgreSQL, Redis), wrote Azure Bicep IaC, and deployed to Azure Container Apps. Built a production recruitment platform, hired 11 people, and set up the engineering org from scratch.",
     tags: ["Go", "PostgreSQL", "Redis", "Azure", "Next.js", "Turborepo"],
     codeLink: null,
     liveLink: "https://memolane.in",
-    featured: true,
+    featured: false,
     caseStudy: {
       hero: "Building a consumer product and engineering org from zero",
-      role: "Founder & CTO",
-      timeline: "Jan 2026 - Present",
+      role: "Founding Engineer",
+      timeline: "Jan 2026 - Aug 2026",
       stack: ["Go", "PostgreSQL", "Redis", "Azure Container Apps", "Next.js", "Expo", "Turborepo", "Bun", "Elysia"],
       sections: [
         {
@@ -178,6 +415,7 @@ export const projects: Project[] = [
     description:
       "Backend service handling mess reviews and complaints for 10,000+ students at VIT-AP. Go/Gin API with concurrent request handling, plus a Next.js admin dashboard for real-time monitoring, complaint tracking, and status management.",
     tags: ["Go", "Gin", "Next.js", "TypeScript"],
+    technologies: ["Go", "Gin", "Next.js", "React", "TypeScript", "PostgreSQL", "SQLC", "Flutter"],
     codeLink: "https://github.com/harsha-cpp/unimessportal",
     liveLink: "https://unimessportal.vercel.app",
     featured: false,
@@ -199,20 +437,9 @@ export const projects: Project[] = [
     tagline: "Medicine surplus sharing between clinics",
     description:
       "Connects clinic networks to share surplus medicines, prevent waste, and eliminate stockouts in real-time.",
-    tags: ["TypeScript", "Next.js", "Full-Stack"],
+    tags: ["TypeScript", "Go", "Neo4j"],
     codeLink: "https://github.com/harsha-cpp/medbridge",
     liveLink: "https://medbridge-two.vercel.app",
-    featured: false,
-  },
-  {
-    slug: "carmen-anpr",
-    title: "Carmen ANPR Scanner",
-    tagline: "License plate recognition from video feeds",
-    description:
-      "License plate scanner built on Adaptive Recognition's Carmen Video SDK. Upload a video or use your webcam, get plate number, make, model, color, and country.",
-    tags: ["TypeScript", "Computer Vision", "SDK Integration"],
-    codeLink: "https://github.com/harsha-cpp/carmen-anpr-scanner",
-    liveLink: null,
     featured: false,
   },
   {
@@ -279,9 +506,21 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    title: "Founder & CTO",
+    title: "AI Engineer",
+    company: "TOPO AI",
+    period: "Sep 2026 - Present",
+    location: "Shenzhen, China",
+    tags: ["AI Agents", "OpenAI", "Anthropic", "OCR", "Verilog"],
+    link: "https://topolabs.ai",
+    achievements: [
+      "Built an AI verification copilot using OpenAI and Anthropic models to generate and validate Verilog test modules, integrating with proprietary test tooling for automated feedback loops.",
+      "Designed an OCR and parsing pipeline that converts chipset diagrams and test specifications across 20+ document formats into structured context for the agent, reducing verification turnaround by approximately 50% compared with prompting LLMs directly.",
+    ],
+  },
+  {
+    title: "Founding Engineer",
     company: "Memolane",
-    period: "Jan 2026 - Present",
+    period: "Jan 2026 - Aug 2026",
     location: "Hyderabad, India",
     tags: ["Go", "PostgreSQL", "Redis", "Azure", "CI/CD"],
     link: "https://memolane.in",
@@ -289,7 +528,7 @@ export const experiences: Experience[] = [
       "Designed the full stack architecture (Go API, Next.js, PostgreSQL, Redis), wrote Azure Bicep IaC, and deployed to Azure Container Apps with automated CI/CD.",
       "Built a production recruitment platform. Shipped careers portal, applicant tracking, interview scheduling, admin panel with RBAC, email automation via Azure Communication Services. 34 migrations, 100+ commits.",
       "Ran hiring end-to-end solo. Sourced, interviewed, and selected 11 employees across engineering, design, and operations. Automated status emails and onboarding communications.",
-      "Architected the consumer product. Authored technical blueprint, benchmarked 35 features against market leaders, designed the DB schema with pgvector for AI recall, and planned a 6-week build roadmap.",
+      "Architected the consumer product. Authored the technical blueprint, benchmarked 35 features against market leaders, designed the database schema with pgvector for AI recall, and planned an 8-week roadmap.",
       "Set up team operations. Configured the product monorepo (Bun, Turborepo, Elysia, Next.js, Expo), established GitHub workflows, and structured daily sprint execution with task assignment across 5 engineers.",
     ],
   },
@@ -297,26 +536,26 @@ export const experiences: Experience[] = [
     title: "Backend Developer",
     company: "Digital Fortress",
     period: "Aug 2025 - Jan 2026",
-    location: "India",
-    tags: ["Go", "Gin", "Next.js", "TypeScript"],
+    location: "Amaravathi, India",
+    tags: ["Go", "Gin", "REST APIs", "Observability"],
     link: "https://digitalfortress.in",
     achievements: [
-      "Built a scalable backend service using Golang (Gin framework) to handle reviews and complaints for 10,000+ students, streamlining daily institutional operations.",
+      "Built a Go/Gin backend for mess reviews and complaints serving a student population of 10,000+, streamlining daily institutional operations.",
       "Designed RESTful APIs with structured routing, middleware, validation, and centralized error handling.",
-      "Developed a Next.js admin dashboard for real-time monitoring, complaint tracking, filtering, and status management.",
-      "Monitored development of mobile application simultaneously with junior developer.",
+      "Built concurrent Go services using goroutine worker pools and added structured logging, health checks, and alerting to reduce incident triage time.",
+      "Mentored a junior developer building the companion mobile app, guiding API integration, code reviews, and release.",
     ],
   },
   {
-    title: "Design Intern",
+    title: "User Experience Designer",
     company: "Netts Mobility",
     period: "Apr 2025 - Jul 2025",
     location: "Bengaluru, India",
     tags: ["Figma", "UI/UX", "Prototyping"],
     link: "https://netts.in",
     achievements: [
-      "Designed mobile and web interfaces with 20+ interactive screens covering ride booking, fleet management, EV station locators, and pricing flows.",
-      "Delivered the complete company website design and collaborated with engineering on implementation.",
+      "Designed 20+ responsive web and mobile screens covering landing pages, product showcases, EV station locators, pricing, and service documentation, translating UX research and wireframes into high-fidelity Figma prototypes.",
+      "Owned the UI/UX design pipeline across desktop and mobile, from user research and information architecture to final handoff.",
     ],
   },
 ]
@@ -430,24 +669,32 @@ export const usesData: UsesSection[] = [
     subtitle: "The physical workspace that powers everything",
     items: [
       {
-        name: "MacBook Air M2 (15\", 16GB)",
-        description: "Primary machine. Silent, fanless, handles Docker containers and multiple processes without thermal throttling. 16GB is the sweet spot for running databases, dev servers, and an IDE simultaneously.",
+        name: "MacBook Pro M5 Pro (24GB, 2TB)",
+        description: "Primary development machine with 24GB of memory and 2TB of storage.",
       },
       {
-        name: "Lenovo ThinkVision 24\" 144Hz",
-        description: "External monitor for the desk. High refresh for smooth scrolling through codebases and UI work. 24 inches is the right size for keeping everything in peripheral vision.",
+        name: "BenQ EW270Q (200Hz)",
+        description: "External display for the desk setup, running at 200Hz.",
       },
       {
-        name: "OnePlus Nord Buds 3 Pro",
-        description: "Active noise cancellation for deep work sessions. Quick switch between devices. Good enough audio quality that I forget they're wireless.",
+        name: "Apple Magic Keyboard",
+        description: "Keyboard for the desk setup.",
       },
       {
-        name: "Logitech MX Master 3S for Mac",
-        description: "The scroll wheel alone is worth it. Infinite scroll for long codebases, horizontal scroll for wide tables. Side buttons mapped to Mission Control and window management.",
+        name: "Apple Magic Trackpad",
+        description: "Trackpad for the desk setup.",
       },
       {
-        name: "IKEA BEKANT Standing Desk",
-        description: "Sit-stand desk. I alternate every 90 minutes. The electric motor remembers two heights. No excuses not to stand.",
+        name: "Razer BlackShark V2 X",
+        description: "Headset for calls, work and listening.",
+      },
+      {
+        name: "Green Soul Jupiter Pro",
+        description: "Chair for the workspace.",
+      },
+      {
+        name: "WHOOP Peak 5.0",
+        description: "Daily wearable.",
       },
     ],
   },
@@ -492,6 +739,18 @@ export const usesData: UsesSection[] = [
         name: "VSCodium",
         description: "Open-source VS Code without telemetry. Use it for quick edits and when I need the extension ecosystem without the Microsoft tracking.",
         link: "https://vscodium.com",
+      },
+      {
+        name: "Claude Code",
+        description: "Coding agent for implementation, debugging and code review.",
+      },
+      {
+        name: "Conductor",
+        description: "Workspace tool for coordinating coding-agent work.",
+      },
+      {
+        name: "Grokbot",
+        description: "AI assistant in my workflow.",
       },
     ],
   },
@@ -560,7 +819,7 @@ export const usesData: UsesSection[] = [
       },
       {
         name: "Apple Music",
-        description: "Background music for deep work. Spatial audio with the Nord Buds. Lo-fi, electronic, and video game soundtracks on rotation.",
+        description: "Music for work and downtime. Lo-fi, electronic, and video game soundtracks on rotation.",
       },
       {
         name: "NordVPN",

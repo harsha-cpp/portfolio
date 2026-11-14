@@ -5,17 +5,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { projects } from "@/lib/data"
 
-const FEATURED_SLUGS = ["openlinear", "memolane", "medbridge"]
-
-const featured = FEATURED_SLUGS.map(
-  (slug) => projects.find((p) => p.slug === slug)!
-).filter(Boolean)
-
-const PRIMARY_TAG: Record<string, string> = {
-  openlinear: "Next.js",
-  memolane: "Go",
-  medbridge: "Next.js",
-}
+const featured = projects.filter((project) => project.featured)
 
 function ProjectCard({ project }: { project: typeof featured[number] }) {
   const router = useRouter()
@@ -40,7 +30,7 @@ function ProjectCard({ project }: { project: typeof featured[number] }) {
       <div className="flex items-center gap-3 flex-shrink-0">
         {/* primary stack pill */}
         <span className="hidden sm:inline-flex px-2.5 py-1 text-xs font-medium bg-secondary/60 border border-border/40 text-muted-foreground">
-          {PRIMARY_TAG[project.slug] ?? project.tags[0]}
+          {project.tags[0]}
         </span>
 
         {/* live link — real <a>, stops propagation to prevent double-nav */}

@@ -1,7 +1,9 @@
 import Link from "next/link"
+import Image from "next/image"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { projects, SITE } from "@/lib/data"
+import ProjectFocus from "@/components/project-focus"
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
@@ -77,17 +79,25 @@ export default async function ProjectPage({
         {project.caseStudy ? (
           <div className="py-8 border-b border-border/60">
             <dl className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              <div>
-                <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">
-                  Role
-                </dt>
-                <dd className="text-sm text-foreground">{project.caseStudy.role}</dd>
-              </div>
+              {project.focusAreas && (
+                <div>
+                  <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">
+                    Project type
+                  </dt>
+                  <dd><ProjectFocus areas={project.focusAreas} /></dd>
+                </div>
+              )}
               <div>
                 <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">
                   Timeline
                 </dt>
                 <dd className="text-sm text-foreground">{project.caseStudy.timeline}</dd>
+                {project.commitRange && (
+                  <dd className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    First to latest recorded commit (UTC).<br />
+                    {project.commitRange.count} commits on {project.commitRange.branch}.
+                  </dd>
+                )}
               </div>
               <div>
                 <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">
@@ -154,6 +164,48 @@ export default async function ProjectPage({
               </a>
             )}
           </div>
+        )}
+
+        {project.overview && (
+          <section className="py-10 border-b border-border/30" aria-labelledby="project-overview">
+            <h2 id="project-overview" className="font-funnel-display text-2xl md:text-3xl font-semibold text-foreground tracking-tight mb-4">
+              What it is
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
+              {project.overview}
+            </p>
+          </section>
+        )}
+
+        {project.architecture && (
+          <figure className="mt-8 border border-border/60">
+            <a
+              href={project.architecture.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${project.title} architecture diagram full size`}
+              className="block"
+            >
+              <Image
+                src={project.architecture.src}
+                alt={project.architecture.alt}
+                width={project.architecture.width}
+                height={project.architecture.height}
+                className="w-full h-auto"
+              />
+            </a>
+            <figcaption className="px-5 py-4 text-sm text-muted-foreground leading-relaxed">
+              <p>{project.architecture.caption}</p>
+              <a
+                href={project.architecture.src}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block mt-2 text-primary hover:underline underline-offset-4"
+              >
+                Open full-size ↗
+              </a>
+            </figcaption>
+          </figure>
         )}
 
         {project.caseStudy ? (

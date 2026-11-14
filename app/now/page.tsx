@@ -15,15 +15,15 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: "Currently",
-    body: "Building Memolane - an AI-powered memory platform. Leading a team of 5 engineers. Shipping the consumer product after spending 4 months on infrastructure and hiring.",
+    body: "Working as an AI Engineer at TOPO AI on agentic Verilog verification and document processing pipelines.",
   },
   {
     title: "Working on",
-    body: "The Memolane consumer app (React Native + Next.js). OpenLinear - open-source AI coding agent with kanban. This portfolio (you're looking at v3.0).",
+    body: "Updating this portfolio and documenting the architecture behind Blade, Entity, OpenLinear and Vahaan Watch.",
   },
   {
     title: "Learning",
-    body: "Systems design at scale. How to run a 5-person engineering team without burning out. Rust - slowly, on weekends.",
+    body: "Systems design at scale, reliable AI workflows and Rust.",
   },
   {
     title: "Reading",
@@ -35,7 +35,7 @@ const sections = [
   },
   {
     title: "Location",
-    body: "Hyderabad, India. Third-year CS undergrad at VIT Amaravati.",
+    body: "Based in Hyderabad, India. Working with TOPO AI in Shenzhen, China. B.Tech CSE at VIT Amaravati, graduating in May 2027.",
   },
 ]
 
@@ -49,7 +49,7 @@ export default function NowPage() {
               Now
             </h1>
             <p className="text-sm text-muted-foreground tracking-wide">
-              Last updated · <span className="text-foreground/80">May 2026</span>
+              Last updated · <span className="text-foreground/80">November 2026</span>
             </p>
           </header>
 
