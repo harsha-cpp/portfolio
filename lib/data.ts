@@ -85,7 +85,7 @@ export const projects: Project[] = [
       "Redis"
     ],
     "technologies": ["TypeScript", "Python", "React", "FastAPI", "PostgreSQL", "Redis", "Celery", "spaCy", "Tesseract", "PaddleOCR", "Docker", "MinIO", "Vite", "Git"],
-    "codeLink": "https://github.com/triachq/blade",
+    "codeLink": "https://github.com/harsha-cpp/blade",
     "liveLink": null,
     "featured": true,
     "gallery": {
