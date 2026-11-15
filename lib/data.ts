@@ -88,6 +88,59 @@ export const projects: Project[] = [
     "codeLink": "https://github.com/triachq/blade",
     "liveLink": null,
     "featured": true,
+    "gallery": {
+      "note": "Demo dashboard with synthetic data. Counts and verification results are illustrative.",
+      "images": [
+        {
+          "src": "/gallery/blade/01-overview.webp",
+          "title": "Scan overview",
+          "caption": "Daily scan outcomes, detected data types and where sharing was stopped.",
+          "alt": "Blade overview with daily scan outcomes, detected identifier types, sender activity and blocked websites in a synthetic healthcare workspace.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/blade/02-quarantine-review.webp",
+          "title": "Quarantine review",
+          "caption": "Review held messages, masked findings and matched rules before release.",
+          "alt": "Blade quarantine queue beside a selected message with masked patient identifiers, matched policy, attachment and release or reject actions.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/blade/03-policy-simulation.webp",
+          "title": "Policy simulation",
+          "caption": "Preview how ordered rules handle a message before changing the policy.",
+          "alt": "Blade policy editor with ordered rules and a message simulator comparing saved and edited verdicts for sample risk, recipients and entity types.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/blade/04-audit-history.webp",
+          "title": "Audit history",
+          "caption": "Trace scan decisions and admin changes through a hash-chained log.",
+          "alt": "Blade audit log listing scan decisions, device enrollments, policy changes and member actions with actors, timestamps and illustrative hash-chain verification.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/blade/05-device-management.webp",
+          "title": "Device management",
+          "caption": "Enroll each extension separately and revoke access one device at a time.",
+          "alt": "Blade device management with an enrollment form and devices showing labels, enrolling users, last activity, expiry and individual revoke actions.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/blade/06-team-access.webp",
+          "title": "Team access",
+          "caption": "Invite teammates and set access for owners, admins, analysts and viewers.",
+          "alt": "Blade team access with an invitation form and member table showing roles, account status, email verification and two-factor authentication.",
+          "width": 1600,
+          "height": 1000
+        }
+      ]
+    },
     "architecture": {
       "src": "/architecture/blade.svg",
       "alt": "Blade architecture showing Gmail and a local web input guard, the Chrome service worker, FastAPI detection and policy checks, PostgreSQL, Redis, Celery and attachment storage.",
