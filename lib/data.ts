@@ -17,6 +17,15 @@ export const SITE = {
 
 // ── Projects ────────────────────────────────────────────────
 
+export interface ProjectScreenshot {
+  src: string
+  alt: string
+  title: string
+  caption: string
+  width: number
+  height: number
+}
+
 export interface Project {
   slug: string
   title: string
@@ -30,6 +39,10 @@ export interface Project {
   featured: boolean
   overview?: string
   focusAreas?: string[]
+  gallery?: {
+    note?: string
+    images: ProjectScreenshot[]
+  }
   commitRange?: {
     first: string
     last: string
@@ -205,6 +218,59 @@ export const projects: Project[] = [
     "codeLink": "https://github.com/kaizen403/openlinear",
     "liveLink": "https://openlinear.tech",
     "featured": true,
+    "gallery": {
+      "note": "Demo workspace with sample data.",
+      "images": [
+        {
+          "src": "/gallery/openlinear/release-board.png",
+          "title": "Release board",
+          "caption": "Issues, priorities and agent execution in one board.",
+          "alt": "OpenLinear release board with issue columns, priorities, assignees and agent execution controls.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/openlinear/implementation-plan.png",
+          "title": "Implementation plan",
+          "caption": "Dependency waves and acceptance checks before work starts.",
+          "alt": "OpenLinear implementation plan with dependency waves, acceptance checks and an approval action.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/openlinear/issue-detail.png",
+          "title": "Issue detail",
+          "caption": "Task context, acceptance checks and a pull request in one view.",
+          "alt": "OpenLinear issue detail with an agent conclusion, acceptance checks, pull request status and team discussion.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/openlinear/code-review.png",
+          "title": "Code review",
+          "caption": "Review the diff, check verification and send feedback to the agent.",
+          "alt": "OpenLinear code review with a file diff, verification checks and feedback for the coding agent.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/openlinear/project-knowledge.png",
+          "title": "Project knowledge",
+          "caption": "Shared conventions and procedures for agent runs.",
+          "alt": "OpenLinear project knowledge showing approved engineering conventions and procedures.",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "src": "/gallery/openlinear/ai-chat.png",
+          "title": "AI chat",
+          "caption": "A project-scoped conversation with release context.",
+          "alt": "OpenLinear AI chat showing a release-readiness conversation in the demo workspace.",
+          "width": 1600,
+          "height": 1000
+        }
+      ]
+    },
     "architecture": {
       "src": "/architecture/openlinear.svg",
       "alt": "OpenLinear architecture showing the Tauri board, local execution sidecar, coding agent, git worktrees, cloud metadata API, PostgreSQL and GitHub.",

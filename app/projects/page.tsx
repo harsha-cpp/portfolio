@@ -18,11 +18,11 @@ export default function ProjectsPage() {
   const rest = projects.filter((p) => !p.featured)
 
   return (
-    <main className="min-h-screen pb-24">
-      <div className="container px-4 md:px-6 mx-auto">
+    <main className="min-h-screen pb-20">
+      <div className="container max-w-[1280px] px-4 md:px-6 mx-auto">
 
         {/* back */}
-        <div className="pt-12 pb-8">
+        <div className="pt-7 pb-5">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -33,29 +33,29 @@ export default function ProjectsPage() {
         </div>
 
         {/* header */}
-        <header className="py-8 md:py-12 border-b border-border/60">
-          <h1 className="font-funnel-display text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.05]">
+        <header className="py-7 md:py-8 border-b border-border/60">
+          <h1 className="font-funnel-display text-[2.625rem] md:text-[4rem] font-bold tracking-tight text-foreground leading-[1.05]">
             Projects
           </h1>
-          <p className="mt-4 text-lg text-muted-foreground max-w-xl">
+          <p className="mt-4 text-base text-muted-foreground max-w-xl">
             Products, developer tools and experiments across backend systems, full stack and AI.
           </p>
         </header>
 
         {/* featured */}
-        <section className="mt-12">
+        <section className="mt-10">
           <h2 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-6">
             Project studies
           </h2>
           <div className="flex flex-col gap-3">
             {featured.map((project) => (
-              <div key={project.slug} className="group relative flex items-center min-h-[72px] px-5 py-4 bg-background border border-border/50 hover:border-border transition-colors duration-200 overflow-hidden">
+              <div key={project.slug} className="group relative flex items-center min-h-[64px] px-4 py-3.5 bg-background border border-border/50 hover:border-border transition-colors duration-200 overflow-hidden">
                 {/* accent bar */}
                 <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary via-primary/40 to-transparent" />
 
                 {/* left: name + tagline — entire left is clickable to case study */}
                 <Link href={`/projects/${project.slug}`} className="flex-1 min-w-0 pr-4 block">
-                  <span className="text-base font-semibold text-foreground group-hover:text-primary transition-colors duration-200 truncate block">
+                  <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-200 truncate block">
                     {project.title}
                   </span>
                   <span className="text-xs text-muted-foreground/60 line-clamp-1 mt-0.5">
@@ -100,7 +100,7 @@ export default function ProjectsPage() {
         </section>
 
         {/* all other projects */}
-        <section className="mt-14">
+        <section className="mt-12">
           <h2 className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-6">
             All Projects
           </h2>

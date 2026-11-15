@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 import { projects, SITE } from "@/lib/data"
 import ProjectFocus from "@/components/project-focus"
+import ProjectGallery from "@/components/project-gallery"
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }))
@@ -55,9 +56,9 @@ export default async function ProjectPage({
       : null
 
   return (
-    <main className="min-h-screen pb-24">
-        <div className="container px-4 md:px-6 mx-auto">
-        <div className="pt-12 pb-8">
+    <main className="min-h-screen pb-20">
+        <div className="container max-w-[1280px] px-4 md:px-6 mx-auto">
+        <div className="pt-7 pb-5">
           <Link
             href="/#projects"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -67,18 +68,18 @@ export default async function ProjectPage({
           </Link>
         </div>
 
-        <header className="py-8 md:py-12 border-b border-border/60">
-          <h1 className="font-funnel-display text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.05]">
+        <header className="py-7 border-b border-border/60">
+          <h1 className="font-funnel-display text-[2.625rem] md:text-[4rem] font-bold tracking-tight text-foreground leading-[1.05]">
             {project.title}
           </h1>
-          <p className="mt-6 text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl">
+          <p className="mt-5 text-lg md:text-[1.3125rem] text-muted-foreground leading-relaxed max-w-3xl">
             {project.caseStudy?.hero ?? project.tagline}
           </p>
         </header>
 
         {project.caseStudy ? (
-          <div className="py-8 border-b border-border/60">
-            <dl className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="py-7 border-b border-border/60">
+            <dl className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-7">
               {project.focusAreas && (
                 <div>
                   <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-2">
@@ -117,7 +118,7 @@ export default async function ProjectPage({
             </dl>
           </div>
         ) : (
-          <div className="py-8 border-b border-border/60">
+          <div className="py-7 border-b border-border/60">
             <div className="flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (
                 <span
@@ -132,13 +133,13 @@ export default async function ProjectPage({
         )}
 
         {(project.codeLink || project.liveLink || project.prototypeLink) && (
-          <div className="py-8 flex flex-wrap gap-3">
+          <div className="py-5 flex flex-wrap gap-3">
             {project.liveLink && (
               <a
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary"
+                className="btn-primary text-xs !px-4 !py-2"
               >
                 Visit Live Site ↗
               </a>
@@ -148,7 +149,7 @@ export default async function ProjectPage({
                 href={project.codeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary"
+                className="btn-secondary text-xs !px-4 !py-2"
               >
                 View Source ↗
               </a>
@@ -158,7 +159,7 @@ export default async function ProjectPage({
                 href={project.prototypeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary"
+                className="btn-secondary text-xs !px-4 !py-2"
               >
                 View Prototype ↗
               </a>
@@ -167,40 +168,46 @@ export default async function ProjectPage({
         )}
 
         {project.overview && (
-          <section className="py-10 border-b border-border/30" aria-labelledby="project-overview">
-            <h2 id="project-overview" className="font-funnel-display text-2xl md:text-3xl font-semibold text-foreground tracking-tight mb-4">
+          <section className="py-7 border-b border-border/30" aria-labelledby="project-overview">
+            <h2 id="project-overview" className="font-funnel-display text-[1.3125rem] md:text-[1.625rem] font-semibold text-foreground tracking-tight mb-3">
               What it is
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl">
               {project.overview}
             </p>
           </section>
         )}
 
+        {project.gallery && <ProjectGallery projectName={project.title} gallery={project.gallery} />}
+
         {project.architecture && (
-          <figure className="mt-8 border border-border/60">
+          <figure className="my-7 grid grid-cols-1 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] items-start gap-5 md:gap-8">
             <a
               href={project.architecture.src}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Open ${project.title} architecture diagram full size`}
-              className="block"
+              className="block min-w-0 border border-border/60"
             >
               <Image
                 src={project.architecture.src}
                 alt={project.architecture.alt}
                 width={project.architecture.width}
                 height={project.architecture.height}
+                sizes="(min-width: 768px) 60vw, 100vw"
                 className="w-full h-auto"
               />
             </a>
-            <figcaption className="px-5 py-4 text-sm text-muted-foreground leading-relaxed">
-              <p>{project.architecture.caption}</p>
+            <figcaption className="order-first md:order-last md:py-4">
+              <h2 className="font-funnel-display text-[1.3125rem] md:text-[1.625rem] font-semibold text-foreground tracking-tight">
+                Architecture
+              </h2>
+              <p className="mt-3 text-base text-muted-foreground leading-relaxed">{project.architecture.caption}</p>
               <a
                 href={project.architecture.src}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block mt-2 text-primary hover:underline underline-offset-4"
+                className="inline-block mt-4 text-sm text-primary hover:underline underline-offset-4"
               >
                 Open full-size ↗
               </a>
@@ -209,28 +216,28 @@ export default async function ProjectPage({
         )}
 
         {project.caseStudy ? (
-          <div className="mt-8">
+          <div className="mt-7">
             {project.caseStudy.sections.map((section) => (
               <section
                 key={section.number}
-                className="py-16 border-b border-border/30 last:border-b-0"
+                className="py-14 border-b border-border/30 last:border-b-0"
               >
-                <div className="flex items-baseline gap-6 mb-8">
+                <div className="flex items-baseline gap-5 mb-6">
                   <span
                     aria-hidden="true"
-                    className="font-funnel-display text-6xl md:text-7xl font-bold text-primary/15 leading-none select-none"
+                    className="font-funnel-display text-[3.25rem] md:text-[4rem] font-bold text-primary/15 leading-none select-none"
                   >
                     {section.number}
                   </span>
-                  <h2 className="font-funnel-display text-2xl md:text-3xl font-semibold text-foreground tracking-tight">
+                  <h2 className="font-funnel-display text-[1.3125rem] md:text-[1.625rem] font-semibold text-foreground tracking-tight">
                     {section.title}
                   </h2>
                 </div>
-                <div className="space-y-6 pl-0 md:pl-2">
+                <div className="space-y-5 pl-0 md:pl-2">
                   {section.content.split("\n\n").map((paragraph, i) => (
                     <p
                       key={i}
-                      className="text-lg text-muted-foreground leading-relaxed"
+                      className="text-base text-muted-foreground leading-relaxed"
                     >
                       {paragraph}
                     </p>
@@ -240,15 +247,15 @@ export default async function ProjectPage({
             ))}
           </div>
         ) : (
-          <div className="py-12">
-            <p className="text-lg text-muted-foreground leading-relaxed">
+          <div className="py-10">
+            <p className="text-base text-muted-foreground leading-relaxed">
               {project.description}
             </p>
           </div>
         )}
 
         {nextProject && nextProject.slug !== project.slug && (
-          <div className="mt-16 pt-12 border-t border-border/60">
+          <div className="mt-14 pt-10 border-t border-border/60">
             <Link
               href={`/projects/${nextProject.slug}`}
               className="group block"
@@ -257,7 +264,7 @@ export default async function ProjectPage({
                 Next Project
               </div>
               <div className="flex items-baseline justify-between gap-6">
-                <h3 className="font-funnel-display text-3xl md:text-5xl font-bold text-foreground group-hover:text-primary transition-colors">
+                <h3 className="font-funnel-display text-[1.625rem] md:text-[2.625rem] font-bold text-foreground group-hover:text-primary transition-colors">
                   {nextProject.title}
                 </h3>
                 <span

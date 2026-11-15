@@ -11,8 +11,8 @@ export default function ProjectFocus({ areas }: { areas: string[] }) {
 
   return (
     <div>
-      <div className="flex items-center gap-4">
-        <div className="relative h-28 w-28 flex-shrink-0">
+      <div className="flex items-center gap-3">
+        <div className="relative h-24 w-24 flex-shrink-0">
           <svg
             viewBox="0 0 112 112"
             className="h-full w-full"
