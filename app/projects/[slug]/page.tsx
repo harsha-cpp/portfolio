@@ -181,7 +181,7 @@ export default async function ProjectPage({
         {project.gallery && <ProjectGallery projectName={project.title} gallery={project.gallery} />}
 
         {project.architecture && (
-          <figure className="my-7 grid grid-cols-1 md:grid-cols-[minmax(0,3fr)_minmax(0,2fr)] items-start gap-5 md:gap-8">
+          <figure className="my-7 grid grid-cols-1 md:grid-cols-[minmax(0,69fr)_minmax(0,31fr)] items-start gap-5 md:gap-8">
             <a
               href={project.architecture.src}
               target="_blank"
@@ -194,7 +194,7 @@ export default async function ProjectPage({
                 alt={project.architecture.alt}
                 width={project.architecture.width}
                 height={project.architecture.height}
-                sizes="(min-width: 768px) 60vw, 100vw"
+                sizes="(min-width: 768px) 69vw, 100vw"
                 className="w-full h-auto"
               />
             </a>
